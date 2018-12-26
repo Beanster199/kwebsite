@@ -1,0 +1,193 @@
+<div class="container">
+    <% if(staff.owner.length > 0){ %>
+    <h2>Owner <span class="badge" style="vertical-align: super">
+            <%=staff.owner.length %></span></h2>
+    <div class="row">
+        <% for(var i = 0; i < staff.owner.length; i++){ %>
+        <div class="col-md-2 col-sm-3 col-xs-6">
+            <a>
+                <div class="text-center">
+                    <img src="https://visage.surgeplay.com/bust/<%= staff.owner[i].uuid %>" width="96" height="96">
+                </div>
+                <div class="text-center">
+                    <b>
+                        <%= staff.owner[i].player %></b>
+                </div>
+            </a>
+        </div>
+        <% } %>
+    </div>
+    <% } %>
+    <% if(staff.dev.length > 0){ %>
+    <h2>Developer <span class="badge" style="vertical-align: super">
+            <%=staff.dev.length %></span></h2>
+    <div class="row">
+        <% for(var i = 0; i < staff.dev.length; i++){ %>
+        <div class="col-md-2 col-sm-3 col-xs-6">
+            <a>
+                <div class="text-center">
+                    <img src="https://visage.surgeplay.com/bust/<%= staff.dev[i].uuid %>" width="96" height="96">
+                </div>
+                <div class="text-center">
+                    <b>
+                        <%= staff.dev[i].player %></b>
+                </div>
+            </a>
+        </div>
+        <% } %>
+    </div>
+    <% } %>
+    <% if(staff.NetAdmin.length > 0){ %>
+    <h2>NetworkAdmin <span class="badge" style="vertical-align: super">
+            <%=staff.NetAdmin.length %></span></h2>
+    <div class="row">
+        <% for(var i = 0; i < staff.NetAdmin.length; i++){ %>
+        <div class="col-md-2 col-sm-3 col-xs-6">
+            <a>
+                <div class="text-center">
+                    <img src="https://visage.surgeplay.com/bust/<%= staff.NetAdmin[i].uuid %>" width="96" height="96">
+                </div>
+                <div class="text-center">
+                    <b>
+                        <%= staff.NetAdmin[i].player %></b>
+                </div>
+            </a>
+        </div>
+        <% } %>
+    </div>
+    <% } %>
+    <% if(staff.PAdmin.length > 0){ %>
+    <h2>NetworkAdmin <span class="badge" style="vertical-align: super">
+            <%=staff.PAdmin.length %></span></h2>
+    <div class="row">
+        <% for(var i = 0; i < staff.PAdmin.length; i++){ %>
+        <div class="col-md-2 col-sm-3 col-xs-6">
+            <a>
+                <div class="text-center">
+                    <img src="https://visage.surgeplay.com/bust/<%= staff.PAdmin[i].uuid %>" width="96" height="96">
+                </div>
+                <div class="text-center">
+                    <b>
+                        <%= staff.PAdmin[i].player %></b>
+                </div>
+            </a>
+        </div>
+        <% } %>
+    </div>
+    <% } %>
+    <% if(staff.SAdmin.length > 0){ %>
+    <h2>SeniorAdmin <span class="badge" style="vertical-align: super">
+            <%=staff.SAdmin.length %></span></h2>
+    <div class="row">
+        <% for(var i = 0; i < staff.SAdmin.length; i++){ %>
+        <div class="col-md-2 col-sm-3 col-xs-6">
+            <a>
+                <div class="text-center">
+                    <img src="https://visage.surgeplay.com/bust/<%= staff.SAdmin[i].uuid %>" width="96" height="96">
+                </div>
+                <div class="text-center">
+                    <b>
+                        <%= staff.SAdmin[i].player %></b>
+                </div>
+            </a>
+        </div>
+        <% } %>
+    </div>
+    <% } %>
+    <% if(staff.Admin.length > 0){ %>
+    <h2>Admin <span class="badge" style="vertical-align: super">
+            <%=staff.Admin.length %></span></h2>
+    <div class="row">
+        <% for(var i = 0; i < staff.Admin.length; i++){ %>
+        <div class="col-md-2 col-sm-3 col-xs-6">
+            <a>
+                <div class="text-center">
+                    <img src="https://visage.surgeplay.com/bust/<%= staff.Admin[i].uuid %>" width="96" height="96">
+                </div>
+                <div class="text-center">
+                    <b>
+                        <%= staff.Admin[i].player %></b>
+                </div>
+            </a>
+        </div>
+        <% } %>
+    </div>
+    <% } %>
+    <% if(staff.SMod.length > 0){ %>
+    <h2>SeniorMod <span class="badge" style="vertical-align: super">
+            <%=staff.SMod.length %></span></h2>
+    <div class="row">
+        <% for(var i = 0; i < staff.SMod.length; i++){ %>
+        <div class="col-md-2 col-sm-3 col-xs-6">
+            <a>
+                <div class="text-center">
+                    <img src="https://visage.surgeplay.com/bust/<%= staff.SMod[i].uuid %>" width="96" height="96">
+                </div>
+                <div class="text-center">
+                    <b>
+                        <%= staff.SMod[i].player %></b>
+                </div>
+            </a>
+        </div>
+        <% } %>
+    </div>
+    <% } %>
+    <% if(staff.ModP.length > 0){ %>
+    <h2>Mod+ <span class="badge" style="vertical-align: super">
+            <%=staff.ModP.length %></span></h2>
+    <div class="row">
+        <% for(var i = 0; i < staff.ModP.length; i++){ %>
+        <div class="col-md-2 col-sm-3 col-xs-6">
+            <a>
+                <div class="text-center">
+                    <img src="https://visage.surgeplay.com/bust/<%= staff.ModP[i].uuid %>" width="96" height="96">
+                </div>
+                <div class="text-center">
+                    <b>
+                        <%= staff.ModP[i].player %></b>
+                </div>
+            </a>
+        </div>
+        <% } %>
+    </div>
+    <% } %>
+    <% if(staff.Mod.length > 0){ %>
+    <h2>Mod <span class="badge" style="vertical-align: super">
+            <%=staff.Mod.length %></span></h2>
+    <div class="row">
+        <% for(var i = 0; i < staff.Mod.length; i++){ %>
+        <div class="col-md-2 col-sm-3 col-xs-6">
+            <a>
+                <div class="text-center">
+                    <img src="https://visage.surgeplay.com/bust/<%= staff.Mod[i].uuid %>" width="96" height="96">
+                </div>
+                <div class="text-center">
+                    <b>
+                        <%= staff.Mod[i].player %></b>
+                </div>
+            </a>
+        </div>
+        <% } %>
+    </div>
+    <% } %>
+    <% if(staff.TMod.length > 0){ %>
+    <h2>TrialMods <span class="badge" style="vertical-align: super">
+            <%=staff.TMod.length %></span></h2>
+    <div class="row">
+        <% for(var i = 0; i < staff.TMod.length; i++){ %>
+        <div class="col-md-2 col-sm-3 col-xs-6">
+            <a>
+                <div class="text-center">
+                    <img src="https://visage.surgeplay.com/bust/<%= staff.TMod[i].uuid %>" width="96" height="96">
+                </div>
+                <div class="text-center">
+                    <b>
+                        <%= staff.TMod[i].player %></b>
+                </div>
+            </a>
+        </div>
+        <% } %>
+    </div>
+    <% } %>
+</div>
+</div>
