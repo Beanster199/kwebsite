@@ -1,11 +1,12 @@
-<div class="container">
+<div class="container" style="padding-top:1.2%">
     <div class="row">
+     {{#each user}} 
         <div class="col-sm-3 col-md-2">
             <p class="text-center">
                 <img src="https://visage.surgeplay.com/full/195/c0294097f30a454699e9e7172f9be7e2" width="120" height="195">
             </p>
             <div class="list-group">
-                <a class="list-group-item  active " href="/web/20160505054158/https://kohi.net/u/VitaPvP/">General</a>
+                <a class="list-group-item  active " href="localhost:3000/u/{{ name }}">General</a>
                 <a class="list-group-item " href="/web/20160505054158/https://kohi.net/u/VitaPvP/practice/">Practice</a>
                 <a class="list-group-item " href="/web/20160505054158/https://kohi.net/u/VitaPvP/factions/">Factions</a>
                 <a class="list-group-item " href="/web/20160505054158/https://kohi.net/u/VitaPvP/sg/">SG</a>
@@ -13,14 +14,14 @@
         </div>
         <div class="col-sm-9 col-md-10">
             <div>
-               {{#each user}} 
-                <span style="font-size: 36px; margin-right:10px;">Benster_199</span>
-              {{/each}} 
+
+                <span style="font-size: 36px; margin-right:10px;">{{ name }}</span>
             </div>
             <div>
                 <span class="text-muted">
-                    Last seen {{ timeago '2018-12-20' }} <!--2&nbsp;days, 15&nbsp;hours ago-->
-                </span> 
+                    Last seen {{ timeago lastlogin }} <!--2&nbsp;days, 15&nbsp;hours ago-->
+                </span>
+                {{/each}}  
             </div>
             <div>
                 </br>
@@ -50,7 +51,9 @@
             <p>Squad Info:</p>
             Member of <a href="/web/20160505054158/https://kohi.net/squad/CTL/">CTL</a> for 4&nbsp;months
             <hr>
+            {{#each friends}}
             <p>Friends <span class="badge">390</span></p>
+            {{/each}}
             <hr>
             <div style="font-size: 150%">
                 <a href="http://web.archive.org/web/20160505054158/https://twitter.com/VitaPvPey" style="margin: 10px"
