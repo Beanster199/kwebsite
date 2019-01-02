@@ -3,7 +3,7 @@
      {{#each user}} 
         <div class="col-sm-3 col-md-2">
             <p class="text-center">
-                <img src="https://visage.surgeplay.com/full/195/c0294097f30a454699e9e7172f9be7e2" width="120" height="195">
+                <img src="https://visage.surgeplay.com/full/195/{{uuid_long}}" width="120" height="195">
             </p>
             <div class="list-group">
                 <a class="list-group-item  active " href="localhost:3000/u/{{ name }}">General</a>
@@ -21,7 +21,7 @@
                 <span class="text-muted">
                     Last seen {{ timeago lastlogin }} <!--2&nbsp;days, 15&nbsp;hours ago-->
                 </span>
-                {{/each}}  
+  
             </div>
             <div>
                 </br>
@@ -36,8 +36,9 @@
             </div>
             <hr>
             <div>
-                Profile Views: 9,509
+                Profile Views: {{ views }}
             </div>
+                {{/each}}
             <hr>
             <div>
                 <p>Name History</p>

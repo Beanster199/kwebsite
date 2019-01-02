@@ -27,7 +27,7 @@ pool.getConnection((err, connection) => {
        if (err.code === 'ETIMEDOUT') {
            console.error('[!] DATABASE CONNECTION TIMEOUT')
        }
-       //console.log(err)
+       console.log(err)
    } 
    if (connection) {connection.release();
    console.log('[-] DB Connected.') }
