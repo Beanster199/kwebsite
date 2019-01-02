@@ -8,6 +8,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const MySQLStore = require('express-mysql-session')(session);
 const bodyParser = require('body-parser');;
+const cookieParser = require('cookie-parser')
 
 const { database } = require('./keys');
 
@@ -29,8 +30,10 @@ app.engine('.hbs', exphbs({
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(cookieParser('secret'));
 
 app.use(session({
+    key: 'test_id',
     secret: 'secret',
     resave: false,
     saveUninitialized: false,
@@ -39,15 +42,12 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(validator());
 
 // Variables
 
 app.use((req, res, next) => {
     app.locals.danger = req.flash('danger');
     app.locals.success = req.flash('success');
-    app.locals.uuid = req.uuid;
-    app.locals.role = req.role;
     next()
 }); 
 

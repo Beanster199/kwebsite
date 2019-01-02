@@ -6,22 +6,20 @@ const auth = require('passport');
 
 app.get('/account', /*isLoggedIn ,*/ (req, res) => {
     res.render('../views/u/account.hbs' );
+    console.log(req.body)
+    console.log(req.cookie)
 });
-app.post('/account',/* isLoggedIn , */ async (req, res) => {
-    req.check('id_password', 'Password is Required').notEmpty();
-    req.check('id_repeat', 'Repeat Password is Required').notEmpty();
-    if (req.body.password[0] === req.body.password[1]){
-        auth.authenticate('auth-account', {
+app.post('/account',/* isLoggedIn , */ auth.authenticate('auth.session', {
+   // if (req.body.password[0] === req.body.password[1]){
             successRedirect: '/u/',
-            failureRedirect: '/account',
+            failureRedirect: '/',
             failureFlash: true
-        })
-    } else {
+        }));
+
+   // } else {
         /* TODO: DEVOLVER MENSAJE DE ERROR */
-        console.log('Contraseñas Distintas');
-    }
-    res.render('../views/u/account.hbs' );
-});
+   //}
+
 
 
 module.exports = app;
