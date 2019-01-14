@@ -32,6 +32,6 @@ auth.serializeUser((user, done) => {
   });
   
 auth.deserializeUser(async (uuid, done) => {
-    const rows = await connection.query('SELECT * FROM ksystem.kwebsite_users uuid_long="c0294097-f30a-4546-99e9-e7172f9be7e2"');
+    const rows = await connection.query('SELECT * FROM ksystem.kwebsite_users WHERE uuid_long="c0294097-f30a-4546-99e9-e7172f9be7e2"');
     done(null, rows[0]);
   });
