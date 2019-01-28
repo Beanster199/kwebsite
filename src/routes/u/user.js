@@ -3,12 +3,10 @@ const app = express.Router();
 const connection = require('../../config/dbConnection');
 
 app.get('/:nameId', async (req, res) => {
-    const con = req.connection.remoteAddress
-    console.log(con)
     if (req.params.nameId) {
         const query = 'SELECT uuid_long,kwe_lastlogin as lastlogin,kwe_name as name FROM kwebsite_users where kwe_name = "Benster_199"';
         let profile = await connection.query(query)
-        if (profile.length = 0){
+        if (profile.length == 0){
             return;
         } 
         profile[0].views = await Counter(profile)

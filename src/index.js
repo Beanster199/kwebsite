@@ -59,13 +59,14 @@ app.use('/u',require('./routes/u/user'));
 app.use(require('./routes/u/account'));
 app.use(require('./routes/login'));
 app.use(require('./routes/famous'));
-app.use(require('./routes/leaderboards/global_elo'));
+app.use('/practice',require('./routes/leaderboards/leaderboards'));
 app.use('/auth',require('./routes/u/auth'));
 //app.use(require('./routes/survival_games'));
 
 
 // Assets
 app.use('/assets', express.static(path.join(__dirname, './assets')));
+app.use('/practice/assets', express.static(path.join(__dirname, './assets')));
 app.use('/u/assets', express.static(path.join(__dirname, './assets')));
 
 app.listen(app.get('port'), () => {

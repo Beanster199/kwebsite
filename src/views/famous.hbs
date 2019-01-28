@@ -1,0 +1,36 @@
+<div class="container">
+  {{#if mvp.famous }}
+    <h2>Famous <span class="badge" style="vertical-align: super">{{mvp.famous.length}}</span></h2>
+    <div class="row">
+      {{#each mvp.famous}}
+      <div class="col-md-2 col-sm-3 col-xs-6">
+        <a href="/u/{{player}}">
+          <div class="text-center">
+            <img src="https://visage.surgeplay.com/bust/{{uuid}}" width="96" height="96">
+          </div>
+          <div class="text-center">
+            <b>{{player}}</b>
+          </div>
+        </a>
+      </div>
+    {{/each}}
+    </div>
+  {{/if}}
+  {{#if mvp.youtuber}}
+    <h2>Youtuber <span class="badge" style="vertical-align: super">{{mvp.youtuber.length}}</span></h2>
+    <div class="row">
+      {{#each mvp.youtuber}}
+      <div class="col-md-2 col-sm-3 col-xs-6">
+        <a href="/u/{{player}}">
+          <div class="text-center">
+            <img src="https://visage.surgeplay.com/bust/{{uuid}}" width="96" height="96">
+          </div>
+          <div class="text-center">
+            <b>{{player}}</b>
+          </div>
+        </a>
+      </div>
+      {{/each}}
+    </div>
+  {{/if}}
+    </div>
