@@ -66,6 +66,29 @@ app.use((req, res, next) => {
     next()
 }); 
 
+app.use((req,res,next) => {
+    if(req.isAuthenticated()){
+        if(!req.app.locals.bLoggedIn || !req.app.locals.uuid || !req.app.locals.name){
+            req.app.locals.bLoggedIn = undefined;
+            req.app.locals.uuid = undefined;
+            req.app.locals.name = undefined;
+            req.logout();
+        };
+    }else if(!req.isAuthenticated()){
+        if(req.app.locals.bLoggedIn || req.app.locals.uuid || req.app.locals.name){
+            req.app.locals.bLoggedIn = undefined;
+            req.app.locals.uuid = undefined;
+            req.app.locals.name = undefined;
+        };
+    };
+    console.log('--- Soy tus bAuth Variables ----')
+    console.log(req.isAuthenticated())
+    console.log(req.app.locals.bLoggedIn);
+    console.log(req.app.locals.uuid);
+    console.log(req.app.locals.name);
+    console.log('--- /End bAuth Variables ----')
+    next();
+});
 
 // Routes
 app.use(require('./routes/index'));

@@ -16,8 +16,11 @@ auth.use('token-login', new Strategy({
     let date_ago = new Date();
     date_ago.setMinutes(date_ago.getMinutes() - 1024)
     const _token = await connection.query('SELECT kut_id,kut_uuid as uuid,name FROM kwebsite_users_tokens INNER JOIN ksystem_playerdata ksp ON ksp.uuid = kut_uuid WHERE kut_id = ? and kut_ip = ? and kut_date between ? and ?', [token,ip,date_ago.toLocaleString(),new Date().toLocaleString()])
+    console.log('%*%*%*%*%*%*%*%*%*%*')
     console.log(_token)
+    console.log('%*%*%*%*%*%*%*%*%*%*')
     if(!_token[0] || !_token){
+      console.log('Token invalido o usuario no encontrado. Retornando user:false;')
       return done(null,false)
     }
     req.app.locals.bLoggedIn = true;
