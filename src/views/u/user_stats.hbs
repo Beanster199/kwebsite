@@ -1,0 +1,256 @@
+<div class="container" style="padding-top:1.2%">
+    <div class="row">
+        {{#each user}}
+        <div class="col-sm-3 col-md-2">
+            <p class="text-center">
+                <img src="https://visage.surgeplay.com/full/195/{{uuid}}" width="120" height="195">
+            </p>
+            <div class="list-group">
+                <a class="list-group-item " href="/u/{{ name }}">General</a>
+                <a class="list-group-item active" href="/u/{{ name }}/practice">Practice</a>
+                <a class="list-group-item disabled">Factions</a>
+                <a class="list-group-item" href="/u/{{ name }}/sg">SG</a>
+            </div>
+        </div>
+        <div class="col-sm-9 col-md-10">
+            <div>
+                <span style="font-size: 36px; margin-right:10px;">{{ name }}</span>
+            </div>
+            <div>
+			{{#if isonline}}
+				<b><font color="green"> Online on {{lastserver}}</font></b> 
+				{{else}}
+                Last seen:
+                <a href="" style="cursor: default;" data-toggle="tooltip">
+                    {{lastjoin}}
+                </a>
+				on {{lastserver}}
+			{{/if}}
+            </div>
+            {{#if ranks}}
+            <div>    
+                <span class="label label-info"><img src="../../assets/img/flags/{{countrycode}}.png" style="vertical-align: text-bottom"> {{ country }}</span>
+                {{#each ranks}}
+                    {{#if type }}
+                    <span class="label label-{{name}}">{{ name }}</span>
+                    {{else}}
+                    <i class="{{name}}" style="color:{{color}};font-size:1.2rem;vertical-align: bottom"></i>
+                    {{/if}}
+                {{/each}}
+            </div>
+            <hr>
+            {{/if}}
+            <h3>Practice: Season 1</h3>
+            <hr>
+<table class="table">
+        <thead>
+        <tr>
+            <th></th>
+            <th width="16%">Elo</th>
+            <th width="16%">Ranked Wins</th>
+            <th width="16%">Ranked Losses</th>
+            <th width="16%">Unranked Wins</th>
+            <th width="16%">Unranked Losses</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each global}}
+            <tr>
+                <th>
+                    <a href="/practice/global">Global</a>
+                </th>
+                <td>{{global}}</td>
+                <td>{{rankedwins}}</td>
+                <td>{{rankedlosses}}</td>
+                <td>{{unrankedwins}}</td>
+                <td>{{unrankedlosses}}</td>
+            </tr>
+        {{/each}}
+        {{#each archer}}
+            <tr>
+                <th>
+                    <a href="/practice/archer">
+                        Archer
+                    </a>
+                </th>
+                <td>{{global}}</td>
+                <td>{{rankedwins}}</td>
+                <td>{{rankedlosses}}</td>
+                <td>{{unrankedwins}}</td>
+                <td>{{unrankedlosses}}</td>
+            </tr>
+        {{/each}}
+        {{#each axepvp}}
+            <tr>
+                <th>
+                    <a href="/practice/axepvp">
+                        Axe PvP
+                    </a>
+                </th>
+                <td>{{global}}</td>
+                <td>{{rankedwins}}</td>
+                <td>{{rankedlosses}}</td>
+                <td>{{unrankedwins}}</td>
+                <td>{{unrankedlosses}}</td>
+            </tr>
+            {{/each}}
+            {{#each builduhc}}
+            <tr>
+                <th>
+                    <a href="/practice/builduhc">
+                        BuildUHC
+                    </a>
+                </th>
+                <td>{{global}}</td>
+                <td>{{rankedwins}}</td>
+                <td>{{rankedlosses}}</td>
+                <td>{{unrankedwins}}</td>
+                <td>{{unrankedlosses}}</td>
+            </tr>
+            {{/each}}
+            {{#each debuff}}
+            <tr>
+                <th>
+                    <a href="/practice/debuff">
+                        Debuff
+                    </a>
+                </th>
+                <td>{{global}}</td>
+                <td>{{rankedwins}}</td>
+                <td>{{rankedlosses}}</td>
+                <td>{{unrankedwins}}</td>
+                <td>{{unrankedlosses}}</td>
+            </tr>        
+            {{/each}}
+            {{#each gapple}}
+            <tr>
+                <th>
+                    <a href="/practice/gapple">
+                        Gapple
+                    </a>
+                </th>
+                <td>{{global}}</td>
+                <td>{{rankedwins}}</td>
+                <td>{{rankedlosses}}</td>
+                <td>{{unrankedwins}}</td>
+                <td>{{unrankedlosses}}</td>
+            </tr>
+            {{/each}}
+            {{#each nodebuff}}
+            <tr>
+                <th>
+                    <a href="/practice/nodebuff">
+                        No Debuff
+                    </a>
+                </th>
+                <td>{{global}}</td>
+                <td>{{rankedwins}}</td>
+                <td>{{rankedlosses}}</td>
+                <td>{{unrankedwins}}</td>
+                <td>{{unrankedlosses}}</td>
+            </tr>
+            {{/each}}
+            {{#each noenchants}}
+            <tr>
+                <th>
+                    <a href="/practice/noenchants">
+                        No Enchants
+                    </a>
+                </th>
+                <td>{{global}}</td>
+                <td>{{rankedwins}}</td>
+                <td>{{rankedlosses}}</td>
+                <td>{{unrankedwins}}</td>
+                <td>{{unrankedlosses}}</td>
+            </tr>
+            {{/each}}
+            {{#each soup}}
+            <tr>
+                <th>
+                    <a href="/practice/soup">
+                        Soup
+                    </a>
+                </th>
+                <td>{{global}}</td>
+                <td>{{rankedwins}}</td>
+                <td>{{rankedlosses}}</td>
+                <td>{{unrankedwins}}</td>
+                <td>{{unrankedlosses}}</td>
+            </tr>
+            {{/each}}
+            {{#each spleef}}
+            <tr>
+                <th>
+                    <a href="/practice/spleef">
+                        Spleef
+                    </a>
+                </th>
+                <td>{{global}}</td>
+                <td>{{rankedwins}}</td>
+                <td>{{rankedlosses}}</td>
+                <td>{{unrankedwins}}</td>
+                <td>{{unrankedlosses}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+            <hr>
+            <h3>Recent Matches</h3>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="40%"></th>
+                            <th width="20%">Kit</th>
+                            <th width="20%">Elo</th>
+                            <th width="20%">Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--<tr class="fight-link li-link" data-toggle="modal" data-target="#fight-modal" data-fight-url="/fight-modal/pQUfFnO/">-->
+                        {{#each matches}}
+                        <tr class="fight-link li-link" data-toggle="modal" data-target="#fight-modal" data-fight-modal="{{id}}" >
+                            <td>
+                                <img src="https://visage.surgeplay.com/face/32/{{killerId}}" width="16" height="16">
+                                <strong>{{killerName}}</strong>
+                                defeated
+                                <img src="https://visage.surgeplay.com/face/32/{{deathId}}" width="16" height="16">
+                                <strong>{{deathName}}</strong>
+                            </td>
+                            <td>
+                                {{styleName}}
+                            </td>
+                            <td>
+                                {{elo}}
+                            </td>
+                            <td data-toggle="tooltip" title="" >
+                                {{date}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal fade" id="fight-modal" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                </div>
+            </div>
+        </div> 
+    <script>
+    $(".fight-link").on('click', async (e) => {
+        var xhr = new XMLHttpRequest();
+        const id = await e.originalEvent.path[1].getAttribute('data-fight-modal')
+        const modal = document.querySelector(".modal-content")
+        modal.innerHTML = "<div class='modal-body text-center'><i class='fa fa-refresh fa-spin fa-4x'></i><div class='modal-body'></div></div>"
+        xhr.open('GET','/u/{{ name }}/fight-modal/'+ id,true)
+        xhr.responseType = "json";
+        xhr.addEventListener("load",function(){
+            let date = new Date (parseInt(xhr.response.date))
+            modal.innerHTML = "<div class='modal-header'><button type='button' style='float:left;margin-left:0' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>×</span></button><div class='modal-title'><input type='text' value='http://kuih.net/fight/" + id + "/' readonly='readonly' size='30'></div></div><div class='modal-body'><h1 class='text-center'>" + xhr.response.killerName + " vs " + xhr.response.deathName + "  </h1><h3 class='text-center'>Kit: " + xhr.response.styleName + "</h3><p class='disabled text-muted text-center'><strong>" + new Date(parseInt(xhr.response.date)).toLocaleDateString() + "</strong></p><div class='row'><div class='col-sm-6 text-center'><div><img src='https://visage.surgeplay.com/face/64/" + xhr.response.killerId + "' width='64' height='64'></div><div>Elo: " + xhr.response.killerElo + "</div></div><div class='col-sm-6 text-center'><div><img src='https://visage.surgeplay.com/face/64/" + xhr.response.deathId + "' width='64' height='64'></div><div>Elo: " + xhr.response.deathElo + "</div></div></div></div>"
+        })
+        xhr.send();
+    });
+    </script>
+{{/each}}

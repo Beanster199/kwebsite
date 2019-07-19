@@ -1,0 +1,101 @@
+    <div class="container">
+        <div style="padding-top: 2%;">
+            <span style="font-size: 200%">
+                Survival Games Leaderboard
+            </span>
+        </div>
+        <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <strong>Top Wins</strong>
+                        </div>
+                        <table class="table practice-leaderboard">
+                                <tbody>
+                                    {{#each wins}} 
+                                  <tr>
+                                    <td>{{ count }}.</td>
+                                    <td>
+                                    <a href="kuih/u/{{ name }}">
+                                            <img src="https://visage.surgeplay.com/face/32/{{ uuid }}" width="16" height="16">
+                                            {{ name }}
+                                        </a>
+                                    </td>
+                                    <td>{{ wins }} Wins</td>
+                                </tr>
+                                {{/each}}
+                        </tbody></table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <strong>Top Kills</strong>
+                        </div>
+                        <table class="table practice-leaderboard">
+                            {{#each kills}}
+                          <tr>
+                            <td>{{ count }}.</td>
+                            <td>
+                                <a href="/u/{{name}}">
+                                    <img src="https://visage.surgeplay.com/face/32/{{ uuid }}" width="16" height="16">
+                                    {{ name }}
+                                </a>
+                            </td>
+                            <td>{{ kills }} Kills</td>
+                        </tr>
+                        {{/each}}
+                        </tbody></table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <strong>Top Deaths</strong>
+                        </div>
+                        <table class="table practice-leaderboard">
+                                <tbody>
+                                    {{#each deaths}} 
+                                  <tr>
+                                    <td>{{ count }}.</td>
+                                    <td>
+                                    <a href="kuih/u/{{ name }}">
+                                            <img src="https://visage.surgeplay.com/face/32/{{ uuid }}" width="16" height="16">
+                                            {{ name }}
+                                        </a>
+                                    </td>
+                                    <td>{{ deaths }} Deaths</td>
+                                </tr>
+                                {{/each}}
+                        </tbody></table>
+                    </div>
+                </div>         
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <strong>Top Chest Opened</strong>
+                        </div>
+                        <table class="table practice-leaderboard">
+
+                                <tbody>
+                                  {{#each chests}}
+                                  <tr>
+                                    <td> {{ count }}.</td>
+                                    <td>
+                                        <a href="/u/{{name}}">
+                                            <img src="https://visage.surgeplay.com/face/32/{{ uuid }}" width="16" height="16">
+                                            {{ name }}
+                                        </a>
+                                    </td>
+                                    <td> {{ chestsOpened }} Chests Opened</td>
+                                </tr>
+                                {{/each}}
+                        </tbody></table>
+                    </div>
+                </div>       
+            </div>
+
+    </div>

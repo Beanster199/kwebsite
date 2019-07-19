@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="assets/bootstrap/icons/glyphicons-halflings-regular.ttf">
   <link rel="stylesheet" href="assets/bootstrap/icons/glyphicons-halflings-regular.woff">
   <link rel="stylesheet" href="assets/bootstrap/icons/glyphicons-halflings-regular.woff2">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
   <!-- B. Scripts -->
   <script src="assets/bootstrap/js/jquery-1.11.3.min.js"></script>
@@ -26,100 +27,7 @@
 </head>
 <body>
 <!-- nav Start -->
-<nav class="navbar navbar-expand-lg navbar-default" role="navigation" style="padding:0%">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <p class="navbar-brand">
-        <a class="navbar-link" href="/">
-          <img src="assets/img/KuihLogo.png" width="40" height="40">
-          Kuih
-        </a>
-      </p>
-    </div>
-    <div class="collapse navbar-collapse" id="navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button">
-            <i class="fa fa-users"></i>
-            Community
-          </a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="/staff"><i class="fa fa-users"></i> Staff</a></li>
-            <li><a href="/famous"><i class="fa fa-star"></i> Famous</a></li>
-            <li class="disabled"><a><i class="fa fa-comments-o"></i> Suggestions</a></li>
-          </ul>
-        </li>
-        <li class="disabled">
-          <a>
-            <i class="fa fa-ticket"></i>
-            Support
-          </a>
-        </li>
-        <li>
-          <a href="http://kuih.buycraft.net/">
-            <i class="fa fa-shopping-cart"></i>
-            Store
-          </a>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-            <i class="fa fa-bar-chart"></i>
-            Stats
-          </a>
-          <ul class="dropdown-menu" role="menu">
-            <li class="dropdown-header">Practice 2.0</li>
-            <li><a href="/practice/global">Leaderboard</a></li>
-            <li class="divider"></li>
-            <li class="dropdown-header">Survival Games</li>
-            <li class="disabled"><a>Leaderboard</a></li>
-            <li class="disabled"><a >Recent Games</a></li>
-            <li class="divider"></li>
-            <li class="dropdown-header">Factions</li>
-            <li class="disabled"><a >Leaderboard</a></li>
-            <li class="disabled"><a >Death List</a></li>
-            <li class="disabled"><a >Events List</a></li>
-            <li class="disabled"><a >World Maps</a></li>
-            <li class="divider"></li>
-            <li class="disabled"><a >Bans</a></li>
-          </ul>
-        </li>
-        <li class="dropdown disabled">
-          <a class="dropdown-toggle" role="button">
-            <i class="fa fa-wrench"></i>
-            Tools
-          </a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a >Polls</a></li>
-            <li><a >Betray Lookups</a></li>
-            <li class="divider"></li>
-            <li><a >Check Ping</a></li>
-            <li><a >Online Players</a></li>
-            <li><a >Click Tester</a></li>
-            <li><a >EOTW Countdown</a></li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="disabled"><a>Login</a></li>
-      </ul>
-      <form class="navbar-form navbar-right search" method="POST" action="/" role="search">
-        <div class="input-group">
-          <input type="text" name="user" class="form-control navbar-player-search" placeholder="Search players">
-          <div class="input-group-btn">
-            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</nav>
+  {{> navbar }}
 <!-- /nav end -->
 
         {{{ body }}}
@@ -129,7 +37,7 @@
     <div class="container">
       <div class="pull-left">© 2019 Kuih Network</div>
         <div class="pull-right">
-          <a href="https://twitter.com/KuihNetwork"><i class="fa fa-twitter fa-lg"></i></a> |
+          <a href="https://twitter.com/KuihNetwork"><i class="fab fa-twitter fa-lg"></i></a> |
           <a href="/staff">Staff </a> | <a> Rules</a>
         </div>
       </div>

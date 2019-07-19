@@ -1,0 +1,113 @@
+<nav class="navbar navbar-expand-lg navbar-default" role="navigation" style="padding:0%">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <p class="navbar-brand">
+        <a class="navbar-link" href="/">
+          <img src="assets/img/KuihLogo.png" width="40" height="40">
+          Kuih
+        </a>
+      </p>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button">
+            <i class="fa fa-users"></i>
+            Community
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/staff"><i class="fa fa-users"></i> Staff</a></li>
+            <li><a href="/famous"><i class="fa fa-star"></i> Famous</a></li>
+            <li class="disabled"><a><i class="fa fa-comments"></i> Suggestions</a></li>
+          </ul>
+        </li>
+        <li class="disabled">
+          <a>
+            <i class="fa fa-ticket-alt"></i>
+            Support
+          </a>
+        </li>
+        <li>
+          <a href="http://kuih.buycraft.net/">
+            <i class="fa fa-shopping-cart"></i>
+            Store
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+            <i class="fa fa-bar-chart"></i>
+            Stats
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">Practice</li>
+            <li><a href="/practice/global">Leaderboard</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-header">Survival Games</li>
+            <li><a href="/sg/global">Leaderboard</a></li>
+            <li class="disabled"><a>Recent Games</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-header">Factions</li>
+            <li class="disabled"><a>Leaderboard</a></li>
+            <li class="disabled"><a>Death List</a></li>
+            <li class="disabled"><a>Events List</a></li>
+            <li class="disabled"><a>World Maps</a></li>
+            <li class="divider"></li>
+            <li class="disabled"><a>Bans</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button">
+            <i class="fa fa-wrench"></i>
+            Tools
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="disabled"><a>Polls</a></li>
+            <li class="disabled"><a>Betray Lookups</a></li>
+            <li class="divider"></li>
+            <li class="disabled"><a>Check Ping</a></li>
+            <li class="disabled"><a>Online Players</a></li>
+            <li><a href="/clicks">Click Tester</a></li>
+            <li class="disabled"><a>EOTW Countdown</a></li>
+          </ul>
+        </li>
+      </ul>
+      {{#unless bLoggedIn }}
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/login">Login</a></li>
+      </ul>
+      {{/unless}}
+      {{#if bLoggedIn }}
+      <ul class="nav navbar-nav navbar-right" style="margin-top: 0.833%;border-radius: 4px;">
+        <div class="dropdown"></div>
+        <a  href="#" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <p style="margin-top: 5.833%;margin-right: 7.3%;"><b>{{ name  }}</b></p>
+          <img src="https://visage.surgeplay.com/face/32/{{uuid}}" />
+        </a>
+        <div class="dropdown-menu" aria-labelledby="profileDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+        <div class="dropdown"></div>
+      </ul>
+      {{/if}}
+      <form class="navbar-form navbar-right search" method="POST" action="/" role="search">
+        <div class="input-group">
+          <input type="text" name="user" class="form-control navbar-player-search" placeholder="Search players"
+            required>
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>

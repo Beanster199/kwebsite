@@ -1,0 +1,128 @@
+    <div class="container">
+        <div style="padding-top: 2%;">
+            <span style="font-size: 200%">
+                Practice Leaderboards: Gapple
+            </span>
+            <span class="btn-group" style="vertical-align: text-bottom">
+                <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <span class="fa fa-arrow-down"></span>
+                </button>
+                <ul class="dropdown-menu">
+                        <li>
+                            <a href="/practice/global">Global</a>
+                        </li>
+
+                        <li>
+                            <a href="/practice/archer">Archer</a>
+                        </li>
+
+                        <li>
+                            <a href="/practice/axepvp">Axe PvP</a>
+                        </li>
+
+                        <li>
+                            <a href="/practice/builduhc">Build UHC</a>
+                        </li>
+
+                        <li>
+                            <a href="/practice/debuff">Debuff</a>
+                        </li>
+
+                        <li>
+                            <a href="/practice/gapple">Gapple</a>
+                        </li>
+
+                        <li>
+                            <a href="/practice/nodebuff">No Debuff</a>
+                        </li>
+
+                        <li>
+                            <a href="/practice/noenchants">No Enchants</a>
+                        </li>
+
+                        <li>
+                            <a href="/practice/soup">Soup</a>
+                        </li>
+
+                        <li>
+                            <a href="/practice/spleef">Spleef</a>
+                        </li>
+
+                        <li>
+                            <a href="/practice/sumo">Sumo</a>
+                        </li>
+
+                </ul>
+            </span>
+        </div>
+        <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <strong>Top Elo</strong>
+                        </div>
+                        <table class="table practice-leaderboard">
+                                <tbody>
+                                    {{#each elo}} 
+                                  <tr>
+                                    <td>{{ count }}.</td>
+                                    <td>
+                                    <a href="/u/{{ Username }}">
+                                            <img src="https://visage.surgeplay.com/face/32/{{ UUID }}" width="16" height="16">
+                                            {{ Username }}
+                                        </a>
+                                    </td>
+                                    <td>{{ elo }} Elo</td>
+                                </tr>
+                                {{/each}}
+                        </tbody></table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <strong>Top Gapple Wins</strong>
+                        </div>
+                        <table class="table practice-leaderboard">
+                            {{#each wins}}
+                          <tr>
+                            <td>{{ count }}.</td>
+                            <td>
+                                <a href="/u/{{Username}}">
+                                    <img src="https://visage.surgeplay.com/face/32/{{ UUID }}" width="16" height="16">
+                                    {{ Username }}
+                                </a>
+                            </td>
+                            <td>{{ wins }} Wins</td>
+                        </tr>
+                        {{/each}}
+                        </tbody></table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <strong>Top Gapple Losses</strong>
+                        </div>
+                        <table class="table practice-leaderboard">
+
+                                <tbody>
+                                  {{#each losses}}
+                                  <tr>
+                                    <td> {{ count }}.</td>
+                                    <td>
+                                        <a href="/u/{{Username}}">
+                                            <img src="https://visage.surgeplay.com/face/32/{{ UUID }}" width="16" height="16">
+                                            {{ Username }}
+                                        </a>
+                                    </td>
+                                    <td> {{ losses }} Losses</td>
+                                </tr>
+                                {{/each}}
+                        </tbody></table>
+                    </div>
+                </div>
+            </div>
+
+    </div>

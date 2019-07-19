@@ -1,0 +1,256 @@
+<div class="container" style="padding-top:1.2%">
+    <div class="row">
+        {{#each user}}
+        <div class="col-sm-3 col-md-2">
+            <p class="text-center">
+                <img src="https://visage.surgeplay.com/full/195/{{uuid}}" width="120" height="195">
+            </p>
+            <div class="list-group">
+                <a class="list-group-item" href="/u/{{ name }}">General</a>
+                <a class="list-group-item" href="/u/{{ name }}/practice">Practice</a>
+                <a class="list-group-item active" href="/u/{{ name }}/factions">Factions</a>
+                <a class="list-group-item disabled">SG</a>
+            </div>
+        </div>
+        <div class="col-sm-9 col-md-10">
+            <div>
+                <span style="font-size: 36px; margin-right:10px;">{{ name }}</span>
+            </div>
+            <div>
+                {{#if isonline}}
+                <b>
+                    <font color="green"> Online on {{lastserver}}</font>
+                </b>
+                {{else}}
+                Last seen:
+                <a href="" style="cursor: default;" data-toggle="tooltip">
+                    {{lastjoin}}
+                </a>
+                on {{lastserver}}
+                {{/if}}
+            </div>
+            {{#if ranks}}
+            <div>
+                <span class="label label-info"><img src="../../assets/img/flags/{{countrycode}}.png"
+                        style="vertical-align: text-bottom"> {{ country }}</span>
+                {{#each ranks}}
+                {{#if type }}
+                <span class="label label-{{name}}">{{ name }}</span>
+                {{else}}
+                <i class="{{name}}" style="color:{{color}};font-size:1.2rem;vertical-align: bottom"></i>
+                {{/if}}
+                {{/each}}
+            </div>
+            <hr>
+            {{/if}}
+                <div>
+                    <span style="font-size: 200%">
+                        Factions: Map 25
+                    </span>
+                    <span class="btn-group" style="vertical-align: text-bottom">
+                        <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a
+                                    href="/web/20160505054052/https://kohi.net/u/GroovyToTheMax/factions/cubecore-map-1/">Cubecore
+                                    Map 1</a>
+                            </li>
+                            <li><a href="/web/20160505054052/https://kohi.net/u/GroovyToTheMax/factions/map-12/">Map
+                                    12</a>
+                            </li>
+                            <li><a href="/web/20160505054052/https://kohi.net/u/GroovyToTheMax/factions/map-13/">Map
+                                    13</a>
+                            </li>
+                            <li><a href="/web/20160505054052/https://kohi.net/u/GroovyToTheMax/factions/map-14/">Map
+                                    14</a>
+                            </li>
+                            <li><a href="/web/20160505054052/https://kohi.net/u/GroovyToTheMax/factions/map-15/">Map
+                                    15</a>
+                            </li>
+                            <li><a href="/web/20160505054052/https://kohi.net/u/GroovyToTheMax/factions/map-18/">Map
+                                    18</a>
+                            </li>
+                            <li><a href="/web/20160505054052/https://kohi.net/u/GroovyToTheMax/factions/map-25/">Map
+                                    25</a>
+                            </li>
+                        </ul>
+                    </span>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-default">
+                            <table class="table right-last-col">
+                                <tbody>
+                                    <tr>
+                                        <td>Faction</td>
+                                        <td>None</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-default">
+                            <table class="table right-last-col">
+                                <tbody>
+                                    <tr>
+                                        <td>Playtime</td>
+                                        <td>0 days, 0 hours, 0 min.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-default">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>0 Kills, 0
+                                            Deaths</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-default">
+                            <table class="table right-last-col">
+                                <tbody>
+                                    <tr>
+                                        <td>Exp Collected</td>
+                                        <td>0 Levels</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">
+                                <strong>Mining</strong>
+                            </div>
+                            <table class="table right-last-col">
+                            </table>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">
+                                <strong>Smelting</strong>
+                            </div>
+                            <table class="table right-last-col">
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">
+                                <strong>Mobs Killed</strong>
+                            </div>
+                            <table class="table right-last-col">
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">
+                                <strong>Mob Loot</strong>
+                            </div>
+                            <table class="table right-last-col">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <ul class="btn-group btn-group-justified" role="group" aria-label="..." style="padding: 0px;">
+                    <a href="#fights" aria-controls="fights" role="tab" data-toggle="tab"
+                        class="btn btn-default active">Fights</a>
+                    <a href="#changes" aria-controls="changes" role="tab" data-toggle="tab"
+                        class="btn btn-default">Faction Changes</a>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="fights">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading text-center">
+                                        <strong>Fight Filters</strong>
+                                    </div>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <a href="#" class="factions-fight-filter active" data-toggle="check"
+                                                data-target=".kill-item">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                                <strong>Kills</strong>
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#" class="factions-fight-filter active" data-toggle="check"
+                                                data-target=".death-item">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                                <strong>Deaths</strong>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading text-center">
+                                        <strong>Fights</strong>
+                                    </div>
+                                    <ul class="list-group">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="changes">
+                        <div class="list-group">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="fight-modal"></div>
+            </div>
+        </div>
+        <div class="modal fade" id="fight-modal" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                </div>
+            </div>
+        </div>
+        <script>
+            $(".fight-link").on('click', async (e) => {
+                var xhr = new XMLHttpRequest();
+                const id = await e.originalEvent.path[1].getAttribute('data-fight-modal')
+                const modal = document.querySelector(".modal-content")
+                modal.innerHTML =
+                    "<div class='modal-body text-center'><i class='fa fa-refresh fa-spin fa-4x'></i><div class='modal-body'></div></div>"
+                xhr.open('GET', '/u/{{ name }}/fight-modal/' + id, true)
+                xhr.responseType = "json";
+                xhr.addEventListener("load", function () {
+                    let date = new Date(parseInt(xhr.response.date))
+                    modal.innerHTML =
+                        "<div class='modal-header'><button type='button' style='float:left;margin-left:0' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>×</span></button><div class='modal-title'><input type='text' value='http://kuih.net/fight/" +
+                        id +
+                        "/' readonly='readonly' size='30'></div></div><div class='modal-body'><h1 class='text-center'>" +
+                        xhr.response.killerName + " vs " + xhr.response.deathName +
+                        "  </h1><h3 class='text-center'>Kit: " + xhr.response.styleName +
+                        "</h3><p class='disabled text-muted text-center'><strong>" + new Date(
+                            parseInt(xhr.response.date)).toLocaleDateString() +
+                        "</strong></p><div class='row'><div class='col-sm-6 text-center'><div><img src='https://visage.surgeplay.com/face/64/" +
+                        xhr.response.killerId + "' width='64' height='64'></div><div>Elo: " + xhr
+                        .response.killerElo +
+                        "</div></div><div class='col-sm-6 text-center'><div><img src='https://visage.surgeplay.com/face/64/" +
+                        xhr.response.deathId + "' width='64' height='64'></div><div>Elo: " + xhr
+                        .response.deathElo + "</div></div></div></div>"
+                })
+                xhr.send();
+            });
+        </script>
+        {{/each}}

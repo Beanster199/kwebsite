@@ -1,25 +1,42 @@
 const express = require('express');
 const app = express.Router();
-const connection = require('../../config/dbConnection');
-const publicIp = require('public-ip');
 const auth = require('passport');
-const localStorage = require('localStorage')
+const publicIp = require('public-ip')
 
 
-app.get('/:regID', async (req, res, next) => {
-
-    const date_ago = new Date();
-    date_ago.setMinutes(date_ago.getMinutes() - 195)
-    const ip = await publicIp.v4();
-    const user = await connection.query('SELECT ID, kur_uuid as UUID,kwe_name as username,kwe_register as register, "" as password FROM kwebsite_users_registers INNER JOIN kwebsite_users as ku on ku.uuid_long=kur_uuid WHERE kur_IP ="' + ip + '" and ID="' + req.params.regID + '" and kur_date between "' + date_ago.toLocaleString() + '" and "' + new Date().toLocaleString() + '" ORDER BY kur_date DESC LIMIT 1')
+app.get('/:auth_token', async (req, res, next) => {
+    if(req.params.auth_token){
+        req.query = req.params
+        if(req.get('host') === 'localhost:3000'){
+            req.query.ip = await publicIp.v4();
+        }else{
+            req.query.ip = req.headers["x-forwarded-for"]
+        }
+        auth.authenticate('token-login',(err,user,info) => {
+            if(user){
+                req.logIn(user,(err) => {
+                    if(err){
+                        return res.redirect('/login');
+                    }else{
+                        if(req.isAuthenticated()){
+                            return res.redirect('/account')
+                        }
+                    }
+                });
+            }else{
+                return res.redirect('/login');
+            };
+        })(req,res,next);
+    }
+});
+    /*const user = await connection.query('SELECT ID, kur_uuid as UUID,kwe_name as username,kwe_register as register, "" as password FROM kwebsite_users_registers INNER JOIN kwebsite_users as ku on ku.uuid_long=kur_uuid WHERE kur_IP ="' + ip + '" and ID="' + req.params.regID + '" and kur_date between "' + date_ago.toLocaleString() + '" and "' + new Date().toLocaleString() + '" ORDER BY kur_date DESC LIMIT 1')
     if (user.length > 0) {
         req.body = user[0];
         localStorage.setItem("_authID", user[0].ID)
         res.redirect('/account');
     } else {
         res.redirect('/');
-    };
-});
+    };*/
 /*
 app.get('/:regID',
     auth.authenticate('auth.session', {

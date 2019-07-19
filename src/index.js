@@ -26,6 +26,22 @@ app.engine('.hbs', exphbs({
     helpers: require('./lib/handlebars')
 }));
 
+// Variables
+
+
+
+// Assets
+app.use('/assets', express.static(path.join(__dirname, './assets')));
+app.use('/practice/assets', express.static(path.join(__dirname, './assets')));
+app.use('/sg/assets', express.static(path.join(__dirname, './assets')));
+app.use('/u/assets', express.static(path.join(__dirname, './assets')));
+app.use('/u/:nameId/assets', express.static(path.join(__dirname, './assets')));
+
+/*
+    #Remember: Middlewares and Routes should go after _Assets_ for only one call
+*/
+
+
 // Middlewares
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
@@ -43,14 +59,13 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Variables
-
 app.use((req, res, next) => {
     app.locals.danger = req.flash('danger');
     app.locals.success = req.flash('success');
     app.locals.user = req.user
     next()
 }); 
+
 
 // Routes
 app.use(require('./routes/index'));
@@ -59,15 +74,13 @@ app.use('/u',require('./routes/u/user'));
 app.use(require('./routes/u/account'));
 app.use(require('./routes/login'));
 app.use(require('./routes/famous'));
+app.use(require('./routes/tools'));
 app.use('/practice',require('./routes/leaderboards/leaderboards'));
+app.use('/sg',require('./routes/leaderboards/survival_games'));
 app.use('/auth',require('./routes/u/auth'));
 //app.use(require('./routes/survival_games'));
 
 
-// Assets
-app.use('/assets', express.static(path.join(__dirname, './assets')));
-app.use('/practice/assets', express.static(path.join(__dirname, './assets')));
-app.use('/u/assets', express.static(path.join(__dirname, './assets')));
 
 app.listen(app.get('port'), () => {
 });
