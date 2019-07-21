@@ -29,9 +29,11 @@ app.get('/:nameId', async (req, res) => {
             for (let i = 1; i < namesHistory.length; i++) {
                 namesHistory[i].changedToAt = new Date(namesHistory[i].changedToAt).toDateString()
             }
-         kres.render('../views/u/user_profile.hbs' , {
-                user: profile, names : namesHistory, comments : comments
-            });            
+            const media = await connection.query('SELECT * FROM kwebsite_users_media WHERE uuid = ?', profile[0].uuid)
+            console.log(media)
+         res.render('../views/u/user_profile.hbs' , {
+                user: profile, names : namesHistory, comments : comments, media : media
+            });
         })
 
     } else {
@@ -92,7 +94,7 @@ async function Counter(profile,req){
     const date_ago = new Date();
     date_ago.setDate(date_ago.getDate() - 1)
     const views = await connection.query('select count(kuv_uuid) as count from kwebsite_users_views WHERE kuv_uuid="' + uuid + '"')
-    const last_view = await connection.query('select coun(kuv_uuid) as count from kwebsite_users_views WHERE kuv_ip="' + ip + '" and kuv_uuid="' + uuid + '" and kuv_date between "' + date_ago.toMysqlFormat() + '" and "' + new Date().toMysqlFormat() +'"')
+    const last_view = await connection.query('select count(kuv_uuid) as count from kwebsite_users_views WHERE kuv_ip="' + ip + '" and kuv_uuid="' + uuid + '" and kuv_date between "' + date_ago.toMysqlFormat() + '" and "' + new Date().toMysqlFormat() +'"')
     if (last_view[0].count == 0){
         const data = {
             kuv_uuid : uuid,

@@ -5,26 +5,127 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <div class="panel panel-default" style="width:250px;">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Change Password</h3>
+        <div class="col-md-12">
+            {{#if error_alert}}
+            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{error_alert}}
+            </div>
+            {{/if}}
+            {{#if success_alert}}
+                <div class="alert alert-dismissible alert-success">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{success_alert}}
                 </div>
-                <div class="panel-body">
-                    <form action="/account" method="POST">
-                        <input type="hidden" name="csrfmiddlewaretoken" value="pJqkikO1ye83PrI8Hyvtk2JV9dgDR2XB">
-                        <div class="form-group">
-                            <label for="username">Password:</label> <input class="form-control" id="username"
-                                name="username" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Repeat Password:</label> <input class="form-control" id="password"
-                                name="password" type="password">
-                        </div>
-                        <input class="btn btn-default" type="submit" value="Submit">
-                    </form>
+            {{/if}}
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="nav flex-column nav-pills nav-accounts" id="accounts-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" data-toggle="tab" href="#v-pills-home" role="tab"
+                        aria-controls="v-pills-home" aria-selected="true">Login Information</a>
+                    <a class="nav-link" data-toggle="pill" href="#v-pills-profile" role="tab"
+                        aria-controls="v-pills-profile" aria-selected="false">Social Media</a>
+                    <a class="nav-link disabled" data-toggle="pill" role="tab"
+                        aria-controls="v-pills-messages" aria-selected="false">Kuih Points</a>
                 </div>
             </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade in active" id="v-pills-home" role="tabpanel"
+                    aria-labelledby="v-pills-home-tab">
+                    <div class="panel panel-default" style="width:250px;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Change Password</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form action="/account" method="POST">
+                                <input type="hidden" name="csrfmiddlewaretoken"
+                                    value="pJqkikO1ye83PrI8Hyvtk2JV9dgDR2XB">
+                                <div class="form-group">
+                                    <label for="password">Password:</label> <input class="form-control" id="password"
+                                        name="password" type="password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="repeat-password">Repeat Password:</label> <input class="form-control"
+                                        id="repeat-password" name="repeatPassword" type="password">
+                                </div>
+                                <input class="btn btn-default" type="submit" value="Submit">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Social Media</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <form style="width: 100%" method="POST" action="/account/social-media">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="email">Pubic Email:</label> <input class="form-control" id="email"
+                                                name="email" type="email" placeholder="awesome@player.com">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="youtube">Youtube:</label> <input class="form-control" id="youtube"
+                                                name="youtube" type="text" placeholder="PewDiePie">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="twitter">Twitter:</label> <input class="form-control" id="twitter"
+                                                name="twitter" type="text" placeholder="Benster199_">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="discord">Discord:</label> <input class="form-control" id="discord"
+                                                name="discord" type="text" placeholder="USER#CODE">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="twitch">Twitch:</label> <input class="form-control" id="twitch"
+                                                name="twitch" type="text" placeholder="stimp">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="steam">Steam:</label> <input class="form-control" id="steam"
+                                                name="steam" type="text" placeholder="gabelogannewell">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input class="btn btn-default" type="submit" value="Submit">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
+<script>
+    $('#accounts-tab a').on('click', function (e) {
+        if(!$(this).hasClass('disabled') || !$(this).hasClass('active')){
+            $('.nav-link.active').removeClass('active');
+            $(this).addClass('active');
+            $(this).tab('show');
+        }
+    });
+    $(document).load(()=>{
+        $('#tab-pane.fade.show.active').load(function (e) {
+            e.preventDefault();
+            $(this).tab('show')
+        });
+    });
+</script>

@@ -83,18 +83,26 @@
       </ul>
       {{/unless}}
       {{#if bLoggedIn }}
-      <p class="nav navbar-nav navbar-brand navbar-right" style="margin-top: 0.833%;border-radius: 4px;">
-        <a  href="#" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">
-          <p style="margin-top: 5.833%;margin-right: 7.3%;"><b>{{ name  }}</b></p>
-          <img src="https://visage.surgeplay.com/face/32/{{uuid}}" />
-        </a>
-        <div class="dropdown-menu" aria-labelledby="profileDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </p>
+      <ul class="nav navbar-nav navbar-right" style="border-radius: 4px;">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="outline: none; line-height: 0px;"
+            aria-expanded="false">
+            <img style="width: 20px;height: 20px;border-radius: 3px;margin-right: 4px;" width="20" height="20"
+              class="avatar" src="https://visage.surgeplay.com/face/32/{{uuid}}"
+              alt="{{name}}" title="{{name}}">
+            <div class="visible-xs-inline visible-sm-inline">
+              Account
+            </div>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li><a href="/u/{{name}}">Profile</a></li>
+            <li><a href="/alerts">Alerts</a></li>
+            <li><a href="/friendships">Friendships</a></li>
+            <li><a href="/account">Account</a></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
       {{/if}}
       <form class="navbar-form navbar-right search" method="POST" action="/" role="search">
         <div class="input-group">

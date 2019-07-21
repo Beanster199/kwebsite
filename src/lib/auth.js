@@ -16,9 +16,6 @@ auth.use('token-login', new Strategy({
     let date_ago = new Date();
     date_ago.setMinutes(date_ago.getMinutes() - 1024)
     const _token = await connection.query('SELECT kut_id,kut_uuid as uuid,name FROM kwebsite_users_tokens INNER JOIN ksystem_playerdata ksp ON ksp.uuid = kut_uuid WHERE kut_id = ? and kut_ip = ? and kut_date between ? and ?', [token,ip,date_ago.toLocaleString(),new Date().toLocaleString()])
-    console.log('%*%*%*%*%*%*%*%*%*%*')
-    console.log(_token)
-    console.log('%*%*%*%*%*%*%*%*%*%*')
     if(!_token[0] || !_token){
       console.log('Token invalido o usuario no encontrado. Retornando user:false;')
       return done(null,false)
@@ -30,6 +27,23 @@ auth.use('token-login', new Strategy({
   }
 ));
 
+auth.use('user-login', new Strategy({
+  usernameField: 'username',
+  passwordField: 'password',
+  passReqToCallback: true
+}, async (req,username,password,done) => {
+  const _user = await connection.query('SELECT uuid,name,password,website_authenticated as authenticated FROM ksystem_playerdata WHERE name = ?',username);
+  if(!_user[0] || !await helpers.loginPassword(password,_user[0].password)){
+    return done(null,false);
+  }
+  req.app.locals.bLoggedIn = true;
+  req.app.locals.uuid = _user[0].uuid;
+  req.app.locals.name = _user[0].name;
+  delete _user[0].password;
+  done(null,_user[0]);
+  },
+));
+
 auth.serializeUser(function(user, done) {
   console.log('Soy tu serializarUsuario')
   console.log(user)
@@ -37,7 +51,7 @@ auth.serializeUser(function(user, done) {
 });
 
 auth.deserializeUser(async (user, done) => {
-  const _row = await connection.query('SELECT uuid,name,address FROM ksystem_playerdata WHERE uuid = ?', user)
+  const _row = await connection.query('SELECT uuid,name,address,website_authenticated as authenticated FROM ksystem_playerdata WHERE uuid = ?', user.uuid)
   if (!_row[0]){
     done(null,false)
   }

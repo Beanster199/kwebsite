@@ -9,8 +9,13 @@
                 <a class="list-group-item  active " href="/u/{{ name }}">General</a>
                 <a class="list-group-item" href="/u/{{ name }}/practice">Practice</a>
                 <a class="list-group-item disabled">Factions</a>
-                <a class="list-group-item" href="/u/{{ name }}/sg">SG</a>
+                <a class="list-group-item disabled">SG</a>
             </div>
+            {{#each ../media}}
+                {{#if email}}
+                    <p style="font-size: 90%"><i class="fas fa-envelope"></i></span>&nbsp;{{ email }}</p>
+                {{/if}}
+            {{/each}}
         </div>
         <div class="col-sm-9 col-md-10">
             <div>
@@ -72,25 +77,38 @@
                     {{/each }}
                 </ul>
             </div>
-            <!--
             <hr>
-            <p>Squad Info:</p>
-            Member of <a href="/web/20160505054158/https://kohi.net/squad/CTL/">CTL</a> for 4&nbsp;months
+            <p>Cubecore Info:</p>
+            Member of <a href="#">BeanerTeam</a> for 1&nbsp;months
             <hr>
-            {{#each friends}}
+            <!--{{#each friends}}
             <p>Friends <span class="badge">390</span></p>
             {{/each}}
-            <hr>
+            <hr>-->
+            {{#each media}}
             <div style="font-size: 150%">
-                <a href="http://web.archive.org/web/20160505054158/https://twitter.com/VitaPvPey" style="margin: 10px"
-                    data-toggle="tooltip" title="" data-original-title="Twitter: twitter.com/VitaPvPey"><span class="fa fa-lg fa-twitter"></span>&nbsp;VitaPvPey</a>
-                <a href="http://web.archive.org/web/20160505054158/https://www.youtube.com/user/MrSketchMovieFR" style="margin: 10px"
-                    data-toggle="tooltip" title="" data-original-title="YouTube: youtube.com/user/MrSketchMovieFR"><span
-                        class="fa fa-lg fa-youtube-play"></span>&nbsp;MrSketchMovieFR</a>
-                <a href="http://web.archive.org/web/20160505054158/http://twitch.tv/vitapvpey" style="margin: 10px"
-                    data-toggle="tooltip" title="" data-original-title="Twitch: twitch.tv/vitapvpey"><span class="fa fa-lg fa-twitch"></span>&nbsp;vitapvpey</a>
+                {{#if youtube}}
+                <a href="https://www.youtube.com/user/{{youtube}}" style="margin: 10px"
+                    data-toggle="tooltip" title="" target="_blank" data-original-title="YouTube: youtube.com/user/MrSketchMovieFR"><i class="fab fa-youtube"></i></span>&nbsp;{{youtube}}</a>
+                {{/if}}
+                {{#if twitter}}
+                <a href="https://twitter.com/{{twitter}}" style="margin: 10px"
+                    data-toggle="tooltip" title="" target="_blank" data-original-title="Twitter: twitter.com/VitaPvPey"><i class="fab fa-twitter"></i></span>&nbsp;{{twitter}}</a>
+                {{/if}}
+                {{#if discord}}
+                <a href="#" style="margin: 10px"
+                    data-toggle="tooltip" title="" data-original-title="Discord: {{discord}}"><i class="fab fa-discord"></i></span>&nbsp;{{discord}}</a>
+                {{/if}}
+                {{#if twitch}}
+                <a href="http://twitch.tv/{{twitch}}" style="margin: 10px"
+                    data-toggle="tooltip" title="" target="_blank" data-original-title="Twitch: twitch.tv/{{twitch}}"><i class="fab fa-twitch"></i></span>&nbsp;{{twitch}}</a>
+                {{/if}}
+                {{#if steam}}
+                <a href="https://steamcommunity.com/id/{{steam}}" style="margin: 10px"
+                    data-toggle="tooltip" title="" target="_blank" data-original-title="Steam: steamcommunity.com/id/{{steam}}"></span>&nbsp;{{steam}}</a>
+                {{/if}}
             </div>
-            -->
+            {{/each}}
             {{#if comments}}
             <hr>
             <p>Comments <span class="badge">{{comments.length}}</span></p>

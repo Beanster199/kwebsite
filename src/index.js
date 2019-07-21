@@ -62,7 +62,6 @@ app.use(passport.session());
 app.use((req, res, next) => {
     app.locals.danger = req.flash('danger');
     app.locals.success = req.flash('success');
-    app.locals.user = req.user
     next()
 }); 
 
@@ -81,27 +80,31 @@ app.use((req,res,next) => {
             req.app.locals.name = undefined;
         };
     };
-    console.log('--- Soy tus bAuth Variables ----')
-    console.log(req.isAuthenticated())
-    console.log(req.app.locals.bLoggedIn);
-    console.log(req.app.locals.uuid);
-    console.log(req.app.locals.name);
-    console.log('--- /End bAuth Variables ----')
+    if(false){
+        console.log('--- Soy tus bAuth Variables ----')
+        console.log(req.isAuthenticated())
+        console.log(req.app.locals.bLoggedIn);
+        console.log(req.app.locals.uuid);
+        console.log(req.app.locals.name);
+        console.log('--- /End bAuth Variables ----')
+        for (let i = 0; i < 20; i++) {
+            console.log('')
+        }
+    }
     next();
 });
 
 // Routes
+app.use('/auth',require('./routes/u/auth'));
 app.use(require('./routes/index'));
 app.use(require('./routes/staff'));
 app.use('/u',require('./routes/u/user'));
-app.use(require('./routes/u/account'));
-app.use(require('./routes/login'));
 app.use(require('./routes/famous'));
 app.use(require('./routes/tools'));
 app.use('/practice',require('./routes/leaderboards/leaderboards'));
 app.use('/sg',require('./routes/leaderboards/survival_games'));
-app.use('/auth',require('./routes/u/auth'));
-//app.use(require('./routes/survival_games'));
+app.use(require('./routes/login'));
+app.use(require('./routes/u/account'));
 
 
 
