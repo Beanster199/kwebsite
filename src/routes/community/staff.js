@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express.Router();
-const connection = require('../config/dbConnection')
+const connection = require('../../config/dbConnection')
 
 app.get('/staff', async (req, res) => {
     const Owner = 'SELECT DISTINCT players.name as player,players.uuid,groups.name,country,countrycode FROM PowerfulPerms.groups Inner Join PowerfulPerms.playergroups on groups.id = groupid Inner Join PowerfulPerms.players on players.uuid = playeruuid INNER join ksystem_playerdata on ksystem_playerdata.uuid = playeruuid where groupid = 26 order by playergroups.id'

@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express.Router();
 
-const connection = require('../config/dbConnection')
+const connection = require('../../config/dbConnection')
 
 
 app.get('/famous', async (req,res) => {

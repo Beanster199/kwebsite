@@ -96,14 +96,15 @@ app.use((req,res,next) => {
 
 // Routes
 app.use('/auth',require('./routes/u/auth'));
+app.use(require('./routes/login'));
+app.use(require('./routes/support/support'));
 app.use(require('./routes/index'));
-app.use(require('./routes/staff'));
+app.use(require('./routes/community/staff'));
 app.use('/u',require('./routes/u/user'));
-app.use(require('./routes/famous'));
+app.use(require('./routes/community/famous'));
 app.use(require('./routes/tools'));
 app.use('/practice',require('./routes/leaderboards/leaderboards'));
 app.use('/sg',require('./routes/leaderboards/survival_games'));
-app.use(require('./routes/login'));
 app.use(require('./routes/u/account'));
 
 

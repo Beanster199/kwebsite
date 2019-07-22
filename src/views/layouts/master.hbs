@@ -20,13 +20,17 @@
   <link rel="stylesheet" href="assets/bootstrap/icons/glyphicons-halflings-regular.woff">
   <link rel="stylesheet" href="assets/bootstrap/icons/glyphicons-halflings-regular.woff2">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  {{#if bLoggedIn}}
-  <link rel="stylesheet" type="text/css" href="assets/css/bMain.css">
-  {{/if}}
 
   <!-- B. Scripts -->
   <script src="assets/bootstrap/js/jquery-1.11.3.min.js"></script>
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+  {{#if bLoggedIn}}
+  <link rel="stylesheet" type="text/css" href="assets/css/bMain.css">
+  <script src="assets/js/main.js"></script> 
+  {{/if}}
+
+
 </head>
 <body>
 <!-- nav Start -->

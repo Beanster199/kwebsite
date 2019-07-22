@@ -2,6 +2,9 @@
     background-color: #fff;
 
 }
+nav {
+    margin-bottom: 25px !important; 
+}
 .nav.flex-column.nav-pills.nav-accounts a{
     color: rgb(51, 51, 51);;
     padding: 3.66%;
