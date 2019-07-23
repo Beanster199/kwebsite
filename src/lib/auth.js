@@ -15,8 +15,8 @@ auth.use('token-login', new Strategy({
   async (req,token,ip, done) => {
     let date_ago = new Date();
     date_ago.setMinutes(date_ago.getMinutes() - 1024)
-    console.log(`SELECT token,kut.uuid,name FROM kwebsite_users_tokens kut INNER JOIN ksystem_playerdata ksp ON ksp.uuid = kut.uuid WHERE token = ${token} and kut.address = ${ip} and servertime between ${date_ago.toLocaleString()} and ${new Date().toLocaleString()}`)
-    const _token = await connection.query('SELECT token,kut.uuid,name FROM kwebsite_users_tokens kut INNER JOIN ksystem_playerdata ksp ON ksp.uuid = kut.uuid WHERE token = ? and kut.address = ? and servertime between ? and ?', [token,ip,date_ago.toLocaleString(),new Date().toLocaleString()]);
+    console.log(`SELECT token,kut.uuid,name FROM kwebsite_users_tokens kut INNER JOIN ksystem_playerdata ksp ON ksp.uuid = kut.uuid WHERE token = ${token} and kut.address = ${ip} and servertime between ${date_ago.toISOString().slice(0, 19).replace('T', ' ')} and ${new Date().toISOString().slice(0, 19).replace('T', ' ')}`)
+    const _token = await connection.query('SELECT token,kut.uuid,name FROM kwebsite_users_tokens kut INNER JOIN ksystem_playerdata ksp ON ksp.uuid = kut.uuid WHERE token = ? and kut.address = ? and servertime between ? and ?', [token,ip,date_ago.toISOString().slice(0, 19).replace('T', ' '),new Date().toISOString().slice(0, 19).replace('T', ' ')]);
     console.log(_token)
     if(!_token[0] || !_token){
       console.log('Token invalido o usuario no encontrado. Retornando user:false;')
@@ -25,7 +25,7 @@ auth.use('token-login', new Strategy({
     req.app.locals.bLoggedIn = true;
     req.app.locals.uuid = _token[0].uuid
     req.app.locals.name = _token[0].name
-    done(null,_token[0].uuid)
+    done(null,_token[0])
   }
 ));
 

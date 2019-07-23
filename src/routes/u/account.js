@@ -36,7 +36,8 @@ app.post('/account', async(req,res) => {
         await connection.query('UPDATE ksystem_playerdata SET password = ?,website_authenticated = 1 WHERE uuid = ?', [_hash,req.user.uuid])
         return res.render('../views/u/account.hbs',{success_alert:'Password updated successfully.'})
     } catch (error) {
-        return res.render('../views/u/account.hbs',{error_alert:'Something went wrong.'})
+        console.log(error)
+        return res.render('../views/u/account.hbs',{error_alert:'Something went wrong. Try again.'})
     }
 });
 

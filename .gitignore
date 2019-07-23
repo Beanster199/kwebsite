@@ -74,5 +74,6 @@ typings/
 
 # FuseBox cache
 .fusebox/
-src/config/sam.json
+
 src/keys.js
+src/config/sam.json

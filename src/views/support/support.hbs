@@ -13,13 +13,27 @@
     </div>
     <div class="row">
         <div class="col-md-4">
-            <select class="form-control" id="support_category">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+            <select class="form-control" id="support_category" >
+                <option value="0">Select a Category</option>
+                <option value="1">Ban Appeal</option>
+                <option value="2">Bought Unban</option>
+                <option value="3">Bug Report</option>
+                <option value="4">Donation</option>
+                <option value="5">Unban Español</option>
+                <option value="6">Hacker/Cheater Report</option>
+                <option value="7">Staff Complaint</option>
+                <option value="8">IP Ban Appeal</option>
+                <option value="9">General Support</option>
+                <option value="10">Build Submissions</option>
             </select>
         </div>
     </div>
 </div>
+<script>
+$(document).ready(() => {
+ $('#support_category').change(() => {
+     console.log($(this))
+
+ });
+});
+</script>
