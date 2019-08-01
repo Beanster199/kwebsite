@@ -34,13 +34,14 @@ auth.use('user-login', new Strategy({
   passwordField: 'password',
   passReqToCallback: true
 }, async (req,username,password,done) => {
-  const _user = await connection.query('SELECT uuid,name,password,website_authenticated as authenticated FROM ksystem_playerdata WHERE name = ?',username);
+  const _user = await connection.query('SELECT uuid,name,password,website_authenticated as authenticated,isAdmin FROM ksystem_playerdata WHERE name = ?',username);
   if(!_user[0] || !await helpers.loginPassword(password,_user[0].password)){
     return done(null,false);
   }
   req.app.locals.bLoggedIn = true;
   req.app.locals.uuid = _user[0].uuid;
   req.app.locals.name = _user[0].name;
+  req.app.locals.isAdmin = _user[0].isAdmin;
   delete _user[0].password;
   done(null,_user[0]);
   },
@@ -53,7 +54,7 @@ auth.serializeUser(function(user, done) {
 });
 
 auth.deserializeUser(async (user, done) => {
-  const _row = await connection.query('SELECT uuid,name,address,website_authenticated as authenticated FROM ksystem_playerdata WHERE uuid = ?', user.uuid)
+  const _row = await connection.query('SELECT uuid,name,address,website_authenticated as authenticated, isAdmin FROM ksystem_playerdata WHERE uuid = ?', user.uuid)
   if (!_row[0]){
     done(null,false)
   }

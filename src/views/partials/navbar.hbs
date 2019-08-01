@@ -82,6 +82,11 @@
         <li><a href="/login">Login</a></li>
       </ul>
       {{/unless}}
+      {{#if isAdmin}}
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/admin/staff">Admin</a></li>
+      </ul>
+      {{/if}}
       {{#if bLoggedIn }}
       <ul class="nav navbar-nav navbar-right" style="border-radius: 4px;">
         <li class="dropdown">

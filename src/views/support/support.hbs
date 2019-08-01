@@ -1,4 +1,25 @@
+<style>
+    form div.row{
+        margin-bottom: 15px;
+    }
+</style>
 <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            {{#if error_alert}}
+            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{error_alert}}
+            </div>
+            {{/if}}
+            {{#if success_alert}}
+                <div class="alert alert-dismissible alert-success">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{success_alert}}
+                </div>
+            {{/if}}
+        </div>
+    </div>
     <div class="jumbotron" style="margin-bottom: 0px;border-bottom-left-radius: 0px;border-bottom-right-radius: 0px;">
         <h1>Kuih Support</h1>
         <p><small>Welcome to the Kuih support system.</small></p>
@@ -16,24 +37,403 @@
             <select class="form-control" id="support_category" >
                 <option value="0">Select a Category</option>
                 <option value="1">Ban Appeal</option>
-                <option value="2">Bought Unban</option>
-                <option value="3">Bug Report</option>
-                <option value="4">Donation</option>
-                <option value="5">Unban Español</option>
-                <option value="6">Hacker/Cheater Report</option>
-                <option value="7">Staff Complaint</option>
-                <option value="8">IP Ban Appeal</option>
-                <option value="9">General Support</option>
-                <option value="10">Build Submissions</option>
+                <option value="2">Bug Report</option>
+                <option value="3">Unban Español</option>
+                <option value="4">Hacker/Cheater Report</option>
+                <option value="5">Staff Complaint</option>
+                <option value="6">IP Ban Appeal</option>
+                <option value="7">General Support</option>
+                <option value="8">Build Submissions</option>
+                <option value="9">Staff Application</option>
             </select>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 15%">
+        <div class="col-md-12">
+            <form data-category="1" method="POST" style="display: none">
+                <input type="hidden" name="category" value="1">
+                <h4>Ban Appeal</h4>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Title</p>
+                    </div>
+                    <div class="col-md-4">
+                        <input name="title" type="text" class="form-control" placeholder="Title">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Why are you banned?</p>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea name="ban_reason" class="form-control" placeholder="Why are you banned?" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Are you guilty?</p>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" name="guilty" placeholder="Yes / No" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Any Evidence</p>
+                    </div>
+                    <div class="col-md-4">
+                        <textarea placeholder="Evidence." name="evidence" rows="3" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Why do you think you should be unbanned ?</p>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea placeholder="Why do you think you should be unbanned ?" name="unban_reason" rows="3" class="form-control"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary pull-right" type="submit">Submit Ticket <i class="fas fa-paper-plane"></i></button>
+            </form>
+            <form data-category="2" method="POST" style="display: none">
+                <input type="hidden" name="category" value="2">
+                <h4>Bug Report</h4>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Title</p>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="title" class="form-control" placeholder="Title">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Server</p>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="server" class="form-control" placeholder="Server">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Bug Description</p>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea name="bug_description" rows="3" class="form-control" placeholder="Description"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary pull-right" type="submit">Submit Ticket <i class="fas fa-paper-plane"></i></button>
+            </form>
+            <form data-category="3" method="POST" style="display: none">
+                <input type="hidden" name="category" value="3">
+                <h4>Ban Appeal</h4>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Titulo</p>
+                    </div>
+                    <div class="col-md-4">
+                        <input name="title" type="text" class="form-control" placeholder="Titulo">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p> Porque se te baneo ?</p>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea name="ban_reason" class="form-control" placeholder="Por que se te baneo ?" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Sos culpable ?</p>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" name="guilty" placeholder="Si / No" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Alguna Prueba ? </p>
+                    </div>
+                    <div class="col-md-4">
+                        <textarea placeholder="Evidencia." name="evidence" rows="3" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Por qué deberias ser desbaneado ?</p>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea name="unban_reason" placeholder="Por qué deberias ser desbaneado ? " rows="3" class="form-control"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary pull-right" type="submit">Submit Ticket <i class="fas fa-paper-plane"></i></button>                
+            </form>
+            <form data-category="4" method="POST" style="display: none">
+                <input type="hidden" name="category" value="4">
+                <h4>Hacker/Cheater Report</h4>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Title</p>
+                    </div>
+                    <div class="col-md-4">
+                        <input name="title" type="text" class="form-control" placeholder="Title">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Cheater Username:</p>
+                    </div>
+                    <div class="col-md-4">
+                        <input name="hacker_name" placeholder="Cheater/Hacker Username" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Server: </p>
+                    </div>
+                    <div class="col-md-4">
+                        <input name="server" placeholder="Server" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Proof: </p>
+                    </div>
+                    <div class="col-md-6">
+                        <textarea name="proof" placeholder="Any proof?" rows="3" type="text" class="form-control"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary pull-right" type="submit">Submit Ticket <i class="fas fa-paper-plane"></i></button>
+            </form>
+            <form data-category="5" method="POST" style="display: none">
+                <input type="hidden" name="category" value="5">
+                <h4>Staff Complaint</h4>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Title</p>
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control" placeholder="Title" type="text" name="title">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Staff Username</p>
+                    </div>
+                    <div class="col-md-4">
+                        <input placeholder="Staff Username" name="staff_username" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Abuse/Reason</p>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea placeholder="Abuse / Reason" name="staff_abuse" rows="3" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Have any proof ?</p>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea placeholder="Any proof ?" type="text" rows="3" name="proof" class="form-control"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary pull-right" type="submit">Submit Ticket <i class="fas fa-paper-plane"></i></button>
+            </form>
+            <form data-category="6" method="POST" style="display: none">
+                <input type="hidden" name="category" value="6">
+                <h4>IP Ban Appeal</h4>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Title</p>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="title" placeholder="Title" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Why are you banned ?</p>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea placeholder="Why are you banned ?" class="form-control" name="ban_reason" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>IP:</p>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" placeholder="xxx.xxx.xxx.xxx" name="ip" class="form-control">
+                    </div>
+                </div>
+                <button class="btn btn-primary pull-right" type="submit">Submit Ticket <i class="fas fa-paper-plane"></i></button>
+            </form>
+            <form data-category="7" method="POST" style="display: none">
+                <input type="hidden" name="category" value="7">
+                <h4>General Support</h4>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Title</p>
+                    </div>
+                    <div class="col-md-4">
+                        <input placeholder="Title" class="form-control" type="text" name="title">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>How can we help you?</p>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="form-control" name="general_question" rows="6"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary pull-right" type="submit">Submit Ticket <i class="fas fa-paper-plane"></i></button>
+            </form>
+            <form data-category="8" method="POST" style="display: none">
+                <input type="hidden" name="category" value="8">
+                <h4>Build Submissions</h4>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Title</p>
+                    </div>
+                    <div class="col-md-4">
+                        <input placeholder="Title" class="form-control" type="text" name="title">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Youtube Video</p>
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control" placeholder="Youtube Video" name="build_video" type="url">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Description</p>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea placeholder="Tell us about your building" class="form-control" name="build_description" rows="4"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary pull-right" type="submit">Submit Ticket <i class="fas fa-paper-plane"></i></button>
+            </form>
+            <form data-category="9" method="POST" style="display: none">
+                <input type="hidden" name="category" value="9">
+                <h4>Staff Application</h4>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Title</p>
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control" placeholder="Kuih { Username } Staff Application" type="text" name="title">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Age</p>
+                    </div>
+                    <div class="col-md-2">
+                        <input placeholder="Age" class="form-control" type="text" name="age">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Country & Time Zone</p>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" name="country" placeholder="Country & Time Zone">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>What language(s) do you fluently speak?</p>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea placeholder="At least you must speak English." class="form-control" name="languages" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Average daily play time</p>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" name="playtime_average" placeholder="Daily play time average">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Any previous Minecraft Staff experience ?</p>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea type="text" placeholder="Not exclusive" class="form-control" name="past_experience" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Why do you want to become part of the Staff Team?</p>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea class="form-control" placeholder="What can you bring to the staff team than the other candidates?" name="staffapply_reason" rows="6"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary pull-right" type="submit">Submit Ticket <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+    <hr style="margin: 0">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Old Tickets</h3>
+            {{#each tickets}}
+            <div class="list-group">
+              <a href="/support/{{uid}}" class="list-group-item list-group-item-action"><p style="font-size: 2rem;display: -webkit-inline-box;margin: 0">{{ title }}</p>
+              <span class="badge badge-pill badge-secondary pull-right">{{ date }}</span>
+              <span class="badge badge-pill badge-secondary pull-right">{{ category_name }}</span>
+              </a>
+            </div>
+            {{/each}}
         </div>
     </div>
 </div>
 <script>
 $(document).ready(() => {
- $('#support_category').change(() => {
-     console.log($(this))
-
+ $('#support_category').change((e) => {
+    const _category = e.target.selectedOptions[0].value
+    $('[data-category]').hide()
+    switch(_category) {
+        case "1":
+            $('[data-category="1"]').fadeIn();
+            break;
+        case "2":
+            $('[data-category="2"]').fadeIn()
+            break;
+        case "3":
+            $('[data-category="3"]').fadeIn()
+            break;
+        case "4":
+            $('[data-category="4"]').fadeIn()
+            break;
+        case "5":
+            $('[data-category="5"]').fadeIn()
+            break;
+        case "6":
+            $('[data-category="6"]').fadeIn();
+            break;
+        case "7":
+            $('[data-category="7"]').fadeIn()
+            break;
+        case "8":
+            $('[data-category="8"]').fadeIn()
+            break;
+        case "9":
+            $('[data-category="9"]').fadeIn()
+            break;
+    }
  });
 });
 </script>

@@ -5,8 +5,6 @@ const salt = require('../../lib/helpers')
 const connection = require('../../config/dbConnection')
 
 app.use((req,res,next) => {
-    console.log('Entraste al /account')
-    console.log(req.session.passport)
     if(req.isAuthenticated()){
         next();
     }else if(!req.isAuthenticated()){

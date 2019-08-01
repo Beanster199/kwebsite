@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="display: inline-block">{{ ticket.title }}</h3>
+            <span class="label label-primary pull-right">{{ ticket.date}}</span>
+        </div>
+        <div class="panel-body">
+            <p><b>Server - </b> {{ ticket.server }}</p>
+            <p><b>Bug Description -</b> {{ ticket.bug_description }} </p>
+        </div>
+    </div>
+    {{> support_comments }}
+</div>

@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="display: inline-block">{{ ticket.title }}</h3>
+            <span class="label label-primary pull-right">{{ ticket.date}}</span>
+        </div>
+        <div class="panel-body">
+            <p><b>Why are you banned? - </b> {{ ticket.ban_reason }}</p>
+            <p><b>ip -</b> {{ ticket.ip }} </p>
+        </div>
+    </div>
+    {{> support_comments }}
+</div>

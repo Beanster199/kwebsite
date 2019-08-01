@@ -32,13 +32,15 @@ app.engine('.hbs', exphbs({
 
 // Assets
 app.use('/assets', express.static(path.join(__dirname, './assets')));
+app.use('/support/assets', express.static(path.join(__dirname, './assets')));
 app.use('/practice/assets', express.static(path.join(__dirname, './assets')));
 app.use('/sg/assets', express.static(path.join(__dirname, './assets')));
 app.use('/u/assets', express.static(path.join(__dirname, './assets')));
 app.use('/u/:nameId/assets', express.static(path.join(__dirname, './assets')));
+app.use('/admin/assets', express.static(path.join(__dirname, './assets')));
 
 /*
-    #Remember: Middlewares and Routes should go after _Assets_ for only one call
+    #Remember: Middlewares and Routes should go after _Assets_ for avoid multiple routes call
 */
 
 
@@ -69,6 +71,7 @@ app.use((req,res,next) => {
     if(req.isAuthenticated()){
         if(!req.app.locals.bLoggedIn || !req.app.locals.uuid || !req.app.locals.name){
             req.app.locals.bLoggedIn = undefined;
+            req.app.locals.isAdmin = undefined;
             req.app.locals.uuid = undefined;
             req.app.locals.name = undefined;
             req.logout();
@@ -76,6 +79,7 @@ app.use((req,res,next) => {
     }else if(!req.isAuthenticated()){
         if(req.app.locals.bLoggedIn || req.app.locals.uuid || req.app.locals.name){
             req.app.locals.bLoggedIn = undefined;
+            req.app.locals.isAdmin = undefined;
             req.app.locals.uuid = undefined;
             req.app.locals.name = undefined;
         };
@@ -95,10 +99,11 @@ app.use((req,res,next) => {
 });
 
 // Routes
+app.use(require('./routes/index'));
+
 app.use('/auth',require('./routes/u/auth'));
 app.use(require('./routes/login'));
 app.use(require('./routes/support/support'));
-app.use(require('./routes/index'));
 app.use(require('./routes/community/staff'));
 app.use('/u',require('./routes/u/user'));
 app.use(require('./routes/community/famous'));
@@ -106,6 +111,8 @@ app.use(require('./routes/tools'));
 app.use('/practice',require('./routes/leaderboards/leaderboards'));
 app.use('/sg',require('./routes/leaderboards/survival_games'));
 app.use(require('./routes/u/account'));
+app.use('/admin',require('./routes/admin/main.js'));
+
 
 
 

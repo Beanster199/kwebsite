@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <!-- Page Icon -->
+  <link rel="shortcut icon" href="" type="image/x-icon">
+  <link rel="icon" href="assets/img/favicon-32x32.png" type="image/x-icon">
+  <title>Kuih Network</title>
+  <!-- B. CSS -->
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+  <style type="text/css">.home-banner{margin-top:0px;margin-bottom:0px;overflow-y:hidden;padding:0;height:425px;position:relative;}.banner-img{vertical-align:middle;text-align:center;display:block;height:100%;position:relative;}.banner-img img{margin:auto;position:absolute;bottom:0px;vertical-align:middle;}.banner-bottom{min-height:40px;margin:0px 0px 20px 0px;border-bottom:1px solid #bbb;padding:5px;background-color:#f8f8f8;}.navbar{margin-bottom:0px;}.banner-text{position:absolute;z-index:100;background-color:transparent;width:100%;color:#fff;text-align:center;text-shadow:1px 0px 1px #444,0px 1px 1px #444,2px 1px 1px #444,1px 2px 1px #444,3px 2px 1px #444,2px 3px 1px #444,4px 3px 1px #444,3px 4px 1px #444;}</style>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="assets/bootstrap/icons/fontawesome-webfont.woff">
+  <link rel="stylesheet" href="assets/bootstrap/icons/fontawesome-webfont.woff2">
+  <link rel="stylesheet" href="assets/bootstrap/icons/glyphicons-halflings-regular.ttf">
+  <link rel="stylesheet" href="assets/bootstrap/icons/glyphicons-halflings-regular.woff">
+  <link rel="stylesheet" href="assets/bootstrap/icons/glyphicons-halflings-regular.woff2">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+  <!-- B. Scripts -->
+  <script src="assets/bootstrap/js/jquery-1.11.3.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<nav class="navbar navbar-default" role="navigation" style="padding:0%">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+         <a class="navbar-link" href="/">
+           <img src="assets/img/KuihLogo.png" width="40" height="40">
+           Kuih
+         </a>
+      </div>
+      <div class="navbar-collapse collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button">
+              <i class="fa fa-users"></i>
+              Community
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/staff"><i class="fa fa-users"></i> Staff</a></li>
+              <li><a href="/famous"><i class="fa fa-star"></i> Famous</a></li>
+              <li class="disabled"><a><i class="fa fa-comments"></i> Suggestions</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/support">
+              <i class="fa fa-ticket-alt"></i>
+              Support
+            </a>
+          </li>
+          <li>
+            <a href="http://kuih.buycraft.net/">
+              <i class="fa fa-shopping-cart"></i>
+              Store
+            </a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+              <i class="fa fa-bar-chart"></i>
+              Stats
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li class="dropdown-header">Practice</li>
+              <li><a href="/practice/global">Leaderboard</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Survival Games</li>
+              <li><a href="/sg/global">Leaderboard</a></li>
+              <li class="disabled"><a>Recent Games</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Factions</li>
+              <li class="disabled"><a>Leaderboard</a></li>
+              <li class="disabled"><a>Death List</a></li>
+              <li class="disabled"><a>Events List</a></li>
+              <li class="disabled"><a>World Maps</a></li>
+              <li class="divider"></li>
+              <li class="disabled"><a>Bans</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button">
+              <i class="fa fa-wrench"></i>
+              Tools
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li class="disabled"><a>Polls</a></li>
+              <li class="disabled"><a>Betray Lookups</a></li>
+              <li class="divider"></li>
+              <li class="disabled"><a>Check Ping</a></li>
+              <li class="disabled"><a>Online Players</a></li>
+              <li><a href="/clicks">Click Tester</a></li>
+              <li class="disabled"><a>EOTW Countdown</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/admin/staff">Admin</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" style="border-radius: 4px;">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="outline: none; line-height: 0px;" aria-expanded="false">
+              <img style="width: 20px;height: 20px;border-radius: 3px;margin-right: 4px;" width="20" height="20" class="avatar" src="https://visage.surgeplay.com/face/32/c0294097-f30a-4546-99e9-e7172f9be7e2" alt="Benster_199" title="Benster_199">
+              <div class="visible-xs-inline visible-sm-inline">
+                Account
+              </div>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><a href="/u/Benster_199">Profile</a></li>
+              <li><a href="/alerts">Alerts</a></li>
+              <li><a href="/friendships">Friendships</a></li>
+              <li><a href="/account">Account</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="navbar-form navbar-right search" method="POST" action="/" role="search">
+          <div class="input-group">
+            <input type="text" name="user" class="form-control navbar-player-search" placeholder="Search players" required="">
+            <div class="input-group-btn">
+              <button type="submit" class="btn btn-default"><i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  {{{ body }}}
+  <footer class="footer">
+    <div class="container">
+      <div class="pull-left">© 2019 Kuih Network</div>
+      <div class="pull-right">
+        <a href="https://twitter.com/KuihNetwork"><i class="fab fa-twitter fa-lg"></i></a> |
+        <a href="/staff">Staff </a> | <a> Rules</a>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

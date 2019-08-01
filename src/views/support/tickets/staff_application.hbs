@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="display: inline-block">{{ ticket.title }}</h3>
+            <span class="label label-primary pull-right">{{ ticket.date}}</span>
+        </div>
+        <div class="panel-body">
+            <p><b>Age - </b> {{ ticket.age }}</p>
+            <p><b>Country & Time Zone -</b> {{ ticket.country }} </p>
+            <p><b>What language(s) do you fluently speak? - </b> {{ ticket.languages }} </p>
+            <p><b>Average daily play time - </b> {{ ticket.playtime_average }}</p>
+            <p><b>Any previous Minecraft Staff experience ? - </b> {{ ticket.past_experience }}</p>
+            <p><b>Why do you want to become part of the Staff Team? - </b> {{ ticket.staffapply_reason }}</p>
+        </div>
+    </div>
+    {{> support_comments }}
+</div>
