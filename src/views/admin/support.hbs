@@ -1,121 +1,140 @@
 	<div class="col-sm-3">
-	    <div class="panel panel-default">
-	        <div class="panel-body">
-	            <h3 class="text-center"><strong>Kuih Support System</strong></h3>
-	            <hr>
-	            <h5>Your rank</h5>
-	            <span class="label label-default" style="background-color: #aa0000">Network Admin</span>
-	            <hr>
-	            <!--<h5>Daily ticket counter</h5>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h3 class="text-center"><strong>Kuih Support System</strong></h3>
+				<hr>
+				<h5 style="display: -webkit-inline-box;">Your rank</h5>
+				<span class="label label-default label-{{user_rank}}">{{user_rank}}</span>
+				<hr>
+				<!--<h5>Daily ticket counter</h5>
 				<span class="label label-danger">0 / 10 Tickets</span>
 				<hr>-->
-	            <h5>Filter by category <button onclick="location.href='/admin/support/'" class="btn btn-sm pull-right"
-	                    style="font-size:12px; padding-top: 4px;padding-bottom: 2px;padding-right: 5px;padding-left: 5px;"><span
-	                        class="fa fa-times"></span> Clear</button></h5>
-	            <ul class="list-group cat-list" style="margin-top:10px;padding-top: 10px;width:100%;">
-                    {{#each category}}
-	                <a href="?category={{id}}" class="list-group-item" data-toggle="checked" data-target="1">
-	                    <span class="fa fa-times"></span>&nbsp;
-	                    <strong><span class="label" style="background-color: {{color}}">{{category_name}}</span></strong>
-	                </a>
-                    {{/each}}
-	            </ul>
-	            <hr>
-	            <h5><b>Before using tickets</b></h5>
-	            <p class="text-justify">Remember to always <b>be specific</b> on tickets messages, and always ask for
-	                opinion to other staff before taking a decision. Any bug please report it on <u>#suggestions</u>.</p>
-	            <p class="text-justify">Remember to <b>not</b> to comment in tickets that have been assigned to <b>other
-	                    staff</b>.</p>
-	            <p>Regards, <b>Kuih Admins</b>.</p>
-	        </div>
-	    </div>
+				<h5>Filter by category <button onclick="location.href='/admin/support/'" class="btn btn-sm pull-right"
+						style="font-size:12px; padding-top: 4px;padding-bottom: 2px;padding-right: 5px;padding-left: 5px;"><span
+							class="fa fa-times"></span> Clear</button></h5>
+				<ul class="list-group cat-list" style="margin-top:10px;padding-top: 10px;width:100%;">
+					{{#each category}}
+					<a href="?category={{id}}" class="list-group-item" data-toggle="checked" data-target="1">
+						<span class="fa fa-times"></span>&nbsp;
+						<strong><span class="label" style="background-color: {{color}}">{{category_name}}</span></strong>
+					</a>
+					{{/each}}
+				</ul>
+				<hr>
+				<h5><b>Before using tickets</b></h5>
+				<p class="text-justify">Remember to always <b>be specific</b> on tickets messages, and always ask for
+					opinion to other staff before taking a decision. Any bug please report it on <u>#suggestions</u>.</p>
+				<p class="text-justify">Remember to <b>not</b> to comment in tickets that have been assigned to <b>other
+						staff</b>.</p>
+				<p>Regards, <b>Kuih Admins</b>.</p>
+			</div>
+		</div>
 	</div>
 	<div class="col-sm-9">
 		<ul class="nav nav-pills">
-			<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#open" style="padding: 10px 10px;">Open Tickets <span class="label" style="background-color: #32AB1E">{{count.open}}</span></a></li>
-			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#staff" style="padding: 10px 10px;">Waiting for staff <span class="label label-warning">{{count.waiting_staff}}</span></a></li>
-			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#player" style="padding: 10px 10px;">Waiting for player <span class="label label-info">{{count.waiting_player}}</span></a></li>
-			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#assignedtoyou" style="padding: 10px 10px;">Assigned To You <span class="label label-default">{{count.assigned_to_you}}</span></a></li>
-			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#unassigned" style="padding: 10px 10px;">Unassigned <span class="label label-default" style="background-color: #A5577A">{{count.unassigned}}</span></a></li>
-			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#closed" style="padding: 10px 10px;">Closed Tickets <span class="label label-danger">{{count.closed}}</	span></a></li>
+			<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#open" style="padding: 10px 10px;">Open
+					Tickets <span class="label" style="background-color: #32AB1E">{{count.open}}</span></a></li>
+			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#staff" style="padding: 10px 10px;">Waiting
+					for staff <span class="label label-warning">{{count.waiting_for_staff}}</span></a></li>
+			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#player" style="padding: 10px 10px;">Waiting
+					for player <span class="label label-info">{{count.waiting_for_player}}</span></a></li>
+			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#assignedtoyou"
+					style="padding: 10px 10px;">Assigned To You <span
+						class="label label-default">{{count.assigned_to_you}}</span></a></li>
+			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#unassigned"
+					style="padding: 10px 10px;">Unassigned <span class="label label-default"
+						style="background-color: #A5577A">{{count.unassigned}}</span></a></li>
+			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#closed" style="padding: 10px 10px;">Closed
+					Tickets <span class="label label-danger">{{count.closed}}</ span></a></li>
 		</ul>
-	    <br>
-	    <div class="tab-content">
-			{{#each ticket}}
-	        <div class="tab-pane active" id="open">
-			{{#is status_id 1}}
-                <div class="list-group">
-                    <a href="/admin/t/{{uid}}" class="list-group-item list-group-item-action">
-                        <img src="https://visage.surgeplay.com/face/32/{{uuid}}" />
-                        <p style="font-size: 2rem;display: -webkit-inline-box;margin: 0">{{title}}</p>
-                        <span class="badge badge-pill badge-secondary pull-right">{{date_ago}}</span>
-                        <span class="badge badge-pill badge-secondary pull-right" style="background-color: {{color}}">{{category_name}}</span>
-                    </a>
-                </div>
-			{{/is}}
-            </div>
-	        <div class="tab-pane" id="staff">
-			{{#is status_id 2}}
-                <div class="list-group">
-                    <a href="/admin/t/{{uid}}" class="list-group-item list-group-item-action">
-                        <img src="https://visage.surgeplay.com/face/32/{{uuid}}" />
-                        <p style="font-size: 2rem;display: -webkit-inline-box;margin: 0">{{title}}</p>
-                        <span class="badge badge-pill badge-secondary pull-right">{{date_ago}}</span>
-                        <span class="badge badge-pill badge-secondary pull-right" style="background-color: {{color}}">{{category_name}}</span>
-                    </a>
-                </div>
-			{{/is}}
-            </div>
-	        <div class="tab-pane" id="player">
-			{{#is status_id 3}}
-                <div class="list-group">
-                    <a href="/admin/t/{{uid}}" class="list-group-item list-group-item-action">
-                        <img src="https://visage.surgeplay.com/face/32/{{uuid}}" />
-                        <p style="font-size: 2rem;display: -webkit-inline-box;margin: 0">{{title}}</p>
-                        <span class="badge badge-pill badge-secondary pull-right">{{#timeago date}}{{/timeago}}</span>
-                        <span class="badge badge-pill badge-secondary pull-right" style="background-color: {{color}}">{{category_name}}</span>
-                    </a>
-                </div>
-			{{/is}}
-            </div>
-			<!-- Assigned && Unassigned -->
-			<!-- /Assigned && Unassigned -->
+		<br>
+		<div class="tab-content">
+			<div class="tab-pane active" id="open">
+				{{#each ticket}}
+				{{#is status_id 1}}
+
+				<div class="list-group">
+					<a href="/admin/t/{{uid}}" class="list-group-item list-group-item-action">
+						<img src="https://visage.surgeplay.com/face/32/{{uuid}}" />
+						<p style="font-size: 2rem;display: -webkit-inline-box;margin: 0">{{title}}</p>
+						<span class="badge badge-pill badge-secondary pull-right">{{#timeago date}}{{/timeago}}</span>
+						<span class="badge badge-pill badge-secondary pull-right"
+							style="background-color: {{color}}">{{category_name}}</span>
+					</a>
+				</div>
+				{{/is}}
+				{{/each}}
+			</div>
+			<div class="tab-pane" id="staff">
+				{{#each ticket}}
+				{{#is status_id 2}}
+				<div class="list-group">
+					<a href="/admin/t/{{uid}}" class="list-group-item list-group-item-action">
+						<img src="https://visage.surgeplay.com/face/32/{{uuid}}" />
+						<p style="font-size: 2rem;display: -webkit-inline-box;margin: 0">{{title}}</p>
+						<span class="badge badge-pill badge-secondary pull-right">{{#timeago date}}{{/timeago}}</span>
+						<span class="badge badge-pill badge-secondary pull-right"
+							style="background-color: {{color}}">{{category_name}}</span>
+					</a>
+				</div>
+				{{/is}}
+				{{/each}}
+			</div>
+			<div class="tab-pane" id="player">
+				{{#each ticket}}
+				{{#is status_id 3}}
+				<div class="list-group">
+					<a href="/admin/t/{{uid}}" class="list-group-item list-group-item-action">
+						<img src="https://visage.surgeplay.com/face/32/{{uuid}}" />
+						<p style="font-size: 2rem;display: -webkit-inline-box;margin: 0">{{title}}</p>
+						<span class="badge badge-pill badge-secondary pull-right">{{#timeago date}}{{/timeago}}</span>
+						<span class="badge badge-pill badge-secondary pull-right"
+							style="background-color: {{color}}">{{category_name}}</span>
+					</a>
+				</div>
+				{{/is}}
+				{{/each}}
+			</div>
 			<div class="tab-pane" id="closed">
-			{{#is status_id 4}}
-                <div class="list-group">
-                    <a href="/admin/t/{{uid}}" class="list-group-item list-group-item-action">
-                        <img src="https://visage.surgeplay.com/face/32/{{uuid}}" />
-                        <p style="font-size: 2rem;display: -webkit-inline-box;margin: 0">{{title}}</p>
-                        <span class="badge badge-pill badge-secondary pull-right">{{date_ago}}</span>
-                        <span class="badge badge-pill badge-secondary pull-right" style="background-color: {{color}}">{{category_name}}</span>
-                    </a>
-                </div>
-			{{/is}}
-            </div>
-		{{/each}}
-		<div class="tab-pane" id="assignedtoyou">
-		{{#each assigned_to_you}}
-                <div class="list-group">
-                    <a href="/admin/t/{{uid}}" class="list-group-item list-group-item-action">
-                        <img src="https://visage.surgeplay.com/face/32/{{uuid}}" />
-                        <p style="font-size: 2rem;display: -webkit-inline-box;margin: 0">{{title}}</p>
-                        <span class="badge badge-pill badge-secondary pull-right">{{date_ago}}</span>
-                        <span class="badge badge-pill badge-secondary pull-right" style="background-color: {{color}}">{{category_name}}</span>
-                    </a>
-                </div>
-		{{/each}}
-            </div>
+				{{#each ticket}}
+				{{#is status_id 4}}
+				<div class="list-group">
+					<a href="/admin/t/{{uid}}" class="list-group-item list-group-item-action">
+						<img src="https://visage.surgeplay.com/face/32/{{uuid}}" />
+						<p style="font-size: 2rem;display: -webkit-inline-box;margin: 0">{{title}}</p>
+						<span class="badge badge-pill badge-secondary pull-right">{{#timeago date}}{{/timeago}}</span>
+						<span class="badge badge-pill badge-secondary pull-right"
+							style="background-color: {{color}}">{{category_name}}</span>
+					</a>
+				</div>
+				{{/is}}
+				{{/each}}
+			</div>
+			<div class="tab-pane" id="assignedtoyou">
+				{{#each assigned_to_you}}
+				<div class="list-group">
+					<a href="/admin/t/{{uid}}" class="list-group-item list-group-item-action">
+						<img src="https://visage.surgeplay.com/face/32/{{uuid}}" />
+						<p style="font-size: 2rem;display: -webkit-inline-box;margin: 0">{{title}}</p>
+						<span class="badge badge-pill badge-secondary pull-right">{{#timeago date}}{{/timeago}}</span>
+						<span class="badge badge-pill badge-secondary pull-right"
+							style="background-color: {{color}}">{{category_name}}</span>
+					</a>
+				</div>
+				{{/each}}
+			</div>
 			<div class="tab-pane" id="unassigned">
-			{{#each unassigned}}
-                <div class="list-group">
-                    <a href="/admin/t/{{uid}}" class="list-group-item list-group-item-action">
-                        <img src="https://visage.surgeplay.com/face/32/{{uuid}}" />
-                        <p style="font-size: 2rem;display: -webkit-inline-box;margin: 0">{{title}}</p>
-                        <span class="badge badge-pill badge-secondary pull-right">{{date_ago}}</span>
-                        <span class="badge badge-pill badge-secondary pull-right" style="background-color: {{color}}">{{category_name}}</span>
-                    </a>
-                </div>
-			{{/each}}
-            </div>
-	    </div>
+				{{#each unassigned}}
+				<div class="list-group">
+					<a href="/admin/t/{{uid}}" class="list-group-item list-group-item-action">
+						<img src="https://visage.surgeplay.com/face/32/{{uuid}}" />
+						<p style="font-size: 2rem;display: -webkit-inline-box;margin: 0">{{title}}</p>
+						<span class="badge badge-pill badge-secondary pull-right">{{#timeago date}}{{/timeago}}</span>
+						<span class="badge badge-pill badge-secondary pull-right"
+							style="background-color: {{color}}">{{category_name}}</span>
+					</a>
+				</div>
+				{{/each}}
+			</div>
+		</div>
 	</div>

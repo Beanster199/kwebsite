@@ -38,11 +38,13 @@ auth.use('user-login', new Strategy({
   if(!_user[0] || !await helpers.loginPassword(password,_user[0].password)){
     return done(null,false);
   }
+  delete _user[0].password;
+  const _rank = await connection.query('select name from PowerfulPerms.playergroups ppp INNER JOIN PowerfulPerms.groups ppg on ppg.id = ppp.groupid WHERE ppg.id <> 6 and ppp.playeruuid = ?',_user[0].uuid)
+  req.app.locals.user_rank = _rank[0].name
   req.app.locals.bLoggedIn = true;
   req.app.locals.uuid = _user[0].uuid;
   req.app.locals.name = _user[0].name;
   req.app.locals.isAdmin = _user[0].isAdmin;
-  delete _user[0].password;
   done(null,_user[0]);
   },
 ));

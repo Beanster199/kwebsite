@@ -30,8 +30,8 @@
 
   {{#if bLoggedIn}}
   <link rel="stylesheet" type="text/css" href="assets/css/bMain.css">
-  <script src="assets/js/main.js"></script> 
   {{/if}}
+
 
 </head>
 
@@ -141,6 +141,9 @@
       </div>
     </div>
   </footer>
+  {{#if bLoggedIn}}
+  <script src="assets/js/main.js"></script> 
+  {{/if}}
 </body>
 
 </html>

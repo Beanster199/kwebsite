@@ -1,0 +1,55 @@
+{{#each comments}}
+<div class="row">
+    {{#unless staff_reply}}
+    <div class="col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-body" style="padding:7px;">
+                <img style="vertical-align: top" src="https://visage.surgeplay.com/face/32/{{uuid}}">
+                <div style="display: inline-block;">
+                    <a href="/u/{{name}}">
+                        {{ name }}
+                    </a>
+                    <p style="font-size: 1rem;margin: 0;color:rgb(134, 134, 134)">{{date}}</p>
+                </div>
+                <hr style="margin: 0">
+                <p style="margin: 0">{{comment}}</p>
+            </div>
+        </div>
+    </div>
+    {{/unless}}
+    {{#if staff_reply}}
+    <div class="col-md-5 offset-7">
+        <div class="panel panel-default">
+            <div class="panel-body" style="padding:7px;">
+                <img style="vertical-align: top" src="https://visage.surgeplay.com/face/32/{{uuid}}">
+                <div style="display: inline-block;">
+                    <a href="/u/{{name}}">
+                        {{name}}
+                    </a>
+                    <p style="font-size: 1rem;margin: 0;color:rgb(134, 134, 134)">{{date}}</p>
+                </div>
+                <hr style="margin: 0">
+                <p style="margin: 0">{{comment}}</p>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</div>
+{{/each}}
+<div class="row">
+    <div class="col-md-12">
+        {{#is body.status_id 4}}
+        <div class="alert alert-warning">
+        <p class="mb-0">Ticket Closed</p>
+        </div>
+        {{/is}}
+        {{#isnt body.status_id 4}}
+        <h3>Add a Reply</h3>
+        <form method="POST" action="/admin/t/{{body.uid}}/comment">
+            <textarea name="comment" rows="4" class="form-control" required></textarea>
+            <button type="submit" class="btn btn-primary pull-right" style="margin-top: 16px">Add Comment &ThinSpace;<i
+                    class="fas fa-comment-dots"></i></button>
+        </form>
+        {{/isnt}}
+    </div>
+</div>

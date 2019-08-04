@@ -2,7 +2,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <button class="btn btn-default" style="padding: .375rem .75rem" type="submit" value="Back"><i class="fas fa-chevron-left"></i> Back.</button>
-            <span class="label label-danger pull-right">17 Minutes Ago.</span>
+            <span class="label label-danger pull-right">{{#timeago ticket.ticket_date}}{{/timeago}}</span>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -26,7 +26,12 @@
                 </div>
         </div>
         <div class="panel-footer">
-            <button class="btn btn-danger">Close Ticket.</button>
+            {{#is body.status_id 4}}
+            Ticket Closed on {{body.closed_date}} by {{#username body.closed_by}}{{/username}}
+            {{/is}}
+            {{#isnt body.status_id 4}}
+            <button class="btn btn-danger" type="button" data-ticket="{{body.uid}}" id="close_ticket">Close Ticket.</button>
+            {{/isnt}}
         </div>
     </div>
     <div class="card">
@@ -45,5 +50,5 @@
     {{> ticket_staffapply}}
     <h3>Comments</h3>
     <hr>
-    {{>support_comments}}
+    {{> staff_support_comments}}
 </div>

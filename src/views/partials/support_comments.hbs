@@ -38,11 +38,18 @@
 {{/each}}
 <div class="row">
     <div class="col-md-12">
+        {{#is ticket.status_id 4}}
+        <div class="alert alert-warning">
+        <p class="mb-0">Ticket Closed</p>
+        </div>
+        {{/is}}
+        {{#isnt ticket.status_id 4}}
         <h3>Add a Comment</h3>
         <form method="POST">
             <textarea name="comment" rows="4" class="form-control" required></textarea>
             <button type="submit" class="btn btn-primary pull-right" style="margin-top: 16px">Add Comment &ThinSpace;<i
                     class="fas fa-comment-dots"></i></button>
         </form>
+        {{/isnt}}
     </div>
 </div>
