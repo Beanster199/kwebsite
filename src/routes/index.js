@@ -17,4 +17,6 @@ app.get('/logout', (req,res) => {
   req.app.isAdmin = undefined;
   res.redirect('/login');
 })
+
+
 module.exports = app;

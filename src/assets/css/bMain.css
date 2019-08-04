@@ -42,3 +42,17 @@ nav {
 .form-group input{
     font-size: 12px;
 }
+
+.panel-comment {
+    color: #bdbaba;
+    white-space: nowrap;
+    background: #efefef;
+    font-size: 64%;
+    padding: 2%;
+    border-radius: 2px;
+    width: 175px;
+}
+
+.panel-body div p { 
+    margin: 0;
+}

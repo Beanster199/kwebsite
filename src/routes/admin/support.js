@@ -18,12 +18,18 @@ app.get('/support', async (req,res) =>{
     const _tickets = await connection.query('SELECT * FROM kwebsite_tickets ktw INNER JOIN kwebsite_tickets_categories ktc on ktc.id = ktw.category_id');
     const _assigned_to_you = await connection.query('SELECT * FROM kwebsite_tickets ktw INNER JOIN kwebsite_tickets_categories ktc on ktc.id = ktw.category_id INNER JOIN kwebsite_tickets_assigned kta on kta.uid = ktw.uid WHERE kta.assigned_to = ?', req.user.uuid);
     const _unassigned = await connection.query('SELECT * FROM kwebsite_tickets ktw INNER JOIN kwebsite_tickets_categories ktc on ktc.id = ktw.category_id WHERE NOT EXISTS(SELECT uid FROM kwebsite_tickets_assigned kta WHERE kta.uid = ktw.uid )');
-    console.log(_tickets);
     res.render('../views/admin/support.hbs', { layout: '../admin/main.hbs', category:_category, ticket: _tickets, assigned_to_you:_assigned_to_you, unassigned:_unassigned});
 })
 
 app.get('/t/:uid', async (req,res) => {
-    res.render('../views/admin/ticket.hbs', {layout: '../admin/main.hbs'})
+    const _uid = await connection.query('SELECT * FROM kwebsite_tickets WHERE uid =?',req.params.uid);
+    if (!_uid || !_uid[0]){
+        return res.status(200).redirect('/admin/support');
+    }
+    const _ticket = await connection.query('select kwt.uuid,kwt.date as ticket_date,ktc.category_name,ktc.color as category_color,kts.status_name,kts.color as status_color,ppg.name as group_name,ksp.name as username from kwebsite_tickets kwt INNER JOIN kwebsite_tickets_categories ktc on ktc.id = kwt.category_id INNER JOIN kwebsite_tickets_status kts on kts.id = kwt.status_id INNER JOIN ksystem_playerdata ksp on ksp.uuid = kwt.uuid LEFT OUTER JOIN PowerfulPerms.playergroups ppp on ppp.playeruuid = kwt.uuid LEFT OUTER JOIN PowerfulPerms.groups ppg on ppg.id = ppp.groupid WHERE uid = ?', req.params.uid)
+    const _body = await connection.query('SELECT * FROM kwebsite_tickets WHERE uid = ?', req.params.uid)
+    const _comments = await connection.query('SELECT * FROM kwebsite_tickets WHERE uid = ?', req.params.uid)
+    res.render('../views/admin/ticket.hbs', {layout: '../admin/main.hbs',ticket:_ticket[0],body:_body[0], comments:_comments})
 });
 
 /*     const count = {}

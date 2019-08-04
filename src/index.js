@@ -102,6 +102,7 @@ app.use((req,res,next) => {
 
 // Routes
 app.use(require('./routes/index'));
+app.use('api',require('./routes/api/main'));
 
 app.use('/auth',require('./routes/u/auth'));
 app.use(require('./routes/login'));

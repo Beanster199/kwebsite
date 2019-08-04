@@ -1,1 +1,49 @@
-<h2>Coming r8 now. :)</h2>
+<div class="col-sm-3 col-md-3 col-lg-3">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <button class="btn btn-default" style="padding: .375rem .75rem" type="submit" value="Back"><i class="fas fa-chevron-left"></i> Back.</button>
+            <span class="label label-danger pull-right">17 Minutes Ago.</span>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-2 col-md-2">
+                    <img style="width: 32px;height: 32px;border-radius: 3px;margin-right: 4px;" width="32" height="32"
+                    class="avatar" src="https://visage.surgeplay.com/face/32/{{ticket.uuid}}"
+                    alt="{{ticket.name}}" title="{{ticket.name}}">
+                    </div>
+                <div class="col-sm-10 col-md-10">
+                    <a href="/admin/u/{{ticket.username}}"><b>{{ticket.username}}</b></a>
+                    <p class="panel-comment">{{ticket.uuid}}</p>
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                    <h3 style="margin: 0" >Ticket</h3>
+                    <hr style="margin: 0">
+                    <p>Category: <span class="label label-default" style="background-color: {{ticket.category_color}}">{{ticket.category_name}}</span></p>
+                    <p>Status: <span class="label label-primary" style="background-color: {{ticket.status_color}}">{{ticket.status_name}}</span></p>
+                    </div>
+                </div>
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-danger">Close Ticket.</button>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+	        <h5><b>Before using tickets</b></h5>
+	        <p class="text-justify">Remember to always <b>be specific</b> on tickets messages, and always ask for
+	            opinion to other staff before taking a decision. Any bug please report it on <u>#suggestions</u>.</p>
+	        <p class="text-justify">Remember to <b>not</b> to comment in tickets that have been assigned to <b>other
+	                staff</b>.</p>
+	        <p>Regards, <b>Kuih Admins</b>.</p>
+        </div>
+    </div>
+</div>
+<div class="col-sm-9 col-md-9 col-lg-9">
+
+    {{> ticket_staffapply}}
+    <h3>Comments</h3>
+    <hr>
+    {{>support_comments}}
+</div>
