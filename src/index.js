@@ -8,7 +8,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const MySQLStore = require('express-mysql-session')(session);
 const bodyParser = require('body-parser');;
-
+const helpers = require('handlebars-helpers')();
 
 const { database } = require('./keys');
 
@@ -38,6 +38,8 @@ app.use('/sg/assets', express.static(path.join(__dirname, './assets')));
 app.use('/u/assets', express.static(path.join(__dirname, './assets')));
 app.use('/u/:nameId/assets', express.static(path.join(__dirname, './assets')));
 app.use('/admin/assets', express.static(path.join(__dirname, './assets')));
+app.use('/admin/t/assets', express.static(path.join(__dirname, './assets')));
+
 
 /*
     #Remember: Middlewares and Routes should go after _Assets_ for avoid multiple routes call
@@ -111,7 +113,10 @@ app.use(require('./routes/tools'));
 app.use('/practice',require('./routes/leaderboards/leaderboards'));
 app.use('/sg',require('./routes/leaderboards/survival_games'));
 app.use(require('./routes/u/account'));
+
+// Admin Routes ( Should add perms l8tr)
 app.use('/admin',require('./routes/admin/main.js'));
+app.use('/admin',require('./routes/admin/support.js'));
 
 
 

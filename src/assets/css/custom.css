@@ -62,6 +62,17 @@ html,body{min-height: 100vh;position: relative;margin: 0;}body>.container{paddin
 #sidebar .element>.purple {
   background-color: #a63ae5;
 }
+
+@media (max-width: 991.98px) { 
+  .navbar-expand-lg>.container, .navbar-expand-lg>.container-fluid{
+    padding-left: 16px;
+    padding-right: 16px;
+    align-items: unset;
+    justify-content: unset;
+  }
+}
+
+
 /*
      FILE ARCHIVED ON 23:36:12 May 24, 2016 AND RETRIEVED FROM THE
      INTERNET ARCHIVE ON 06:44:58 Oct 13, 2018.

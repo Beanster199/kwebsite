@@ -7,7 +7,7 @@ app.use((req,res,next) => {
         if(req.user.isAdmin){
             next();
         }else{
-            return res.status(200).redirect('/login');
+            return res.status(200).redirect('/');
         }
     }
 });

@@ -1,10 +1,9 @@
-
 const express = require('express');
 const app = express.Router();
 const connection = require('../../config/dbConnection');
 const publicIp = require('public-ip');
 const request = require('request');
-const { format, render, cancel, register } = require('timeago.js');
+const { format } = require('timeago.js');
 
 app.get('/:nameId', async (req, res) => {
     if (req.params.nameId) {
