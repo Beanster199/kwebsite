@@ -7,6 +7,7 @@ const app = express()
 const connection = require('../config/dbConnection');
 const helpers = require('../lib/helpers')
 
+/*
 auth.use('token-login', new Strategy({
   usernameField: 'auth_token',
   passwordField: 'ip',
@@ -29,6 +30,7 @@ auth.use('token-login', new Strategy({
   }
 ));
 
+*/
 auth.use('user-login', new Strategy({
   usernameField: 'username',
   passwordField: 'password',

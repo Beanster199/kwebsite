@@ -15,6 +15,7 @@ require('./lib/auth');
 
 app.set('port', 3000);
 app.set('views', path.join(__dirname, 'views'))
+app.disable('view cache');
 app.disable('x-powered-by');
 app.engine('.hbs', exphbs({
     defaultLayout: 'master',
