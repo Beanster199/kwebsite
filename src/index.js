@@ -2,10 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const path = require('path');
-const session = require('express-session');
-const validator = require('express-validator');
 const passport = require('passport');
-const flash = require('connect-flash');
+const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const bodyParser = require('body-parser');;
 const helpers = require('handlebars-helpers')();
@@ -55,11 +53,10 @@ app.use(bodyParser.json());
 app.use(session({
     key: 'test_id',
     secret: 'secret',
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
     store: new MySQLStore(database)
   }));
-app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -69,6 +66,7 @@ app.use((req, res, next) => {
     next()
 }); 
 
+/*
 app.use((req,res,next) => {
     if(req.isAuthenticated()){
         if(!req.app.locals.bLoggedIn || !req.app.locals.uuid || !req.app.locals.name){
@@ -99,7 +97,7 @@ app.use((req,res,next) => {
     }
     next();
 });
-
+*/
 // Routes
 app.use(require('./routes/index'));
 app.use('api',require('./routes/api/main'));
