@@ -61,11 +61,26 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use((req, res, next) => {
-    app.locals.danger = req.flash('danger');
-    app.locals.success = req.flash('success');
-    next()
-}); 
+
+app.use((req,res,next) => {
+    if(req.isAuthenticated()){
+        if(req.user){
+            res.locals.bLoggedIn = true;
+            res.locals.bUser = req.user;
+            res.locals.bSession = req.session;
+        }else{
+            req.bSession = undefined;
+            req.bUser = undefined;
+            res.locals.bLoggedIn = false;
+            req.logout();
+        }
+    }else if(!req.isAuthenticated()){
+        res.locals.user = undefined;
+        res.locals.session = undefined;
+        res.locals.bLoggedIn = true;
+    }
+    next();
+});
 
 /*
 app.use((req,res,next) => {

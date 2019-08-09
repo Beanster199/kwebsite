@@ -7,7 +7,7 @@ const app = express()
 const connection = require('../config/dbConnection');
 const helpers = require('../lib/helpers')
 
-/*
+
 auth.use('token-login', new Strategy({
   usernameField: 'auth_token',
   passwordField: 'ip',
@@ -30,7 +30,7 @@ auth.use('token-login', new Strategy({
   }
 ));
 
-*/
+
 auth.use('user-login', new Strategy({
   usernameField: 'username',
   passwordField: 'password',
@@ -41,12 +41,12 @@ auth.use('user-login', new Strategy({
     return done(null,false);
   }
   delete _user[0].password;
-  const _rank = await connection.query('select name from PowerfulPerms.playergroups ppp INNER JOIN PowerfulPerms.groups ppg on ppg.id = ppp.groupid WHERE ppg.id <> 6 and ppp.playeruuid = ?',_user[0].uuid)
-  req.app.locals.user_rank = _rank[0].name
-  req.app.locals.bLoggedIn = true;
-  req.app.locals.uuid = _user[0].uuid;
-  req.app.locals.name = _user[0].name;
-  req.app.locals.isAdmin = _user[0].isAdmin;
+  //const _rank = await connection.query('select name from PowerfulPerms.playergroups ppp INNER JOIN PowerfulPerms.groups ppg on ppg.id = ppp.groupid WHERE ppg.id <> 6 and ppp.playeruuid = ?',_user[0].uuid)
+  //req.app.locals.user_rank = _rank[0].name
+  //req.app.locals.bLoggedIn = true;
+  //req.app.locals.uuid = _user[0].uuid;
+  //req.app.locals.name = _user[0].name;
+  //req.app.locals.isAdmin = _user[0].isAdmin;
   done(null,_user[0]);
   },
 ));
@@ -64,3 +64,8 @@ auth.deserializeUser(async (user, done) => {
   }
   done(null, _row[0]);
 });
+
+
+
+
+
