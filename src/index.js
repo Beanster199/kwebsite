@@ -71,41 +71,19 @@ app.use((req,res,next) => {
         }else{
             req.bSession = undefined;
             req.bUser = undefined;
-            res.locals.bLoggedIn = false;
+            res.locals.bLoggedIn = undefined;
             req.logout();
         }
     }else if(!req.isAuthenticated()){
         res.locals.user = undefined;
         res.locals.session = undefined;
-        res.locals.bLoggedIn = true;
+        res.locals.bLoggedIn = undefined;
     }
-    next();
-});
-
-/*
-app.use((req,res,next) => {
-    if(req.isAuthenticated()){
-        if(!req.app.locals.bLoggedIn || !req.app.locals.uuid || !req.app.locals.name){
-            req.app.locals.bLoggedIn = undefined;
-            req.app.locals.isAdmin = undefined;
-            req.app.locals.uuid = undefined;
-            req.app.locals.name = undefined;
-            req.logout();
-        };
-    }else if(!req.isAuthenticated()){
-        if(req.app.locals.bLoggedIn || req.app.locals.uuid || req.app.locals.name){
-            req.app.locals.bLoggedIn = undefined;
-            req.app.locals.isAdmin = undefined;
-            req.app.locals.uuid = undefined;
-            req.app.locals.name = undefined;
-        };
-    };
     if(false){
         console.log('--- Soy tus bAuth Variables ----')
         console.log(req.isAuthenticated())
-        console.log(req.app.locals.bLoggedIn);
-        console.log(req.app.locals.uuid);
-        console.log(req.app.locals.name);
+        console.log(res.app.locals.bLoggedIn);
+        console.log(res.app.locals.bUser);
         console.log('--- /End bAuth Variables ----')
         for (let i = 0; i < 20; i++) {
             console.log('')
@@ -113,20 +91,23 @@ app.use((req,res,next) => {
     }
     next();
 });
-*/
+
 // Routes
 app.use(require('./routes/index'));
 app.use('api',require('./routes/api/main'));
 
-app.use('/auth',require('./routes/u/auth'));
-app.use(require('./routes/login'));
-app.use(require('./routes/support/support'));
-app.use(require('./routes/community/staff'));
 app.use('/u',require('./routes/u/user'));
+app.use(require('./routes/community/staff'));
 app.use(require('./routes/community/famous'));
 app.use(require('./routes/tools'));
 app.use('/practice',require('./routes/leaderboards/leaderboards'));
 app.use('/sg',require('./routes/leaderboards/survival_games'));
+
+/* bAuth Routes */
+
+app.use('/auth',require('./routes/u/auth'));
+app.use(require('./routes/login'));
+app.use(require('./routes/support/support'));
 app.use(require('./routes/u/account'));
 
 // Admin Routes ( Should add perms l8tr)

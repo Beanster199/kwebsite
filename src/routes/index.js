@@ -7,17 +7,13 @@ app.post('/', (req,res) => {
   });
 
 app.get('/',(req,res) => {
-    console.log(res.locals.user)
+    console.log(res.locals.bUser)
     res.render('../views/index.hbs');
 });
 
 app.get('/logout', (req,res) => {
   req.logOut();
   req.logout();
-  res.app.locals.bLoggedIn = undefined;
-  res.app.locals.user = undefined;
-  res.app.locals.session = undefined;
-  res.app.locals.isAdmin = undefined;
   res.locals.bLoggedIn = undefined;
   res.locals.user = undefined;
   res.locals.session = undefined;

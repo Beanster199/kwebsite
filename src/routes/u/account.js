@@ -70,9 +70,9 @@ app.post('/account/social-media', async (req,res) => {
         }else{
             await connection.query('UPDATE kwebsite_users_media SET ? WHERE uuid = ?', [req.body,req.user.uuid])
         }
-        req.app.locals.success_alert = 'Social Media Updated!'
+        res.app.locals.success_alert = 'Social Media Updated!'
         res.redirect('/account')
-        req.app.locals.success_alert = false;
+        res.app.locals.success_alert = false;
         return;
     } catch (err) {
         console.log(err)

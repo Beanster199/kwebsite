@@ -82,7 +82,7 @@
         <li><a href="/login">Login</a></li>
       </ul>
       {{/unless}}
-      {{#if isAdmin}}
+      {{#if bUser.isAdmin}}
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/admin/staff">Admin</a></li>
       </ul>
@@ -93,8 +93,8 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="outline: none; line-height: 0px;"
             aria-expanded="false">
             <img style="width: 20px;height: 20px;border-radius: 3px;margin-right: 4px;" width="20" height="20"
-              class="avatar" src="https://visage.surgeplay.com/face/32/{{uuid}}"
-              alt="{{name}}" title="{{name}}">
+              class="avatar" src="https://visage.surgeplay.com/face/32/{{bUser.uuid}}"
+              alt="{{bUser.name}}" title="{{bUser.name}}">
             <div class="visible-xs-inline visible-sm-inline">
               Account
             </div>
