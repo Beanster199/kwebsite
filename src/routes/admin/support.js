@@ -24,14 +24,19 @@ app.get('/support', async (req,res) =>{
     res.render('../views/admin/support.hbs', { layout: '../admin/main.hbs', category:_category, ticket: _tickets, assigned_to_you:_assigned_to_you, unassigned:_unassigned,count:_count[0]});
 })
 
+
+/* Get Tickets Body */
+
 app.get('/t/:uid', async (req,res) => {
-    const _uid = await connection.query('SELECT * FROM kwebsite_tickets WHERE uid =?',req.params.uid);
+    const _uid = await connection.query('SELECT * FROM kwebsite_tickets WHERE uid = ?',req.params.uid); // Search uid on db
     if (!_uid || !_uid[0]){
-        return res.status(200).redirect('/admin/support');
+        return res.status(200).redirect('/admin/support'); // No result ? redirect;
     }
-    const _ticket = await connection.query('select kwt.uuid,kwt.date as ticket_date,ktc.category_name,ktc.color as category_color,kts.status_name,kts.color as status_color,ppg.name as group_name,ksp.name as username from kwebsite_tickets kwt INNER JOIN kwebsite_tickets_categories ktc on ktc.id = kwt.category_id INNER JOIN kwebsite_tickets_status kts on kts.id = kwt.status_id INNER JOIN ksystem_playerdata ksp on ksp.uuid = kwt.uuid LEFT OUTER JOIN PowerfulPerms.playergroups ppp on ppp.playeruuid = kwt.uuid LEFT OUTER JOIN PowerfulPerms.groups ppg on ppg.id = ppp.groupid WHERE uid = ?', req.params.uid)
+    const _ticket = await connection.query('select kwt.uuid,kwt.date as ticket_date,kwt.category_id,ktc.category_name,ktc.color as category_color,kts.status_name,kts.color as status_color,ppg.name as group_name,ksp.name as username from kwebsite_tickets kwt INNER JOIN kwebsite_tickets_categories ktc on ktc.id = kwt.category_id INNER JOIN kwebsite_tickets_status kts on kts.id = kwt.status_id INNER JOIN ksystem_playerdata ksp on ksp.uuid = kwt.uuid LEFT OUTER JOIN PowerfulPerms.playergroups ppp on ppp.playeruuid = kwt.uuid LEFT OUTER JOIN PowerfulPerms.groups ppg on ppg.id = ppp.groupid WHERE uid = ?', req.params.uid) //
     const _body = await connection.query('SELECT * FROM kwebsite_tickets WHERE uid = ?', req.params.uid)
-    const _comments = await connection.query('SELECT * FROM kwebsite_tickets_comments WHERE uid = ?', req.params.uid);
+    const _comments = await connection.query('SELECT * FROM kwebsite_tickets_comments ktc INNER JOIN ksystem_playerdata ksp on ksp.uuid = ktc.uuid  WHERE uid = ?', req.params.uid);
+    const _staff = await connection.query('select distinct g.name as rank, ppp.name as name,ppp.uuid as uuid from PowerfulPerms.playergroups ppg INNER JOIN PowerfulPerms.groups g on g.id = ppg.groupid INNER JOIN PowerfulPerms.players ppp on ppp.uuid = ppg.playeruuid WHERE g.id >= 18 order by g.id');
+    const _assigned = await connection.query('select ksp.name as name from kwebsite_tickets_assigned kta inner join ksystem_playerdata ksp on ksp.uuid = kta.assigned_to WHERE kta.uid = ? order by id desc LIMIT 1', req.params.uid);
     if(_comments || _comments[0]){
         _comments.forEach(com => {
             if(com.uuid == _body[0].uuid){
@@ -41,14 +46,13 @@ app.get('/t/:uid', async (req,res) => {
             }
         });
     }
-    res.render('../views/admin/ticket.hbs', {layout: '../admin/main.hbs',ticket:_ticket[0],body:_body[0], comments:_comments})
-});
+    res.render('../views/admin/ticket.hbs', {layout: '../admin/main.hbs',ticket:_ticket[0],body:_body[0], comments:_comments, staff:_staff, assigned:_assigned[0]});
+    });
 
 app.post('/t/:uid/comment', async (req,res) => {
     if(!req.body || !req.params.uid){
         return res.redirect('/admin/support')
     }
-
     try {
         const _data = {
             id: uid.randomUUID(36),
@@ -59,11 +63,34 @@ app.post('/t/:uid/comment', async (req,res) => {
             uuid: req.user.uuid
         }
         await connection.query('INSERT INTO kwebsite_tickets_comments SET ?', _data);
+        await connection.query('UPDATE kwebsite_tickets SET status_id = 3 WHERE uid = ?', req.params.uid)
     } catch (error) {
         console.log(error)
         return res.redirect('/admin/support')
     }
     res.redirect(`/admin/t/${req.params.uid}`)
+});
+
+app.post('/t/:uid/assign', async(req,res) => { //Assign ticket to staff member.
+    if(!req.body){
+        return res.redirect(`/admin/${req.params.uid}`);
+    }
+    try {
+        console.log(req.body)
+        const _assign = {
+            assigned_to:req.body.staff_uuid,
+            assigned_by:res.locals.bUser.uuid,
+            disabled:0,
+            uid:req.params.uid
+        } 
+        console.log(_assign)
+        await connection.query('INSERT INTO kwebsite_tickets_assigned SET ?',_assign)
+        res.redirect(`/admin/t/${req.params.uid}`);
+    } catch (error) {
+        console.log(error);
+        return res.redirect('/admin/support');
+    }
+
 });
 
 app.post('/t/:uid/close', async (req,res) => {

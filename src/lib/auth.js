@@ -50,6 +50,8 @@ auth.deserializeUser(async (user, done) => {
   if (!_row[0]){
     done(null,false)
   }
+  const _rank = await connection.query('select name from PowerfulPerms.playergroups ppp INNER JOIN PowerfulPerms.groups ppg on ppg.id = ppp.groupid WHERE ppg.id <> 6 and ppp.playeruuid = ?',user.uuid)
+  _row[0].user_rank = _rank[0].name
   done(null, _row[0]);
 });
 

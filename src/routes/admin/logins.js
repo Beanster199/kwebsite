@@ -1,4 +1,6 @@
 const app = require('express').Router();
+const connection = require('../../config/dbConnection');;
+
 
 app.use((req,res,next) => {
     if(!req.isAuthenticated()){
@@ -12,16 +14,9 @@ app.use((req,res,next) => {
     }
 });
 
-
-app.get('/search/:username', async (req,res) => {
-    if(!req.params.username){
-        return res.redirect('/admin/staff')
-    };
-    
-});
-
-app.get('/staff', async (req,res) => {
-    res.render('../views/admin/staff.hbs', { layout: '../admin/main.hbs'});
+app.get('/bans', async(req,res) => {
+    const _bans = await connection.query('select * from litebans.litebans_bans order by id desc LIMIT 20');
+    res.render('../views/admin/bans.hbs', {bans:_bans})
 });
 
 module.exports = app;

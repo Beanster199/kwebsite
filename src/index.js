@@ -113,6 +113,7 @@ app.use(require('./routes/u/account'));
 // Admin Routes ( Should add perms l8tr)
 app.use('/admin',require('./routes/admin/main.js'));
 app.use('/admin',require('./routes/admin/support.js'));
+app.use('/admin',require('./routes/admin/logins.js'));
 
 
 

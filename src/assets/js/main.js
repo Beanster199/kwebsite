@@ -104,3 +104,14 @@ $('#close_ticket').on('click', async (e) => {
         }
     }
 });
+
+
+$( document ).ready(function() {
+    const staff_list = document.querySelectorAll('#assign_staff option');
+    if(staff_list[0]){
+        staff_list.forEach(stl => {
+            //stl.innerHTML = '<span class="label label-Admin">Admin :)</span>' + stl.innerHTML
+            //console.log(stl.innerHTML)
+        });
+    };
+});

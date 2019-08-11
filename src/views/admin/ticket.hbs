@@ -1,7 +1,7 @@
 <div class="col-sm-3 col-md-3 col-lg-3">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <button class="btn btn-default" style="padding: .375rem .75rem" type="submit" value="Back"><i class="fas fa-chevron-left"></i> Back.</button>
+            <button class="btn btn-default" style="padding: .375rem .75rem" type="submit" onclick="history.back();" value="Back"><i class="fas fa-chevron-left"></i> Back.</button>
             <span class="label label-danger pull-right">{{#timeago ticket.ticket_date}}{{/timeago}}</span>
         </div>
         <div class="panel-body">
@@ -22,6 +22,9 @@
                     <hr style="margin: 0">
                     <p>Category: <span class="label label-default" style="background-color: {{ticket.category_color}}">{{ticket.category_name}}</span></p>
                     <p>Status: <span class="label label-primary" style="background-color: {{ticket.status_color}}">{{ticket.status_name}}</span></p>
+                    {{#if assigned}}
+                    <p>Assigned To: <span class="label label-warning">{{ assigned.name }}</span></p>
+                    {{/if}}
                     </div>
                 </div>
         </div>
@@ -34,20 +37,54 @@
             {{/isnt}}
         </div>
     </div>
-    <div class="card">
-        <div class="card-body">
-	        <h5><b>Before using tickets</b></h5>
-	        <p class="text-justify">Remember to always <b>be specific</b> on tickets messages, and always ask for
-	            opinion to other staff before taking a decision. Any bug please report it on <u>#suggestions</u>.</p>
-	        <p class="text-justify">Remember to <b>not</b> to comment in tickets that have been assigned to <b>other
-	                staff</b>.</p>
-	        <p>Regards, <b>Kuih Admins</b>.</p>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+             <h3 class="panel-title">Assign Ticket To Staff Team</h3>
+        </div>
+        <div class="panel-body">
+            <form action="/admin/t/{{body.uid}}/assign" method="POST">
+                <div class="form group">
+                    <label for="assign_staff">Assign to:</label>
+                    <select name="staff_uuid" id="assign_staff" class="form-control">
+                        {{#each staff}}
+                            <option name="uuid" value="{{uuid}}"> {{rank}} {{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-warning pull-right" style="margin-top: 16px;" >Assign!</button>
+            </form>
         </div>
     </div>
 </div>
 <div class="col-sm-9 col-md-9 col-lg-9">
 
-    {{> ticket_staffapply}}
+    {{#is ticket.category_id 1}}
+    {{> ticket_banappeal }}
+    {{/is}}
+    {{#is ticket.category_id 2}}
+    {{> ticket_bugreport }}
+    {{/is}}
+    {{#is ticket.category_id 3}}
+    {{> ticket_unbanespanol }}
+    {{/is}}
+    {{#is ticket.category_id 4}}
+    {{> ticket_hackerreport }}
+    {{/is}}
+    {{#is ticket.category_id 5}}
+    {{> ticket_staffcomplaint }}
+    {{/is}}
+    {{#is ticket.category_id 6}}
+    {{> ticket_ipappeal }}
+    {{/is}}
+    {{#is ticket.category_id 7}}
+    {{> ticket_generalsupport }}
+    {{/is}}
+    {{#is ticket.category_id 8}}
+    {{> ticket_buildsubmission }}
+    {{/is}}
+    {{#is ticket.category_id 9}}
+    {{> ticket_staffapply }}
+    {{/is}}
     <h3>Comments</h3>
     <hr>
     {{> staff_support_comments}}
