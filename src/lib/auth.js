@@ -32,7 +32,7 @@ auth.use('user-login', new Strategy({
   passReqToCallback: true
 }, async (req,username,password,done) => {
   const _user = await connection.query('SELECT uuid,name,password,website_authenticated as authenticated,isAdmin FROM ksystem_playerdata WHERE name = ?',username);
-  if(!_user[0].password){
+  if( !_user[0] || !_user[0].password){
     return done(null,false);
   }
   if(!_user[0] || !await helpers.loginPassword(password,_user[0].password)){

@@ -8,7 +8,7 @@
             <div class="list-group">
                 <a class="list-group-item " href="/u/{{ name }}">General</a>
                 <a class="list-group-item active" href="/u/{{ name }}/practice">Practice</a>
-                <a class="list-group-item disabled">Factions</a>
+                <a class="list-group-item" href="/u/{{ name }}/factions">Factions</a>
                 <a class="list-group-item" href="/u/{{ name }}/sg">SG</a>
             </div>
         </div>
@@ -27,9 +27,9 @@
 				on {{lastserver}}
 			{{/if}}
             </div>
-            {{#if ranks}}
             <div>    
-                <span class="label label-info"><img src="../../assets/img/flags/{{countrycode}}.png" style="vertical-align: text-bottom"> {{ country }}</span>
+            <span class="label label-info"><img src="../../assets/img/flags/{{countrycode}}.png" style="vertical-align: text-bottom"> {{ country }}</span>
+            {{#if ranks}}
                 {{#each ranks}}
                     {{#if type }}
                     <span class="label label-{{name}}">{{ name }}</span>
