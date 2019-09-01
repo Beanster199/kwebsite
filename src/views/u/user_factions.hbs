@@ -48,17 +48,6 @@
                 <span style="font-size: 200%">
                     Factions: Map 1
                 </span>
-                <!--                    <span class="btn-group" style="vertical-align: text-bottom">
-                        <button type="button" class="btn btn-xs btn-default" data-toggle="dropdown">
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="></a>
-                            </li>
-                        </ul>
-                    </span>
-                    -->
             </div>
             <hr>
             {{#if dfaction}}
@@ -219,6 +208,12 @@
                                     <td>{{dfaction.mobs.CREEPER}}</td>
                                 </tr>
                                 {{/gt}}
+                                {{#gt dfaction.mobs.ENDERMAN 0}}
+                                <tr>
+                                    <td>Enderman</td>
+                                    <td>{{dfaction.mobs.ENDERMAN}}</td>
+                                </tr>
+                                {{/gt}}
                                 {{#gt dfaction.mobs.SKELETON 0}}
                                 <tr>
                                     <td>Skeletons</td>
@@ -229,6 +224,12 @@
                                 <tr>
                                     <td>Spiders</td>
                                     <td>{{dfaction.mobs.SPIDER}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.GIANT 0}}
+                                <tr>
+                                    <td>Giant</td>
+                                    <td>{{dfaction.mobs.GIANT}}</td>
                                 </tr>
                                 {{/gt}}
                                 {{#gt dfaction.mobs.ZOMBIE 0}}
@@ -255,12 +256,6 @@
                                     <td>{{dfaction.mobs.PIG_ZOMBIE}}</td>
                                 </tr>
                                 {{/gt}}
-                                {{#gt dfaction.mobs.ENDERMAN 0}}
-                                <tr>
-                                    <td>Enderman</td>
-                                    <td>{{dfaction.mobs.ENDERMAN}}</td>
-                                </tr>
-                                {{/gt}}
                                 {{#gt dfaction.mobs.CAVE_SPIDER 0}}
                                 <tr>
                                     <td>Cave Spider</td>
@@ -277,6 +272,108 @@
                                 <tr>
                                     <td>Blaze</td>
                                     <td>{{dfaction.mobs.BLAZE}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.MAGMA_CUBE 0}}
+                                <tr>
+                                    <td>Magma Cube</td>
+                                    <td>{{dfaction.mobs.MAGMA_CUBE}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.WHITER 0}}
+                                <tr>
+                                    <td>Whiter</td>
+                                    <td>{{dfaction.mobs.WHITER}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.BAT 0}}
+                                <tr>
+                                    <td>Bat</td>
+                                    <td>{{dfaction.mobs.BAT}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.SHEEP 0}}
+                                <tr>
+                                    <td>Sheep</td>
+                                    <td>{{dfaction.mobs.SHEEP}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.WITCH 0}}
+                                <tr>
+                                    <td>Witch</td>
+                                    <td>{{dfaction.mobs.WITCH}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.PIG 0}}
+                                <tr>
+                                    <td>Pig</td>
+                                    <td>{{dfaction.mobs.PIG}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.COW 0}}
+                                <tr>
+                                    <td>Cow</td>
+                                    <td>{{dfaction.mobs.COW}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.CHIKEN 0}}
+                                <tr>
+                                    <td>Chiken</td>
+                                    <td>{{dfaction.mobs.CHIKEN}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.SQUID 0}}
+                                <tr>
+                                    <td>Squid</td>
+                                    <td>{{dfaction.mobs.SQUID}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.WOLF 0}}
+                                <tr>
+                                    <td>Wolf</td>
+                                    <td>{{dfaction.mobs.WOLF}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.MUSHROOM_COW 0}}
+                                <tr>
+                                    <td>Mushroom Cow</td>
+                                    <td>{{dfaction.mobs.MUSHROOW_COW}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.SNOWMAN 0}}
+                                <tr>
+                                    <td>Snow Man</td>
+                                    <td>{{dfaction.mobs.SNOWMAN}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.OCELOT 0}}
+                                <tr>
+                                    <td>Ocelot</td>
+                                    <td>{{dfaction.mobs.OCELOT}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.IRON_GOLEM 0}}
+                                <tr>
+                                    <td>Iron Golem</td>
+                                    <td>{{dfaction.mobs.IRON_GOLEM}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.HORSE 0}}
+                                <tr>
+                                    <td>Horse</td>
+                                    <td>{{dfaction.mobs.HORSE}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.VILLAGER 0}}
+                                <tr>
+                                    <td>Villager</td>
+                                    <td>{{dfaction.mobs.VILLAGER}}</td>
+                                </tr>
+                                {{/gt}}
+                                {{#gt dfaction.mobs.PLAYER 0}}
+                                <tr>
+                                    <td>Player</td>
+                                    <td>{{dfaction.mobs.PLAYER}}</td>
                                 </tr>
                                 {{/gt}}
                             </tbody>
@@ -380,6 +477,7 @@
                                 </div>
                                 <ul class="list-group">
                                     {{#each dfaction.fights}}
+                                    {{#if killerName}}
                                     <li class="list-group-item death-item li-link" data-href="/fight/fRwu2IJ/">
                                         <a href="/u/{{killerName}}">
                                             <img src="https://visage.surgeplay.com/face/64/{{killerId}}" width="16" height="16">
@@ -388,9 +486,25 @@
                                         killed
                                         <a href="/u/{{deathName}}">
                                             <img src="https://visage.surgeplay.com/face/64/{{deathId}}" width="16" height="16">
-                                            <strong>{{killerName}}</strong>
+                                            <strong>{{deathName}}</strong>
                                         </a>
+                                        <div class="text-muted pull-right" data-toggle="tooltip" title="" data-original-title="">
+                                            {{#timeago date}}{{/timeago}}
+                                        </div>
                                     </li>
+                                    {{/if}}
+                                    {{#unless killerName}}
+                                    <li class="list-group-item death-item li-link" data-href="/fight/fRwu2IJ/">
+                                        <a href="/u/{{deathName}}">
+                                            <img src="https://visage.surgeplay.com/face/64/{{deathId}}" width="16" height="16">
+                                            <strong>{{deathName}}</strong>
+                                        </a>
+                                        Died
+                                        <div class="text-muted pull-right" data-toggle="tooltip" title="" data-original-title="">
+                                            {{#timeago date}}{{/timeago}}
+                                        </div>
+                                    </li>
+                                    {{/unless}}
                                     {{/each}}
                                 </ul>
                             </div>
