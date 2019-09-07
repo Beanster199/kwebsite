@@ -9,7 +9,7 @@
                 <a class="list-group-item" href="/u/{{ name }}">General</a>
                 <a class="list-group-item" href="/u/{{ name }}/practice">Practice</a>
                 <a class="list-group-item" href="/u/{{ name }}/factions">Factions</a>
-                <a class="list-group-item active" href="/u/{{ name }}/sg">SG</a>
+                <a class="list-group-item active" href="/u/{{ name }}/sg">Survival Games</a>
             </div>
         </div>
         <div class="col-sm-9 col-md-10">
@@ -20,11 +20,7 @@
 			{{#if isonline}}
 				<b><font color="green"> Online on {{lastserver}}</font></b> 
 				{{else}}
-                Last seen:
-                <a href="" style="cursor: default;" data-toggle="tooltip">
-                    {{lastjoin}}
-                </a>
-				on {{lastserver}}
+                <span class="text-muted">Last seen {{lastjoin}} on {{lastserver}}</span>
 			{{/if}}
             </div>
             <div>
