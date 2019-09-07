@@ -25,20 +25,16 @@
 			{{#if isonline}}
 				<b><font color="green"> Online on {{lastserver}}</font></b> 
 				{{else}}
-                Last seen:
-                <a href="" style="cursor: default;" data-toggle="tooltip">
-                    {{lastjoin}}
-                </a>
-				on {{lastserver}}
+                <span class="text-muted">Last seen {{lastjoin}} on {{lastserver}}</span>
 			{{/if}}
             </div>
-            <div>    
+            <div>
                 <span class="label label-info"><img src="../../assets/img/flags/{{countrycode}}.png" style="vertical-align: text-bottom"> {{ country }}</span>
             {{#if ranks}}
                 {{#each ranks}}
                     {{#if banned }}
                         <span class="label" style="background-color:#d9534f;">{{ banned }}</span>
-                    {{/if}}                    
+                    {{/if}}
                     {{#if type }}
                         <span class="label label-{{name}}">{{ name }}</span>
                     {{else}}
@@ -50,7 +46,7 @@
             <hr>
             <div>
                 Joined:
-                <a href="" style="cursor: default;" data-toggle="tooltip">
+                <a href="" style="cursor: default;" data-toggle="tooltip" title="{{#timeago joined_stamp}}{{/timeago}}">
                     {{joined}}
                 </a>
             </div>
@@ -89,11 +85,11 @@
             <div style="font-size: 150%">
                 {{#if youtube}}
                 <a href="https://www.youtube.com/user/{{youtube}}" style="margin: 10px"
-                    data-toggle="tooltip" title="" target="_blank" data-original-title="YouTube: youtube.com/user/MrSketchMovieFR"><i class="fab fa-youtube"></i></span>&nbsp;{{youtube}}</a>
+                    data-toggle="tooltip" title="" target="_blank" data-original-title="YouTube: youtube.com/user/{{youtube}}"><i class="fab fa-youtube"></i></span>&nbsp;{{youtube}}</a>
                 {{/if}}
                 {{#if twitter}}
                 <a href="https://twitter.com/{{twitter}}" style="margin: 10px"
-                    data-toggle="tooltip" title="" target="_blank" data-original-title="Twitter: twitter.com/VitaPvPey"><i class="fab fa-twitter"></i></span>&nbsp;{{twitter}}</a>
+                    data-toggle="tooltip" title="" target="_blank" data-original-title="Twitter: twitter.com/{{twitter}}"><i class="fab fa-twitter"></i></span>&nbsp;{{twitter}}</a>
                 {{/if}}
                 {{#if discord}}
                 <a href="#" style="margin: 10px"

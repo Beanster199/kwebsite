@@ -3,12 +3,17 @@ const app = express.Router();
 const connection = require('../../config/dbConnection');
 const publicIp = require('public-ip');
 const request = require('request');
+const moment = require('moment');
 const { format } = require('timeago.js');
+
+moment().format();
 
 app.get('/:nameId', async (req, res) => {
     if (req.params.nameId) {
         const profile = await getDefault(req,res);
+        console.log(profile[0].joined)
         let comments = await connection.query('SELECT kuv_usr_uuid as user, kuv_date as date, kuv_comment as comment,name FROM kwebsite_users_comments INNER JOIN ksystem_playerdata d on kuv_usr_uuid = d.uuid WHERE kuv_prf_uuid="' + profile[0].uuid + '" and kuv_deleted = 0')
+        //let friends = await connection.query('SELECT')
         for (let i = 0; i < comments.length; i++) {
             comments[i].date = format(comments[i].date)
             console.log(comments)
@@ -43,9 +48,6 @@ app.get('/:nameId/practice', async (req,res) => {
         profile[0].soup = await connection.query('SELECT global, sum(rankedwins) as rankedwins, sum(rankedlosses) as rankedlosses, sum(unrankedwins) as unrankedwins, sum(unrankedlosses) as unrankedlosses FROM ( SELECT a2ea95ed_75e1_4ca3_acb1_3895795a4c70 as global, 0 as rankedwins,0 AS rankedlosses, 0 as unrankedwins, 0 as unrankedlosses FROM ksystem_kpractice WHERE global and uuid = "' + profile[0].uuid + '" UNION ALL SELECT "" as global, count(1) as rankedwins,0 AS rankedlosses, 0 as unrankedwins, 0 as unrankedlosses FROM ksystem_kpractice_ranked where killerId = "' + profile[0].uuid + '" and style = "a2ea95ed_75e1_4ca3_acb1_3895795a4c70" UNION ALL SELECT "" as global, 0 as rankedwins,count(1) as rankedlosses, 0 as unrankedwins, 0 as unrankedlosses FROM ksystem_kpractice_ranked where deathId = "' + profile[0].uuid + '" and style = "a2ea95ed_75e1_4ca3_acb1_3895795a4c70" UNION ALL SELECT "" as global,0 as rankedwins,0 AS rankedlosses, count(1) as unrankedwins, 0 as unrankedlosses FROM ksystem_kpractice_unranked where killerId = "' + profile[0].uuid + '" and style = "a2ea95ed_75e1_4ca3_acb1_3895795a4c70" UNION ALL SELECT "" as global, 0 as rankedwins,0 as rankedlosses, 0 as unrankedwins, count(1) as unrankedlosses FROM ksystem_kpractice_unranked where deathId = "' + profile[0].uuid + '" and style = "a2ea95ed_75e1_4ca3_acb1_3895795a4c70") j')
         profile[0].spleef = await connection.query('SELECT global, sum(rankedwins) as rankedwins, sum(rankedlosses) as rankedlosses, sum(unrankedwins) as unrankedwins, sum(unrankedlosses) as unrankedlosses FROM ( SELECT 49f894cc_93b8_4419_afbb_1d51f8f25b93 as global, 0 as rankedwins,0 AS rankedlosses, 0 as unrankedwins, 0 as unrankedlosses FROM ksystem_kpractice WHERE global and uuid = "' + profile[0].uuid + '" UNION ALL SELECT "" as global, count(1) as rankedwins,0 AS rankedlosses, 0 as unrankedwins, 0 as unrankedlosses FROM ksystem_kpractice_ranked where killerId = "' + profile[0].uuid + '" and style = "49f894cc_93b8_4419_afbb_1d51f8f25b93" UNION ALL SELECT "" as global, 0 as rankedwins,count(1) as rankedlosses, 0 as unrankedwins, 0 as unrankedlosses FROM ksystem_kpractice_ranked where deathId = "' + profile[0].uuid + '" and style = "49f894cc_93b8_4419_afbb_1d51f8f25b93" UNION ALL SELECT "" as global,0 as rankedwins,0 AS rankedlosses, count(1) as unrankedwins, 0 as unrankedlosses FROM ksystem_kpractice_unranked where killerId = "' + profile[0].uuid + '" and style = "49f894cc_93b8_4419_afbb_1d51f8f25b93" UNION ALL SELECT "" as global, 0 as rankedwins,0 as rankedlosses, 0 as unrankedwins, count(1) as unrankedlosses FROM ksystem_kpractice_unranked where deathId = "' + profile[0].uuid + '" and style = "49f894cc_93b8_4419_afbb_1d51f8f25b93") j')
         profile[0].matches = await connection.query('SELECT id,styleName,killerName,killerId,deathName,deathId,IF(killerId = "' + profile[0].uuid + '", killerElo, deathElo) as elo,date FROM ksystem.ksystem_kpractice_ranked WHERE (killerId="' + profile[0].uuid + '" or deathId="' + profile[0].uuid + '") ORDER BY date DESC LIMIT 20')
-        for (let i = 0; i < profile[0].matches.length; i++) {
-            profile[0].matches[i].date = format(profile[0].matches[i].date)
-        }
         //profile[0].matches = await connection.query('SELECT rankedwins, rankedlosses, global, unrankedwins, unrankedlosses FROM ksystem_kpractice WHERE name = "' + req.params.nameId + '"')
         //let profile = await connection.query('select name as username,uuid from ksystem_kpractice h left outer join ksystem_kpractice_ranked s on s.killerId = h.uuid left outer join ksystem_kpractice_ranked p on p.deathId = h.uuid where name = "' + req.params.nameId + '"')
         res.render('../views/u/user_stats.hbs',{
@@ -144,6 +146,8 @@ async function getDefault(req,res) {
              error: req.params.nameId
         });
     };
+    profile[0].joined_stamp = profile[0].joined
+    profile[0].joined = moment().format('MMM. Do YYYY')
     profile[0].views = await Counter(profile, req);
     profile[0].lastjoin = await format(profile[0].lastjoin)
     profile[0].ranks = await connection.query('SELECT IF(until = -1, "Banned Permanently","Banned Temporarily") as banned,"" as name, uuid COLLATE utf8_general_ci as uuid, true as type, "" as color FROM litebans.litebans_bans WHERE uuid = "' + profile[0].uuid + '" and active = 1  UNION SELECT null as banned, g.name,playeruuid COLLATE utf8_general_ci as uuid, true as type, "" as color FROM PowerfulPerms.playergroups INNER JOIN PowerfulPerms.groups g on groupid = g.id WHERE playeruuid = "' + profile[0].uuid + '" UNION SELECT null as banned,kui_icon as name, kui_uuid as uuid, false as type,kui_color as color FROM kwebsite_users_icons WHERE kui_uuid = "' + profile[0].uuid + '";')

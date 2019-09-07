@@ -40,7 +40,7 @@
             </div>
             <hr>
             {{/if}}
-            <h3>Practice: Season 1</h3>
+            <span style="font-size: 200%">Practice: Season 1</span>
             <hr>
 <table class="table">
         <thead>
@@ -223,8 +223,8 @@
                             <td>
                                 {{elo}}
                             </td>
-                            <td data-toggle="tooltip" title="" >
-                                {{date}}
+                            <td data-toggle="tooltip" title="{{#to_datetime date}}{{/to_datetime}}" >
+                                {{#timeago date}}{{/timeago}}
                             </td>
                         </tr>
                         {{/each}}
