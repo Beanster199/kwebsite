@@ -1,6 +1,11 @@
 const bcrypt = require('bcryptjs')
-
 const helpers = {};
+
+const moment = require('moment');
+
+helpers.getServerDateTime = async () => {
+    return await moment().format('YYYY-MM-DD HH:mm:ss');
+}
 
 helpers.registerPassword = async (password) => {
     const salt = await bcrypt.genSalt(15);
