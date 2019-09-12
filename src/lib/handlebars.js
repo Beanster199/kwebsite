@@ -12,10 +12,8 @@ helpers.to_datetime = (datetime) => {
     return moment(parseInt(datetime)).format('MMM. Do YYYY HH:mm a');
 }
 
-helpers.username =  async (uuid) => {
-    const _username = await connection.query('SELECT username FROM ksystem_playerdata WHERE uuid = ?', uuid)
-    return _username[0].username
+helpers.StringToDatetime = (datetime) => {
+    return moment(datetime).format('MMM. Do YYYY HH:mm a');
 }
-
 
 module.exports = helpers;

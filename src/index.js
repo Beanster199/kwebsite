@@ -33,6 +33,7 @@ app.engine('.hbs', exphbs({
 app.use('/assets', express.static(path.join(__dirname, './assets')));
 app.use('/support/assets', express.static(path.join(__dirname, './assets')));
 app.use('/practice/assets', express.static(path.join(__dirname, './assets')));
+app.use('/stats/assets', express.static(path.join(__dirname, './assets')));
 app.use('/sg/assets', express.static(path.join(__dirname, './assets')));
 app.use('/u/assets', express.static(path.join(__dirname, './assets')));
 app.use('/u/:nameId/assets', express.static(path.join(__dirname, './assets')));
@@ -102,7 +103,7 @@ app.use(require('./routes/community/famous'));
 app.use(require('./routes/tools'));
 app.use('/practice',require('./routes/leaderboards/leaderboards'));
 app.use('/sg',require('./routes/leaderboards/survival_games'));
-
+app.use('/stats',require('./routes/leaderboards/factions'));
 /* bAuth Routes */
 
 app.use('/auth',require('./routes/u/auth'));

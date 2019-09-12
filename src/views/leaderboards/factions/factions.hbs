@@ -1,0 +1,101 @@
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <strong>Play Time</strong>
+                    </div>
+                    <table class="table practice-leaderboard">
+                        <tbody>
+                            {{#each playtime}}
+                            <tr>
+                                <td>{{ count }}.</td>
+                                <td>
+                                    <a href="/u/{{Username}}">
+                                        <img src="https://visage.surgeplay.com/face/32/{{ UUID }}" width="16"
+                                            height="16">
+                                        {{ Username }}
+                                    </a>
+                                </td>
+                                <td>{{ GlobalElo }} Elo</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <strong>Kills</strong>
+                    </div>
+                    <table class="table practice-leaderboard">
+                        {{#each rankeds}}
+                        <tr>
+                            <td>{{ count }}.</td>
+                            <td>
+                                <a href="/u/{{ Username }}">
+                                    <img src="https://visage.surgeplay.com/face/32/{{ UUID }}" width="16" height="16">
+                                    {{ Username }}
+                                </a>
+                            </td>
+                            <td>{{ RankedWins }} Wins</td>
+                        </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <strong>Diamonds Mined</strong>
+                    </div>
+                    <table class="table practice-leaderboard">
+
+                        <tbody>
+                            {{#each losses}}
+                            <tr>
+                                <td> {{ count }}.</td>
+                                <td>
+                                    <a href="/u/{{Username}}>">
+                                        <img src="https://visage.surgeplay.com/face/32/{{ UUID }}" width="16"
+                                            height="16">
+                                        {{ Username }}
+                                    </a>
+                                </td>
+                                <td> {{ RankedLosses }} Losses</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <strong>Diamonds Mined</strong>
+                    </div>
+                    <table class="table practice-leaderboard">
+
+                        <tbody>
+                            {{#each losses}}
+                            <tr>
+                                <td> {{ count }}.</td>
+                                <td>
+                                    <a href="/u/{{Username}}>">
+                                        <img src="https://visage.surgeplay.com/face/32/{{ UUID }}" width="16"
+                                            height="16">
+                                        {{ Username }}
+                                    </a>
+                                </td>
+                                <td> {{ RankedLosses }} Losses</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>

@@ -31,8 +31,13 @@ app.get('/staff', async (req,res) => {
 });
 
 app.get('/dev', async (req,res) => {
+    let isDev = false;
+    if(req.user.user_rank === 'Developer'){
+        isDev = true;
+    }
     const commits = await connection.query('select * from kwebsite_commits order by commit_date desc LIMIT 4')
-    res.render('../views/admin/dev.hbs', { layout: '../admin/main.hbs', commit: commits});
+    console.log(commits)
+    res.render('../views/admin/dev.hbs', { layout: '../admin/main.hbs', commit: commits,isDev: isDev});
 });
 
 app.post('/dev/commit', async (req,res) => {
