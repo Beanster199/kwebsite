@@ -133,8 +133,11 @@ app.get('/:nameId/sg', async (req,res) => {
     profile[0].views = await Counter(profile, req);
     profile[0].ranks = await connection.query('SELECT IF(until = -1, "Banned Permanently","Banned Temporarily") as banned,"" as name, uuid COLLATE utf8_general_ci as uuid, true as type, "" as color FROM litebans.litebans_bans WHERE uuid = "' + profile[0].uuid + '" and active = 1  UNION SELECT null as banned, g.name,playeruuid COLLATE utf8_general_ci as uuid, true as type, "" as color FROM PowerfulPerms.playergroups INNER JOIN PowerfulPerms.groups g on groupid = g.id WHERE playeruuid = "' + profile[0].uuid + '" UNION SELECT null as banned,kui_icon as name, kui_uuid as uuid, false as type,kui_color as color FROM kwebsite_users_icons WHERE kui_uuid = "' + profile[0].uuid + '";')
     profile[0].stats = await connection.query('select wins,deaths,chestsOpened,kills from ksystem.ksystem_kgames where uuid = ?' ,profile[0].uuid )
+    if(!profile[0].stats[0]){
+        return res.render('../views/u/user_sg.hbs', {user:profile,noplay:true});
+    }
     profile[0].matches = await connection.query('SELECT killer,killerId,death,deathId from ksystem.ksystem_kgames_kills where (killerId=? or deathId=?) and hasKiller = 1',[profile[0].uuid,profile[0].uuid])
-    res.render('../views/u/user_sg.hbs', {user:profile})
+    res.render('../views/u/user_sg.hbs', {user:profile,noplay:false})
 });
 
 

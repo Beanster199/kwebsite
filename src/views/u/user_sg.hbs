@@ -36,9 +36,15 @@
             </div>
             <hr>
             {{/if}}
-            <h3>Survival Games Stats</h3>
-            <hr>
-<table class="table">
+        {{#if ../noplay}}
+            <h3>
+                <span class="alert alert-danger">Hasn't played Survival Games yet!</span>
+            </h3>
+        {{/if}}
+        {{#unless ../noplay}}
+        <h3>Survival Games Stats</h3>
+        <hr>
+        <table class="table">
         <thead>
         <tr>
             <th></th>
@@ -86,6 +92,8 @@
                     </tbody>
                 </table>
             </div>
+        {{/unless}}
+
         </div>
         <div class="modal fade" id="fight-modal" style="display: none;">
             <div class="modal-dialog modal-lg">

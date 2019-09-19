@@ -515,8 +515,8 @@
             <ul class="btn-group btn-group-justified" role="group" aria-label="..." style="padding: 0px;">
                 <a href="#fights" aria-controls="fights" role="tab" data-toggle="tab"
                     class="btn btn-default active">Fights</a>
-                <a role="tab" data-toggle="tab" class="btn btn-default disabled">Faction
-                    Changes</a>
+                <!--<a role="tab" data-toggle="tab" class="btn btn-default disabled">Faction
+                    Changes</a>-->
             </ul>
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade active in" id="fights">
@@ -562,7 +562,7 @@
                                             <img src="https://visage.surgeplay.com/face/64/{{deathId}}" width="16" height="16">
                                             <strong>{{deathName}}</strong>
                                         </a>
-                                        <div class="text-muted pull-right" data-toggle="tooltip" title="" data-original-title="">
+                                        <div class="text-muted pull-right" data-toggle="tooltip" title="{{date}}" data-original-title="">
                                             {{#timeago date}}{{/timeago}}
                                         </div>
                                     </li>
@@ -573,8 +573,8 @@
                                             <img src="https://visage.surgeplay.com/face/64/{{deathId}}" width="16" height="16">
                                             <strong>{{deathName}}</strong>
                                         </a>
-                                        Died
-                                        <div class="text-muted pull-right" data-toggle="tooltip" title="" data-original-title="">
+                                        died
+                                        <div class="text-muted pull-right" data-toggle="tooltip" title="{{date}}" data-original-title="">
                                             {{#timeago date}}{{/timeago}}
                                         </div>
                                     </li>

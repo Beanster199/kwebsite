@@ -107,24 +107,6 @@
         {{/each}}
     </div>
     {{/if}}
-    {{#if staff.SeniorP}}
-    <h2>Senior Mod+ <span class="badge" style="vertical-align: super"> {{ staff.SeniorP.length }} </span></h2>
-    <div class="row">
-        {{#each staff.SeniorP}}
-        <div class="col-md-2 col-sm-3 col-xs-6">
-            <a href="/u/{{ player }}">
-                <div class="text-center">
-                    <img src="https://visage.surgeplay.com/bust/{{uuid}}" width="96" height="96">
-                </div>
-                <div class="text-center">
-                    <b>{{player}}</b>
-                      <img src="../../assets/img/flags/{{countrycode}}.png" style="width:18px;height:12px;vertical-align: baseline !important" data-toggle="tooltip" title="{{country}}" data-original-title="{{country}}">
-                </div>
-            </a>
-        </div>
-        {{/each}}
-    </div>
-    {{/if}}
     {{#if staff.Senior}}
     <h2>Senior Mod <span class="badge" style="vertical-align: super"> {{ staff.Senior.length }} </span></h2>
     <div class="row">
