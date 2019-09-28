@@ -13,7 +13,7 @@ const { database } = require('./keys');
 const app = express();
 require('./lib/auth');
 
-app.set('port', 3000);
+app.set('port', 80);
 app.set('views', path.join(__dirname, 'views'))
 app.disable('view cache');
 app.disable('x-powered-by');
@@ -22,7 +22,7 @@ app.engine('.hbs', exphbs({
     layoutsDir: path.join(app.get('views'), 'layouts'),
     partialsDir: path.join(app.get('views'), 'partials'),
     extname: '.hbs',
-    helpers: helpers
+    helpers: require('./lib/handlebars')
 }));
 
 // Variables

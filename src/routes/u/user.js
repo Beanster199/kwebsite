@@ -138,14 +138,14 @@ app.get('/:nameId/factions', async (req,res) => {
 
 
 app.get('/:nameId/sg', async (req,res) => {
-    const query = 'SELECT p.name,p.uuid,country,countrycode,joined,lastjoin,lastserver,isonline FROM PowerfulPerms.players p left outer join ksystem_playerdata kp on kp.uuid = p.uuid WHERE p.name="' + req.params.nameId + '" LIMIT 1'
-    profile = await connection.query(query)
+    profile = await getDefault(req,res);
     if (profile.length == 0){
             res.render('../views/status/user_404.hbs', {
                 error: req.params.nameId
            });
         return;
-    } 
+    }
+    console.log(profile)
     profile[0].lastjoin = format(profile[0].lastjoin)
     profile[0].views = await Counter(profile, req);
     profile[0].ranks = await connection.query('SELECT IF(until = -1, "Banned Permanently","Banned Temporarily") as banned,"" as name, uuid COLLATE utf8_general_ci as uuid, true as type, "" as color FROM litebans.litebans_bans WHERE uuid = "' + profile[0].uuid + '" and active = 1  UNION SELECT null as banned, g.name,playeruuid COLLATE utf8_general_ci as uuid, true as type, "" as color FROM PowerfulPerms.playergroups INNER JOIN PowerfulPerms.groups g on groupid = g.id WHERE playeruuid = "' + profile[0].uuid + '" UNION SELECT null as banned,kui_icon as name, kui_uuid as uuid, false as type,kui_color as color FROM kwebsite_users_icons WHERE kui_uuid = "' + profile[0].uuid + '";')
