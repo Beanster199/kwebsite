@@ -8,4 +8,8 @@ app.get('/rules', async(req,res) => {
     res.render('../views/rules.hbs');
 });
 
+app.get('/countdown', async (req,res) => {
+
+});
+
 module.exports = app;

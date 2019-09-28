@@ -33,12 +33,21 @@
                     <i class="{{name}}" style="color:{{color}};font-size:1.2rem;vertical-align: bottom"></i>
                     {{/if}}
                 {{/each}}
+            {{#unless ispremium }}
+                    <span class="label label-nopremium">No Premium</span>
+            {{/unless}}
             </div>
             <hr>
             {{/if}}
+        {{#if ../noplay}}
+            <h3>
+                <span class="alert alert-danger">Hasn't played Practice yet!</span>
+            </h3>
+        {{/if}}
+        {{#unless ../noplay}}
             <span style="font-size: 200%">Practice: Season 1</span>
             <hr>
-<table class="table">
+            <table class="table">
         <thead>
         <tr>
             <th></th>
@@ -189,7 +198,7 @@
             </tr>
         {{/each}}
         </tbody>
-    </table>
+            </table>
             <hr>
             <h3>Recent Matches</h3>
             <div class="row">
@@ -227,6 +236,7 @@
                     </tbody>
                 </table>
             </div>
+        {{/unless}}
         </div>
         <div class="modal fade" id="fight-modal" style="display: none;">
             <div class="modal-dialog modal-lg">

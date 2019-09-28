@@ -33,9 +33,13 @@
                     <i class="{{name}}" style="color:{{color}};font-size:1.2rem;vertical-align: bottom"></i>
                     {{/if}}
                 {{/each}}
+                {{#unless ispremium }}
+                        <span class="label label-nopremium">No Premium</span>
+                {{/unless}}
+            {{/if}}
             </div>
             <hr>
-            {{/if}}
+
         {{#if ../noplay}}
             <h3>
                 <span class="alert alert-danger">Hasn't played Survival Games yet!</span>

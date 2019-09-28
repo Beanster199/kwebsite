@@ -9,7 +9,7 @@
                 <a class="list-group-item" href="/u/{{ name }}">General</a>
                 <a class="list-group-item" href="/u/{{ name }}/practice">Practice</a>
                 <a class="list-group-item active" href="/u/{{ name }}/factions">Factions</a>
-                <a class="list-group-item" href="/u/{{ name }}/sg">SG</a>
+                <a class="list-group-item" href="/u/{{ name }}/sg">Survival Games</a>
             </div>
         </div>
         <div class="col-sm-9 col-md-10">
@@ -36,13 +36,16 @@
                 <i class="{{name}}" style="color:{{color}};font-size:1.2rem;vertical-align: bottom"></i>
                 {{/if}}
                 {{/each}}
+                {{#unless ispremium }}
+                        <span class="label label-nopremium">No Premium</span>
+                {{/unless}}
             </div>
             <hr>
             {{/if}}
             {{/each}}
             <div>
                 <span style="font-size: 200%">
-                    Factions: Map 1
+                    Factions: Map 2
                 </span>
             </div>
             <hr>
@@ -68,7 +71,7 @@
                             <tbody>
                                 <tr>
                                     <td>Playtime</td>
-                                    <td>0 days, 0 hours, 0 min.</td>
+                                    <td>{{#playtime dfaction.playtime}}{{/playtime}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -146,13 +149,13 @@
                                 {{/gt}}
                                 {{#gt dfaction.mining.STONE 0}}
                                 <tr>
-                                    <td>Stione</td>
+                                    <td>Stone</td>
                                     <td>{{dfaction.mining.STONE}}</td>
                                 </tr>
                                 {{/gt}}
                                 {{#gt dfaction.mining.INK_SACK 0}}
                                 <tr>
-                                    <td>Lapis Lazuli</td>
+                                    <td>Lapis</td>
                                     <td>{{dfaction.mining.INK_SACK}}</td>
                                 </tr>
                                 {{/gt}}
@@ -405,7 +408,7 @@
                                 {{/gt}}
                                 {{#gt dfaction.mobsLoot.SULPHUR 0}}
                                 <tr>
-                                    <td>Sulphur</td>
+                                    <td>Gunpowder</td>
                                     <td>{{dfaction.mobsLoot.SULPHUR}}</td>
                                 </tr>
                                 {{/gt}}
@@ -562,7 +565,7 @@
                                             <img src="https://visage.surgeplay.com/face/64/{{deathId}}" width="16" height="16">
                                             <strong>{{deathName}}</strong>
                                         </a>
-                                        <div class="text-muted pull-right" data-toggle="tooltip" title="{{date}}" data-original-title="">
+                                        <div class="text-muted pull-right" data-toggle="tooltip" title="{{#to_datetime date}}{{/to_datetime}}" data-original-title="">
                                             {{#timeago date}}{{/timeago}}
                                         </div>
                                     </li>

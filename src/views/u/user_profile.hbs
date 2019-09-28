@@ -42,6 +42,9 @@
                     {{/if}}
                 {{/each}}
             {{/if}}
+            {{#unless ispremium }}
+                    <span class="label label-nopremium">No Premium</span>
+            {{/unless}}
             </div>
             <hr>
             <div>
@@ -56,6 +59,7 @@
             </div>
                 {{/each}}
             <hr>
+            {{#if names}}
             <div>
                 <p>Name History</p>
                 <ul>
@@ -74,9 +78,7 @@
                 </ul>
             </div>
             <hr>
-            <p>Cubecore Info:</p>
-            Member of <a href="#">BeanerTeam</a> for 1&nbsp;months
-            <hr>
+            {{/if}}
             <!--{{#each friends}}
             <p>Friends <span class="badge">390</span></p>
             {{/each}}

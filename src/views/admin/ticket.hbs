@@ -30,7 +30,7 @@
         </div>
         <div class="panel-footer">
             {{#is body.status_id 4}}
-            Ticket Closed on {{body.closed_date}} by {{#username body.closed_by}}{{/username}}
+            Ticket Closed on {{body.closed_date}} by 
             {{/is}}
             {{#isnt body.status_id 4}}
             <button class="btn btn-danger" type="button" data-ticket="{{body.uid}}" id="close_ticket">Close Ticket.</button>

@@ -119,7 +119,8 @@ body>.container {
 }
 
 .label-Famous {
-  background-color: #00AA00;
+  background-color: rgb(250, 96, 217);
+  font-style: italic;
 }
 
 .label-Platinum {
@@ -143,8 +144,20 @@ body>.container {
   background-color: #d9534f;
 }
 
+.label-nopremium {
+  background-color: #51d858;
+}
+
 .label-tempbanned {
   background-color: #D65934;
+}
+
+.label-Kuih{
+  background-color: rgb(231, 177, 52);
+}
+
+.label-Youtuber{
+  background-color: rgb(250, 96, 217);
 }
 
 .tab-pane-margined {
@@ -366,25 +379,12 @@ table.practice-leaderboard-new td:nth-child(2) {
   }
 }
 
+.tooltip{
+  white-space: pre-line;
+  display: inline-block !important;
+}
 
-/*
-     FILE ARCHIVED ON 23:36:12 May 24, 2016 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 06:44:58 Oct 13, 2018.
-     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE
-
-     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
-     SECTION 108(a)(3)).
-*/
-/*
-playback timings (ms):
-  LoadShardBlock: 111.659 (3)
-  esindex: 0.02
-  captures_list: 124.438
-  CDXLines.iter: 9.772 (3)
-  PetaboxLoader3.datanode: 119.674 (4)
-  exclusion.robots: 0.154
-  exclusion.robots.policy: 0.144
-  RedisCDXSource: 0.492
-  PetaboxLoader3.resolve: 39.403
-  load_resource: 71.53
-*/
+.tooltip .tooltip-inner{
+  white-space: pre-line;
+  display: inline-block !important;
+}

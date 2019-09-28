@@ -11,7 +11,7 @@ app.get('/:auth_token', async (req, res, next) => {
             if(req.get('host') === 'localhost:3000'){
                 req.query.ip = await publicIp.v4();
             }else{
-                req.query.ip = req.headers["x-forwarded-for"]
+                req.query.ip = req.headers["x-forwarded-for"];
             }
             auth.authenticate('token-login',(err,user,info) => {
                 if(user){

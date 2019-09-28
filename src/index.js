@@ -13,7 +13,7 @@ const { database } = require('./keys');
 const app = express();
 require('./lib/auth');
 
-app.set('port', 3000);
+app.set('port', 80);
 app.set('views', path.join(__dirname, 'views'))
 app.disable('view cache');
 app.disable('x-powered-by');
@@ -56,6 +56,9 @@ app.use(session({
     key: 'test_id',
     secret: 'secret',
     resave: true,
+    cookie : {
+        maxAge: 1000 * 60 * 60 *24 * 365
+    },
     saveUninitialized: true,
     store: new MySQLStore(database)
   }));
@@ -117,7 +120,9 @@ app.use('/admin',require('./routes/admin/support.js'));
 app.use('/admin',require('./routes/admin/logins.js'));
 
 
-
+app.use((req,res,next) => {
+    return res.status(404).render('status/working_progress.hbs')
+})
 
 app.listen(app.get('port'), () => {
 });
