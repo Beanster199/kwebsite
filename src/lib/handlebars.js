@@ -18,7 +18,6 @@ helpers.StringToDatetime = (datetime) => {
 };
 
 helpers.playtime = (seconds) => {
-    console.log(seconds)
     let days = Math.floor(seconds / (3600*24));
     seconds  -= days*3600*24;
     let hrs   = Math.floor(seconds / 3600);

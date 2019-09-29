@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 style="display: inline-block;">{{ mapkit.map_name}}</h1>
+    <h1 style="display: inline-block;">{{ mapkit.map_name}} Details</h1>
     <span class="btn-group" style="vertical-align: text-bottom">
         <button type="button" class="btn btn-xs btn-default" data-toggle="dropdown" aria-expanded="false">
                 <span class="fa fa-arrow-down"></span>
@@ -7,7 +7,7 @@
             <ul class="dropdown-menu">
                 {{#each mapkit.maps }}
                 <li>
-                    <a href="/{{map_id}}">{{map_name}} Details</a>
+                    <a href="/{{map_id}}">{{map_name}}</a>
                 </li>
                 {{/each}}
             </ul>

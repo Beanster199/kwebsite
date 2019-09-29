@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="col-md-8 offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Last Deaths
+            </div>
+            <ul class="list-group" role="tablist">
+                {{#each deaths}}
+                    {{#if killerName}}
+                    <li class="list-group-item death-item">
+                        <a href="/u/{{killerName}}">
+                            <img src="https://visage.surgeplay.com/face/64/{{killerId}}" width="16" height="16">
+                            <strong>{{killerName}}</strong>
+                        </a>
+                        killed
+                        <a href="/u/{{deathName}}">
+                            <img src="https://visage.surgeplay.com/face/64/{{deathId}}" width="16" height="16">
+                            <strong>{{deathName}}</strong>
+                        </a>
+                        <div class="text-muted pull-right" data-toggle="tooltip" title="{{#to_datetime date}}{{/to_datetime}}" data-original-title="">
+                            {{#timeago date}}{{/timeago}}
+                        </div>
+                    </li>
+                    {{/if}}
+                    {{#unless killerName}}
+                    <li class="list-group-item death-item li-link" data-href="/fight/fRwu2IJ/">
+                        <a href="/u/{{deathName}}">
+                            <img src="https://visage.surgeplay.com/face/64/{{deathId}}" width="16" height="16">
+                            <strong>{{deathName}}</strong>
+                        </a>
+                        died
+                        <div class="text-muted pull-right" data-toggle="tooltip" title="{{date}}" data-original-title="">
+                            {{#timeago date}}{{/timeago}}
+                        </div>
+                    </li>
+                    {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>

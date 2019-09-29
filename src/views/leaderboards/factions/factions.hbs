@@ -7,17 +7,17 @@
                     </div>
                     <table class="table practice-leaderboard">
                         <tbody>
-                            {{#each playtime}}
+                            {{#each factions.playtime}}
                             <tr>
                                 <td>{{ count }}.</td>
                                 <td>
-                                    <a href="/u/{{Username}}">
-                                        <img src="https://visage.surgeplay.com/face/32/{{ UUID }}" width="16"
+                                    <a href="/u/{{name}}">
+                                        <img src="https://visage.surgeplay.com/face/32/{{ uuid }}" width="16"
                                             height="16">
-                                        {{ Username }}
+                                        {{ name }}
                                     </a>
                                 </td>
-                                <td>{{ GlobalElo }} Elo</td>
+                                <td>{{#playtime playtime }}{{/playtime}}</td>
                             </tr>
                             {{/each}}
                         </tbody>
@@ -30,16 +30,16 @@
                         <strong>Kills</strong>
                     </div>
                     <table class="table practice-leaderboard">
-                        {{#each rankeds}}
+                        {{#each factions.kills}}
                         <tr>
                             <td>{{ count }}.</td>
                             <td>
-                                <a href="/u/{{ Username }}">
-                                    <img src="https://visage.surgeplay.com/face/32/{{ UUID }}" width="16" height="16">
-                                    {{ Username }}
+                                <a href="/u/{{ name }}">
+                                    <img src="https://visage.surgeplay.com/face/32/{{ uuid }}" width="16" height="16">
+                                    {{ name }}
                                 </a>
                             </td>
-                            <td>{{ RankedWins }} Wins</td>
+                            <td>{{ kills }} Kills</td>
                         </tr>
                         {{/each}}
                         </tbody>
@@ -54,17 +54,17 @@
                     <table class="table practice-leaderboard">
 
                         <tbody>
-                            {{#each losses}}
+                            {{#each factions.diamonds}}
                             <tr>
                                 <td> {{ count }}.</td>
                                 <td>
-                                    <a href="/u/{{Username}}>">
-                                        <img src="https://visage.surgeplay.com/face/32/{{ UUID }}" width="16"
+                                    <a href="/u/{{name}}>">
+                                        <img src="https://visage.surgeplay.com/face/32/{{ uuid }}" width="16"
                                             height="16">
-                                        {{ Username }}
+                                        {{ name }}
                                     </a>
                                 </td>
-                                <td> {{ RankedLosses }} Losses</td>
+                                <td> {{ DIAMOND }}</td>
                             </tr>
                             {{/each}}
                         </tbody>
@@ -74,22 +74,47 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
-                        <strong>Diamonds Mined</strong>
+                        <strong>Deaths</strong>
                     </div>
                     <table class="table practice-leaderboard">
 
                         <tbody>
-                            {{#each losses}}
+                            {{#each factions.deaths}}
                             <tr>
                                 <td> {{ count }}.</td>
                                 <td>
-                                    <a href="/u/{{Username}}>">
-                                        <img src="https://visage.surgeplay.com/face/32/{{ UUID }}" width="16"
+                                    <a href="/u/{{name}}>">
+                                        <img src="https://visage.surgeplay.com/face/32/{{ uuid }}" width="16"
                                             height="16">
-                                        {{ Username }}
+                                        {{ name }}
                                     </a>
                                 </td>
-                                <td> {{ RankedLosses }} Losses</td>
+                                <td> {{ deaths }} Deaths</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <strong>Deaths</strong>
+                    </div>
+                    <table class="table practice-leaderboard">
+
+                        <tbody>
+                            {{#each factions.expcollected}}
+                            <tr>
+                                <td> {{ count }}.</td>
+                                <td>
+                                    <a href="/u/{{name}}>">
+                                        <img src="https://visage.surgeplay.com/face/32/{{ uuid }}" width="16"
+                                            height="16">
+                                        {{ name }}
+                                    </a>
+                                </td>
+                                <td> {{ expcollected }}</td>
                             </tr>
                             {{/each}}
                         </tbody>

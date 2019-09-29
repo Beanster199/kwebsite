@@ -10,7 +10,7 @@ app.get('/rules', async(req,res) => {
 });
 
 app.get('/countdown', async (req,res) => {
-
+     res.render('../views/countdown.hbs')
 });
 
 app.get('/map-:map', async (req,res) => {
@@ -22,7 +22,6 @@ app.get('/map-:map', async (req,res) => {
     if(!_mapkit[0]){
         return res.redirect('/');
     }
-    console.log(_mapkit)
     _mapkit[0].maps = _mapkit;
     res.render('../views/map-kit.hbs', {mapkit: _mapkit[0]});
 });
