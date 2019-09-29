@@ -1,6 +1,7 @@
 const app = require('express').Router();
 const ShortUniqueId = require('short-unique-id');
 const moment = require('moment');
+const request = require('request');
 
 const connection = require('../../config/dbConnection')
 const commons = require('../../lib/helpers')
@@ -19,11 +20,31 @@ app.use((req,res,next) => {
     }
 });
 
-app.get('/search/:username', async (req,res) => {
-    if(!req.params.username){
+app.get('/player/:username',async (req,res) => {
+    if(!req.params.username) return res.redirect('/admin/staff');
+    const _profile = await connection.query('select * from ksystem_playerdata where name = ?', req.params.username);
+    if(!_profile || !_profile[0]) return res.redirect('/admin/staff');
+    ((_profile[0].ispremium) ? _profile[0].ispremium = true : _profile[0].ispremium = false);
+    ((_profile[0].website_authenticated) ? _profile[0].website_authenticated = true : _profile[0].website_authenticated = false);
+    if(_profile[0].ispremium){
+        request.get('https://api.mojang.com/user/profiles/' + _profile[0].uuid.replace(/-/g,'')  + '/names', async (err,response, body) => {
+            let namesHistory = JSON.parse(body);
+            for (let i = 1; i < namesHistory.length; i++) {
+                namesHistory[i].changedToAt = new Date(namesHistory[i].changedToAt).toDateString()
+            }
+            _profile[0].names = namesHistory;
+            res.render('../views/admin/player.hbs', { layout: '../admin/main.hbs', profile: _profile[0]});
+        });
+    }
+});
+
+app.get('/search/', async (req,res) => {
+    if(!req.query.q){
         return res.redirect('/admin/staff')
     };
-    
+    const _users = await connection.query('SELECT * FROM ksystem_playerdata WHERE name like ? ', `%${req.query.q}%`)
+    if(_users.length == 1) return res.redirect(`/admin/player/${_users[0].name}`);
+    res.render('../views/admin/search.hbs', { layout: '../admin/main.hbs', users: _users, query: req.query.q});
 });
 
 app.get('/staff', async (req,res) => {
@@ -32,7 +53,7 @@ app.get('/staff', async (req,res) => {
 
 app.get('/dev', async (req,res) => {
     let isDev = false;
-    if(req.user.user_rank === 'Developer'){
+    if(req.user.user_rank === 'Dev'){
         isDev = true;
     }
     const commits = await connection.query('select * from kwebsite_commits order by commit_date desc LIMIT 4')

@@ -13,7 +13,7 @@ const { database } = require('./keys');
 const app = express();
 require('./lib/auth');
 
-app.set('port', 80);
+app.set('port', 3000);
 app.set('views', path.join(__dirname, 'views'))
 app.disable('view cache');
 app.disable('x-powered-by');
@@ -33,13 +33,15 @@ app.engine('.hbs', exphbs({
 app.use('/assets', express.static(path.join(__dirname, './assets')));
 app.use('/support/assets', express.static(path.join(__dirname, './assets')));
 app.use('/practice/assets', express.static(path.join(__dirname, './assets')));
+app.use('/factions/assets', express.static(path.join(__dirname, './assets')));
 app.use('/stats/assets', express.static(path.join(__dirname, './assets')));
 app.use('/sg/assets', express.static(path.join(__dirname, './assets')));
 app.use('/u/assets', express.static(path.join(__dirname, './assets')));
 app.use('/u/:nameId/assets', express.static(path.join(__dirname, './assets')));
 app.use('/admin/assets', express.static(path.join(__dirname, './assets')));
 app.use('/admin/t/assets', express.static(path.join(__dirname, './assets')));
-
+app.use('/admin/search/assets', express.static(path.join(__dirname, './assets')));
+app.use('/admin/player/assets', express.static(path.join(__dirname, './assets')));
 
 /*
     #Remember: Middlewares and Routes should go after _Assets_ for avoid multiple routes call
@@ -104,6 +106,7 @@ app.use('/u',require('./routes/u/user'));
 app.use(require('./routes/community/staff'));
 app.use(require('./routes/community/famous'));
 app.use(require('./routes/tools'));
+app.use(require('./routes/leaderboards/factions'));
 app.use('/practice',require('./routes/leaderboards/leaderboards'));
 app.use('/sg',require('./routes/leaderboards/survival_games'));
 app.use('/stats',require('./routes/leaderboards/factions'));

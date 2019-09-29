@@ -120,9 +120,9 @@
         </li>
       </ul>
       {{/if}}
-      <form class="navbar-form navbar-right search" id="adminSearch" method="POST" onsubmit="search()" role="search">
+      <form class="navbar-form navbar-right search" method="GET" action="/admin/search/" role="search">
         <div class="input-group">
-          <input type="text" name="usersearch" class="form-control navbar-player-search" placeholder="Search players"
+          <input type="text" name="q" class="form-control navbar-player-search" placeholder="Search players"
             required>
           <div class="input-group-btn">
             <button type="submit" class="btn btn-default"><i class="fa fa-search"></i>
@@ -130,13 +130,6 @@
           </div>
         </div>
       </form>
-      <script>
-        function search(){
-          const _query = `/admin/search/${$('input[name="usersearch"]').val()}`
-          $('#adminSearch').val().action = _query;
-          console.log('entra entraste')
-        }
-      </script>
     </div>
   </div>
 </nav>

@@ -1,0 +1,90 @@
+<h1>Player: {{profile.name}}</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body" style="padding: 3px">
+        <nav class="nav nav-pills flex-column flex-sm-row" style="margin-bottom: 0 !important;">
+        <a class="flex-sm-fill text-sm-center nav-link active" style="padding: 1rem 0.5rem" href="/admin/player/{{name}}">General</a>
+        <a class="flex-sm-fill text-sm-center nav-link" style="padding: 1rem 0.5rem" href="/admin/player/{{name}}/bans" tabindex="-1">Bans</a>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="nav flex-column nav-pills nav-accounts" id="accounts-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link" href="/admin/player/{{name}}/bans">Bans Issued</a>
+                <a class="nav-link" href="/u/{{name}}">Profile</a>
+                <a class="nav-link disabled">Tickets Created</a>
+            </div>
+        </div>
+        <button class="btn btn-primary">Ban User From Website</button>
+    </div>
+    <div class="col-md-9">
+        <table class="table table-borderless">
+        <thead>
+            <th scope="col" width="20%"></th>
+            <th scope="col"></th>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row" style="text-align: end"><b>UUID</b></td>
+                <td>{{profile.uuid}}</td>
+            </tr>
+                <td scope="row" style="text-align: end"><b>Premium</b></td>
+                <td>{{profile.ispremium}}</td>
+            </tr>
+            </tr>
+                <td scope="row" style="text-align: end"><b>Rank</b></td>
+                <td>None</td>
+            </tr>
+            </tr>
+                <td scope="row" style="text-align: end"><b>Groups</b></td>
+                <td>None</td>
+            </tr>
+            </tr>
+                <td scope="row" style="text-align: end"><b>Website User</b></td>
+                <td>{{profile.website_authenticated}}</td>
+            </tr>
+            </tr>
+                <td scope="row" style="text-align: end"><b>Website Banned</b></td>
+                <td>No</td>
+            </tr>
+            {{#if profile.ispremium}}
+            </tr>
+                <td scope="row" style="text-align: end"><b>Name History</b></td>
+                <td>
+                    <ul style="list-style-type: none;padding-left: 0">
+                        {{#each profile.names}}
+                        {{#unless changedToAt}}
+                        <li>
+                            Original name: <b>{{name}}</b>
+                        </li>
+                        {{/unless}}
+                        {{#if changedToAt}}
+                        <li>
+                            Changed name to <b>{{name}}</b> on  {{ changedToAt }}
+                        </li>
+                        {{/if}}
+                        {{/each }}
+                    </ul>
+                </td>
+            </tr>
+            {{/if}}
+        </tbody>
+        </table>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Comments
+            </div>
+            <div class="panel-body">
+                <form action="/admin/player/{{name}}/comment">
+                    <div class="form-group">
+                        <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Post Comment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

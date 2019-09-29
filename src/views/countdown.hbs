@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="countdown-contain">
+        <h1>Kuih Factions Map 2 SOTW!</h1>
+        <h2 class="subtitle"></h2>
+        <ul class="countdown" id="countdown">
+            <li id="days">
+            </li>
+            <p>Days, </p>
+            <li id="hours">
+            </li>
+            <p>Hours, </p>
+            <li id="min">
+            </li>
+            <p>Minutes, </p>
+            <li id="seconds">
+            </li>
+            <p>Seconds</p>
+        </ul>
+        <div>
+            EOTW is "End Of The World", the final event of a Kohi factions map.
+        </div>
+        <div>
+            The new map usually starts the following day around the same time.
+        </div>
+    </div>
+</div>
+
+<style>
+    .countdown-contain{
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+    .countdown-contain li{
+        display: inline;
+    }
+    .countdown-contain p{
+        display: inline;
+    }
+
+    .countdown-contain {
+        text-align: center;
+        font-family: 'Lato', sans-serif;
+        padding: 0px 0px 50px 0px;
+        width: 100%;    
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    .countdown-contain h1 {
+        margin-top: 60px;
+        margin-bottom: 10px;
+        font-family: 'Lato', sans-serif;
+        color: #555;
+        color: #FF0000;
+        font-size: 45px;
+        font-weight: 900;
+        letter-spacing: -1px;
+    }
+
+    #localeotw {
+        font-weight: 300;
+        color: #555;
+    }
+
+    .countdown {
+        font-size: 24px;
+        font-weight: 300;
+        color: #555;
+    }
+</style>
+
+<script src="/assets/js/moment.min.js"></script>
+<script src="/assets/js/moment-timezone-with-data.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js" type="text/javascript"></script>
+
+<script>
+
+  let _id = moment.tz("2019-09-29 15:00", "America/Monterrey");
+  $('#countdown').countdown(_id.toDate(), function (event) {
+    $(this).html(
+      `<li id="days"></li><p>${event.strftime('%D')} Days, </p><li id="hours"></li><p>${event.strftime('%H')} Hours, </p><li id="min"></li> <p>${event.strftime('%M')} Minutes, </p> <li id="seconds"> </li> <p>${event.strftime('%S')} Seconds</p>`);
+  });
+</script>
