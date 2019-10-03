@@ -16,7 +16,7 @@ auth.use('token-login', new Strategy({
   async (req,token,ip, done) => {
     let date_ago = new Date();
     date_ago.setMinutes(date_ago.getMinutes() - 15)
-    const _token = await connection.query('SELECT token,kut.uuid,name,ksp.website_authenticated as authenticated,ksp.isAdmin FROM kwebsite_users_tokens kut INNER JOIN ksystem_playerdata ksp ON ksp.uuid = kut.uuid WHERE token = ? and servertime between ? and ?', [token,date_ago.toISOString().slice(0, 19).replace('T', ' '),new Date().toISOString().slice(0, 19).replace('T', ' ')]);
+    const _token = await connection.query('SELECT token,kut.uuid,name,ksp.website_authenticated as authenticated,ksp.isAdmin FROM kwebsite_users_tokens kut INNER JOIN ksystem_playerdata ksp ON ksp.uuid = kut.uuid WHERE token = ? ', token);
     if(!_token[0] || !_token){
       console.log(`SELECT token,kut.uuid,name,ksp.website_authenticated as authenticated,ksp.isAdmin FROM kwebsite_users_tokens kut INNER JOIN ksystem_playerdata ksp ON ksp.uuid = kut.uuid WHERE token = ? and servertime between ? and ?', ${[token,date_ago.toISOString().slice(0, 19).replace('T', ' '),new Date().toISOString().slice(0, 19).replace('T', ' ')]}`)
       console.error('[bAuth Error] Ivalid Token or User Not found, returning false')

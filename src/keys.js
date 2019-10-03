@@ -1,8 +1,8 @@
 module.exports = {
     database: {
         connectionLimit: 10,
-        host: '142.44.142.61',
-        user: 'benster',
+        host: 'localhost',
+        user: 'root',
         password: 'o86FZYGBmN%#$lo8djF#&$#$%#$&#',
         database: 'ksystem'
     }

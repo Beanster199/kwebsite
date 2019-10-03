@@ -17,10 +17,13 @@
             <p>Seconds</p>
         </ul>
         <div>
-            EOTW is "End Of The World", the final event of a Kohi factions map.
+            EOTW is "End Of The World", the final event of a Kuih factions map.
         </div>
         <div>
-            The new map usually starts the following day around the same time.
+            SOTW is "Start Of The World", the start event of a Kuih factions map.
+        </div>
+        <div>
+            <small>The new map usually starts the following day around the same time.</small>
         </div>
     </div>
 </div>
@@ -76,7 +79,7 @@
 
 <script>
 
-  let _id = moment.tz("2019-09-29 15:00", "America/Monterrey");
+  let _id = moment.tz("2019-09-29 17:00", "America/Monterrey");
   $('#countdown').countdown(_id.toDate(), function (event) {
     $(this).html(
       `<li id="days"></li><p>${event.strftime('%D')} Days, </p><li id="hours"></li><p>${event.strftime('%H')} Hours, </p><li id="min"></li> <p>${event.strftime('%M')} Minutes, </p> <li id="seconds"> </li> <p>${event.strftime('%S')} Seconds</p>`);

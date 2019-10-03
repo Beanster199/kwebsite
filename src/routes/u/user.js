@@ -15,7 +15,6 @@ app.get('/:nameId', async (req, res) => {
         //let friends = await connection.query('SELECT')
         for (let i = 0; i < comments.length; i++) {
             comments[i].date = format(comments[i].date)
-            console.log(comments)
         }
         if(profile[0].ispremium){
             request.get('https://api.mojang.com/user/profiles/' + profile[0].uuid.replace(/-/g,'')  + '/names', async (err,response, body) => {
