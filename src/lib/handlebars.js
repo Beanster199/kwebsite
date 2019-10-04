@@ -27,4 +27,8 @@ helpers.playtime = (seconds) => {
     return `${days} days, ${hrs} hours, ${mnts} min.`
 };
 
+helpers.query_string = (query) => {
+
+};
+
 module.exports = helpers;

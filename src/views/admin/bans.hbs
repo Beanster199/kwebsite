@@ -1,14 +1,46 @@
-<div class="col-md-6 col-sm-6 col-6 offset-md-3 ">
-    <ul class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <h3>Bans</h3>
-            <hr/>
-            {{#each bans}}
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Dapibus ac facilisis in
-                <span class="badge badge-primary badge-pill">2</span>
+<div class="container">
+    <div class="col-md-9 col-sm-9 col-9">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between">
+                <h3>Bans</h3>
+                </hr>
+                {{#each bans}}
+                <li class="list-group-item li-link">
+                    {{id}}. 
+                    <a href="/admin/player/{{banned_by_name}}">
+                        <img src="https://visage.surgeplay.com/face/64/{{banned_by_uuid}}" width="16" height="16">
+                        <strong>{{banned_by_name}}</strong>
+                    </a>
+                    {{#if until}}
+                    <b> temporarily banned</b> until <b>{{#to_datetime until}}{{/to_datetime}}</b>
+                    {{else}}
+                    <b> banned permanently </b>
+                    {{/if}}
+                    <a href="/admin/player/{{name}}">
+                        <img src="https://visage.surgeplay.com/face/64/{{uuid}}" width="16" height="16">
+                        <strong>{{name}}</strong>
+                    </a>
+                    <span class="label label-primary pull-right">{{#timeago time}}{{/timeago}}</span>
+                </li>
+                {{/each}}
             </li>
-            {{/each}}
-        </li>
-    </ul>
+        </ul>
+    </div>
+    <div class="col-md-3 col-sm-3 col-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Ban Search.
+            </div>
+            <div class="panel-body">
+                <form action="/admin/bans" method="GET">
+                    <div class="form-group">
+                        <label for="search"> ID / UUID / Username : </label>
+                        <input id="search" name="search" type="text" class="form-control">
+                    </div>
+                    <button class="btn btn-sm pull-left" style="font-size: 12px;padding-top: 4px;padding-bottom: 2px;padding-right: 5px;padding-left: 5px;" onclick="location.href = '/bans'"><i class="fa fa-times"></i>&nbsp;Clear</button>
+                    <button class="btn btn-primary pull-right">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

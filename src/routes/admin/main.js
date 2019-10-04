@@ -57,7 +57,6 @@ app.get('/dev', async (req,res) => {
         isDev = true;
     }
     const commits = await connection.query('select * from kwebsite_commits order by commit_date desc LIMIT 4')
-    console.log(commits)
     res.render('../views/admin/dev.hbs', { layout: '../admin/main.hbs', commit: commits,isDev: isDev});
 });
 
