@@ -13,12 +13,22 @@
     <div class="col-md-3">
         <div class="panel panel-default">
             <div class="nav flex-column nav-pills nav-accounts" id="accounts-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link" href="/admin/player/{{name}}/bans">Bans Issued</a>
-                <a class="nav-link" href="/u/{{name}}">Profile</a>
+                <a class="nav-link" href="/admin/player/{{profile.name}}/bans">Bans Issued</a>
+                <a class="nav-link" href="/u/{{profile.name}}">Profile</a>
                 <a class="nav-link disabled">Tickets Created</a>
             </div>
         </div>
         <button class="btn btn-primary">Ban User From Website</button>
+        <hr>
+        {{#if owner}}
+        <form action="/admin/player/{{profile.name}}/admin">
+            {{#if profile.isadmin}}
+                <button class="btn btn-primary">Disable Admin Access</button>
+            {{else}}
+                <button class="btn btn-primary">Grant Admin Access</button>
+            {{/if}}
+        </form>
+        {{/if}}
     </div>
     <div class="col-md-9">
         <table class="table table-borderless">

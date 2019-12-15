@@ -26,6 +26,10 @@ app.get('/player/:username',async (req,res) => {
     if(!_profile || !_profile[0]) return res.redirect('/admin/staff');
     ((_profile[0].ispremium) ? _profile[0].ispremium = true : _profile[0].ispremium = false);
     ((_profile[0].website_authenticated) ? _profile[0].website_authenticated = true : _profile[0].website_authenticated = false);
+    let Owner = false;
+    if(req.user.uuid == '8c28eda0-157e-47df-a979-515f9ee14cd4' || req.user.uuid == 'c0294097-f30a-4546-99e9-e7172f9be7e2' || req.user.uuid == '0a4ec815-98cb-4dce-8ce9-542f50eada36') {
+        Owner = true;
+    }
     if(_profile[0].ispremium){
         request.get('https://api.mojang.com/user/profiles/' + _profile[0].uuid.replace(/-/g,'')  + '/names', async (err,response, body) => {
             let namesHistory = JSON.parse(body);
@@ -33,9 +37,17 @@ app.get('/player/:username',async (req,res) => {
                 namesHistory[i].changedToAt = new Date(namesHistory[i].changedToAt).toDateString()
             }
             _profile[0].names = namesHistory;
-            res.render('../views/admin/player.hbs', { layout: '../admin/main.hbs', profile: _profile[0]});
+            res.render('../views/admin/player.hbs', { layout: '../admin/main.hbs', profile: _profile[0], owner : Owner});
         });
     }
+});
+
+app.get('/player/:username/admin', async (req,res) => {
+    if(!req.user.uuid == '8c28eda0-157e-47df-a979-515f9ee14cd4' && !req.user.uuid == 'c0294097-f30a-4546-99e9-e7172f9be7e2' && !req.user.uuid == '0a4ec815-98cb-4dce-8ce9-542f50eada36') return res.redirect('/admin/staff');
+    const _profile = await connection.query('select * from ksystem_playerdata where name = ?', req.params.username);
+    if(!_profile || !_profile[0]) return res.redirect('/admin/staff');
+    await connection.query('UPDATE ksystem_playerdata SET isadmin = ? WHERE uuid = ?', [!_profile[0].isadmin,_profile[0].uuid]);
+    res.redirect(`/admin/player/${req.params.username}`);
 });
 
 app.get('/search/', async (req,res) => {
