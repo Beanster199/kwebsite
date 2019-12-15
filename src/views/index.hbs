@@ -11,8 +11,8 @@
         <img src="assets/img/tumb/1.png" style="top:22.926%;width:100%">
       </div>
       <div class="item banner-img center-block">
-      <img src="assets/img/tumb/2.png" style="top:22.926%;width:100%">
-        </div>
+        <img src="assets/img/tumb/2.png" style="top:22.926%;width:100%">
+      </div>
       <div class="item banner-img center-block">
         <img src="assets/img/tumb/3.png" style="top:22.926%;width:100%">
       </div>
@@ -20,39 +20,39 @@
         <img src="assets/img/tumb/4.png" style="top:22.926%;width:100%">
       </div>
     </div>
-    </div>
-    <div class="banner-bottom" style="text-align:center"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <div class="card border-dark mb-3" style="max-width:100%">
-            <div class="card-header" style="background-image: url(https://soltveit.org/wp-content/uploads/2018/08/teamspeak-banner.jpg);background-size: contain"><h1 style="color: #fff;text-align: center;text-shadow: 1px 0px 1px #444, 0px 1px 1px #444, 2px 1px 1px #444, 1px 2px 1px #444, 3px 2px 1px #444, 2px 3px 1px #444, 4px 3px 1px #444, 3px 4px 1px #444;">TeamSpeak Team!</h1></div>
-            <div class="card-body">
-              <h4 class="card-title"><b>TeamSpeak Team!</b></h4> <p class="text-muted"><i>~ 9/27/2019</i></p>
-              <p class="card-text"> Today we want to announce that this day we were given a giant, great opportunity, TeamSpeak is currently our official sponsor. Thanks to your team for taking us into account, this opens new paths. </p>
-              <p class="card-text">We all are here to provide you the best experience!</p>
-            </div>
+  </div>
+  <div class="banner-bottom" style="text-align:center"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+
+        {{#each announcements}}
+        <div class="card border-dark mb-3" style="max-width:100%">
+          <div class="card-header" style="background-image: url({{image_header}});background-size: contain">
+            <h1
+              style="color: #fff;text-align: center;text-shadow: 1px 0px 1px #444, 0px 1px 1px #444, 2px 1px 1px #444, 1px 2px 1px #444, 3px 2px 1px #444, 2px 3px 1px #444, 4px 3px 1px #444, 3px 4px 1px #444;">
+              {{title}}</h1>
           </div>
-          <div class="card border-dark mb-3" style="max-width:100%">
-            <div class="card-header" style="background-image: url(assets/img/main_2.png);background-size: cover"><h1 style="color: #fff;text-align: center;text-shadow: 1px 0px 1px #444, 0px 1px 1px #444, 2px 1px 1px #444, 1px 2px 1px #444, 3px 2px 1px #444, 2px 3px 1px #444, 4px 3px 1px #444, 3px 4px 1px #444;">Welcome to the Kuih Network!</h1></div>
-            <div class="card-body">
-              <h4 class="card-title"><b>Welcome to the Kuih Network!</b></h4> <p class="text-muted"><i>~ 9/21/2019</i></p>
-              <p class="card-text"> Welcome to the new and revamped Kuih Network with incredible changes! We hope we can provide all our users the best experience playing in our servers!</p>
-              <p class="card-text"> *Dont Forget to visit our store to help us by donating: donate.kuih.net*</p></br>
-              <p class="card-text">Our team is formed by: IIStimpayII, IIZepedaII, Benster_199 & Trovit</p>
-              <p class="card-text">We all are here to provide you the best experience!</p>
-            </div>
+          <div class="card-body bg-light">
+            <h4 class="card-title"><b>{{title}}</b></h4>
+            <p class="text-muted"><i>{{date}} ~ Posted by <a href="/u/{{name}}">{{name}}</a></i></p>
+            <p class="card-text"> {{{body}}} </p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="row">
-            <div class="col-sm-12" style="height: 10px">
-              <a class="twitter-timeline" data-lang="en" data-width="450" data-height="350" data-theme="light" href="https://twitter.com/KuihNetwork?ref_src=twsrc%5Etfw">Tweets by KuihNetwork</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
+        {{/each}}
+      </div>
+
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-sm-12" style="height: 10px">
+            <a class="twitter-timeline" data-lang="en" data-width="450" data-height="350" data-theme="light"
+              href="https://twitter.com/KuihNetwork?ref_src=twsrc%5Etfw">Tweets by KuihNetwork</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
   </div>
   </div>

@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+
+            <div class="panel">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        New Announcement
+                    </div>
+                    <div class="panel-body">
+                        <form action="/admin/announcements" id="na" method="POST">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" class="form-control" required name="title" aria-placeholder="Title"
+                                    placeholder="Title" />
+                            </div>
+                            <div class="form-group">
+                                <label>Header Imagen</label>
+                                <input type="text" class="form-control" required name="image_header"
+                                    aria-placeholder="https://i.imgur.com/pMk0vV7.png"
+                                    placeholder="https://i.imgur.com/pMk0vV7.png" />
+                            </div>
+                            <div class="form-group">
+                                <label>Announcement</label>
+                                <textarea required name="body" id="body" class="form-control" rows="10"
+                                    placeholder="Come on, tell them a good old story of Kingdoms who never die. - Brandon Sanderson. &NewLine;&NewLine;&NewLine; This form support <b>HTML tags</b>. You are free to write your own free html.&NewLine;&NewLine; More Info: https://www.w3schools.com/tags/"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary pull-right">Submit <i
+                                    class="far fa-newspaper"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 offset-1">
+            <div class="panel">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Last Announcements
+                    </div>
+                    <ul class="list-group">
+                        {{#each announcements}}
+                        <form action="/admin/announcements/toggle?q={{id}}" method="POST">
+                            <li class="list-group-item">{{title}}
+                                {{#if disabled}}
+                                <button type="submit" class="btn btn-success btn-sm">Enable</button>
+                                {{else}}
+                                <button type="submit" class="btn btn-danger btn-xs pull-right">Disable</button>
+                                {{/if}}
+                            </li>
+                        </form>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let na = $('#na');
+    console.log(na);
+    na.submit((e) => {
+        console.log(e)
+    });
+</script>
