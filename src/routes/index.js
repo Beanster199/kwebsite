@@ -8,9 +8,8 @@ app.post('/', (req,res) => {
   });
 
 app.get('/',async (req,res) => {
-    console.log(res.locals.bUser)
-    const _announcements = await connection.query('SELECT kwa.title,kwa.date,kwa.body,ksp.name,kwa.image_header FROM kwebsite_announcements kwa INNER JOIN ksystem_playerdata ksp ON ksp.uuid = kwa.uuid WHERE disabled = 0 ORDER BY date DESC LIMIT 3');
-    res.render('../views/index.hbs', {announcements:_announcements});
+    const _announcements = await connection.query('SELECT kwa.title,kwa.created_at,kwa.body,ksp.name,kwa.image_header FROM kwebsite_announcements kwa INNER JOIN ksystem_playerdata ksp ON ksp.uuid = kwa.created_by WHERE disabled = 0 ORDER BY created_at DESC LIMIT 3');
+    res.render('../views/index.hbs');
 });
 
 app.get('/logout', (req,res) => {

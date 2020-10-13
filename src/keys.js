@@ -1,9 +1,9 @@
 module.exports = {
     database: {
         connectionLimit: 10,
-        host: '35.203.39.50',
+        host: '34.94.19.147',
         user: 'benster',
-        password: 'o86FZYGBmN%#$lo8djF#&$#$%#$&#',
+        password: 'haCADR9f6PTj05SU',
         database: 'ksystem'
     }
 

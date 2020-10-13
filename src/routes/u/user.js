@@ -11,11 +11,11 @@ moment().format();
 app.get('/:nameId', async (req, res) => {
     if (req.params.nameId) {
         const profile = await getDefault(req,res);
-        let comments = await connection.query('SELECT kuv_usr_uuid as user, kuv_date as date, kuv_comment as comment,name FROM kwebsite_users_comments INNER JOIN ksystem_playerdata d on kuv_usr_uuid = d.uuid WHERE kuv_prf_uuid="' + profile[0].uuid + '" and kuv_deleted = 0')
+        // let comments = await connection.query('SELECT kuv_usr_uuid as user, kuv_date as date, kuv_comment as comment,name FROM kwebsite_users_comments INNER JOIN ksystem_playerdata d on kuv_usr_uuid = d.uuid WHERE kuv_prf_uuid="' + profile[0].uuid + '" and kuv_deleted = 0')
         //let friends = await connection.query('SELECT')
-        for (let i = 0; i < comments.length; i++) {
-            comments[i].date = format(comments[i].date)
-        }
+        // for (let i = 0; i < comments.length; i++) {
+        //     comments[i].date = format(comments[i].date)
+        // }
         if(profile[0].ispremium){
             request.get('https://api.mojang.com/user/profiles/' + profile[0].uuid.replace(/-/g,'')  + '/names', async (err,response, body) => {
                 let namesHistory = JSON.parse(body);
@@ -24,14 +24,14 @@ app.get('/:nameId', async (req, res) => {
                 }
                 const media = await connection.query('SELECT * FROM kwebsite_users_media WHERE uuid = ?', profile[0].uuid)
             res.render('../views/u/user_profile.hbs' , {
-                    user: profile, names : namesHistory, comments : comments, media : media
+                    user: profile, names : namesHistory, media : media
                 });
             })
         }else{
             profile[0].uuid = '8667ba71-b85a-4004-af54-457a9734eed7';
             const media = await connection.query('SELECT * FROM kwebsite_users_media WHERE uuid = ?', profile[0].uuid)
             res.render('../views/u/user_profile.hbs' , {
-                    user: profile, comments : comments, media : media
+                    user: profile, media : media
             });
         }
     } else {

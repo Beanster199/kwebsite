@@ -31,7 +31,7 @@ app.get('/bans', async(req,res) => {
 });
 
 app.get('/announcements', async (req,res) => {
-    const _announcements = await connection.query('SELECT * FROM kwebsite_announcements WHERE disabled = 0 ORDER BY date DESC LIMIT 15');
+    const _announcements = await connection.query('SELECT * FROM kwebsite_announcements ORDER BY date DESC LIMIT 15');
     res.render('../views/admin/announcements.hbs', {announcements:_announcements});
 });
 
@@ -58,12 +58,11 @@ app.post('/announcements', async (req,res) => {
 });
 
 app.post('/announcements/toggle', async (req,res) => {
-    console.log(req.query)
     if(!req.query.q) return res.redirect('/admin/announcements');
     try {
         const announcement = await connection.query('SELECT * FROM kwebsite_announcements WHERE id=?', req.query.q);
-        console.log(announcement)
-        await connection.query('UPDATE disabled = ? WHERE id = ?',[!announcement[0].disabled,announcement[0].id]);
+        console.log(announcement[0].id)
+        await connection.query('UPDATE kwebsite_announcements SET disabled = ? WHERE id = ?',[!announcement[0].disabled,req.query.q]);
     } catch (error) {
         console.log(error)
         return res.redirect('/admin/announcements');

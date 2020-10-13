@@ -24,7 +24,7 @@ helpers.playtime = (seconds) => {
     seconds  -= hrs*3600;
     let mnts = Math.floor(seconds / 60);
     seconds  -= mnts*60;
-    return `${days} days, ${hrs} hours, ${mnts} min.`
+    return `${days} días, ${hrs} horas, ${mnts} min.`
 };
 
 helpers.query_string = (query) => {

@@ -1,8 +1,8 @@
   <script src="assets/js/cookiemonster.js"></script>
   <div class="jumbotron banner-text">
     <div class="container">
-      <h1>The Kuih Network</h1>
-      <p> ts.kuih.net | kuih.net | donate.kuih.net</p>
+      <h1>The Kohi Network</h1>
+      <p> ts.kohi.net | kohi.net | donate.kohi.net</p>
     </div>
   </div>
   <div class="carousel slide" data-ride="carousel" data-interval="3000">
@@ -28,14 +28,18 @@
 
         {{#each announcements}}
         <div class="card border-dark mb-3" style="max-width:100%">
+          {{#if image_header}}
           <div class="card-header" style="background-image: url({{image_header}});background-size: contain">
+          {{else}}
+          <div class="card-header">
+          {{/if}}
             <h1
               style="color: #fff;text-align: center;text-shadow: 1px 0px 1px #444, 0px 1px 1px #444, 2px 1px 1px #444, 1px 2px 1px #444, 3px 2px 1px #444, 2px 3px 1px #444, 4px 3px 1px #444, 3px 4px 1px #444;">
               {{title}}</h1>
           </div>
           <div class="card-body bg-light">
             <h4 class="card-title"><b>{{title}}</b></h4>
-            <p class="text-muted"><i>{{date}} ~ Posted by <a href="/u/{{name}}">{{name}}</a></i></p>
+            <p class="text-muted"><i>{{created_at}} ~ Posted by <a href="/u/{{name}}">{{name}}</a></i></p>
             <p class="card-text"> {{{body}}} </p>
           </div>
         </div>
@@ -46,7 +50,7 @@
         <div class="row">
           <div class="col-sm-12" style="height: 10px">
             <a class="twitter-timeline" data-lang="en" data-width="450" data-height="350" data-theme="light"
-              href="https://twitter.com/KuihNetwork?ref_src=twsrc%5Etfw">Tweets by KuihNetwork</a>
+              href="https://twitter.com/KohiLive?ref_src=twsrc%5Etfw">Tweets by Kohi Network</a>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           </div>
         </div>
