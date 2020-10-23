@@ -8,8 +8,8 @@
             <div class="list-group">
                 <a class="list-group-item " href="/u/{{ name }}">General</a>
                 <a class="list-group-item active" href="/u/{{ name }}/practice">Practice</a>
-                <a class="list-group-item" href="/u/{{ name }}/factions">Factions</a>
-                <a class="list-group-item" href="/u/{{ name }}/sg">Survival Games</a>
+                {{!-- <a class="list-group-item" href="/u/{{ name }}/factions">Factions</a>
+                <a class="list-group-item" href="/u/{{ name }}/sg">Survival Games</a> --}}
             </div>
         </div>
         <div class="col-sm-9 col-md-10">
@@ -254,7 +254,7 @@
         xhr.responseType = "json";
         xhr.addEventListener("load",function(){
             let date = new Date (parseInt(xhr.response.date))
-            modal.innerHTML = "<div class='modal-header'><button type='button' style='float:left;margin-left:0' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>×</span></button><div class='modal-title'><input type='text' value='http://kuih.net/fight/" + id + "/' readonly='readonly' size='30'></div></div><div class='modal-body'><h1 class='text-center'>" + xhr.response.killerName + " vs " + xhr.response.deathName + "  </h1><h3 class='text-center'>Kit: " + xhr.response.styleName + "</h3><p class='disabled text-muted text-center'><strong>" + new Date(parseInt(xhr.response.date)).toLocaleDateString() + "</strong></p><div class='row'><div class='col-sm-6 text-center'><div><img src='https://visage.surgeplay.com/face/64/" + xhr.response.killerId + "' width='64' height='64'></div><div>Elo: " + xhr.response.killerElo + "</div></div><div class='col-sm-6 text-center'><div><img src='https://visage.surgeplay.com/face/64/" + xhr.response.deathId + "' width='64' height='64'></div><div>Elo: " + xhr.response.deathElo + "</div></div></div></div>"
+            modal.innerHTML = "<div class='modal-header'><button type='button' style='float:left;margin-left:0' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>×</span></button><div class='modal-title'><input type='text' value='http://voku.us/fight/" + id + "/' readonly='readonly' size='30'></div></div><div class='modal-body'><h1 class='text-center'>" + xhr.response.killerName + " vs " + xhr.response.deathName + "  </h1><h3 class='text-center'>Kit: " + xhr.response.styleName + "</h3><p class='disabled text-muted text-center'><strong>" + new Date(parseInt(xhr.response.date)).toLocaleDateString() + "</strong></p><div class='row'><div class='col-sm-6 text-center'><div><img src='https://visage.surgeplay.com/face/64/" + xhr.response.killerId + "' width='64' height='64'></div><div>Elo: " + xhr.response.killerElo + "</div></div><div class='col-sm-6 text-center'><div><img src='https://visage.surgeplay.com/face/64/" + xhr.response.deathId + "' width='64' height='64'></div><div>Elo: " + xhr.response.deathElo + "</div></div></div></div>"
         })
         xhr.send();
     });

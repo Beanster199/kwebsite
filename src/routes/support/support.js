@@ -62,6 +62,7 @@ app.get('/support/:ticket', async (req,res)=> {
         }
         _ticket[0].date = format(_ticket[0].date)
         const _comments = await connection.query('SELECT ktc.uuid,name,ktc.date,comment FROM kwebsite_tickets_comments ktc INNER JOIN ksystem_playerdata ksp on ksp.uuid = ktc.uuid WHERE uid = ? and disabled = 0', req.params.ticket);
+        
         if(_comments){
             _comments.forEach(com => {
                 if(com.uuid == _ticket[0].uuid){
@@ -72,8 +73,10 @@ app.get('/support/:ticket', async (req,res)=> {
                 com.date = format(com.date);
             });
         }
+        console.log(_ticket[0])
         switch (_ticket[0].category_id) {
             case 1:
+                console.log('asdjnasjd')
                 res.render('../views/support/tickets/ban_appeal.hbs',{ticket:_ticket[0],comments:_comments})
                 break;
             case 2:

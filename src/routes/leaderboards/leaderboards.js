@@ -59,9 +59,9 @@ app.get('/axepvp', async (req,res) => {
 /* [Build UHC] */
 
 app.get('/builduhc', async (req,res) => {
-    let elo = await connection.query('SELECT 52f0a1aa_1d4d_4c0f_be84_70defb7d39de as elo, UUID, name as Username FROM `ksystem_kpractice` WHERE 52f0a1aa_1d4d_4c0f_be84_70defb7d39de <> 0 ORDER BY 52f0a1aa_1d4d_4c0f_be84_70defb7d39de DESC LIMIT 10');
-    let wins = await connection.query('SELECT COUNT(killerID) as wins, UUID, name as Username FROM `ksystem_kpractice_ranked` INNER JOIN ksystem_kpractice on killerId = ksystem_kpractice.uuid WHERE style = "52f0a1aa_1d4d_4c0f_be84_70defb7d39de" GROUP BY killerid ORDER BY wins DESC LIMIT 10');
-    let losses = await connection.query('SELECT COUNT(deathID) as losses, UUID, name as Username FROM `ksystem_kpractice_ranked` INNER JOIN ksystem_kpractice on deathID = ksystem_kpractice.uuid WHERE style = "52f0a1aa_1d4d_4c0f_be84_70defb7d39de" GROUP BY deathid ORDER BY losses DESC LIMIT 10');
+    let elo = await connection.query('SELECT e48e52c7_ae57_463b_979d_6916b80b6b20 as elo, UUID, name as Username FROM `ksystem_kpractice` WHERE e48e52c7_ae57_463b_979d_6916b80b6b20 <> 0 ORDER BY e48e52c7_ae57_463b_979d_6916b80b6b20 DESC LIMIT 10');
+    let wins = await connection.query('SELECT COUNT(killerID) as wins, UUID, name as Username FROM `ksystem_kpractice_ranked` INNER JOIN ksystem_kpractice on killerId = ksystem_kpractice.uuid WHERE style = "e48e52c7_ae57_463b_979d_6916b80b6b20" GROUP BY killerid ORDER BY wins DESC LIMIT 10');
+    let losses = await connection.query('SELECT COUNT(deathID) as losses, UUID, name as Username FROM `ksystem_kpractice_ranked` INNER JOIN ksystem_kpractice on deathID = ksystem_kpractice.uuid WHERE style = "e48e52c7_ae57_463b_979d_6916b80b6b20" GROUP BY deathid ORDER BY losses DESC LIMIT 10');
     for (let i = 0; i < elo.length; i++) {
         elo[i].count = i + 1
     } 
@@ -185,9 +185,9 @@ app.get('/spleef', async (req,res) => {
 /* [Sumo] */
 
 app.get('/sumo', async (req,res) => {
-    let elo = await connection.query('SELECT e7b78c71_3893_4f26_bc8d_0a50cc9b622f as elo, UUID, name as Username FROM `ksystem_kpractice` WHERE e7b78c71_3893_4f26_bc8d_0a50cc9b622f <> 0 ORDER BY e7b78c71_3893_4f26_bc8d_0a50cc9b622f DESC LIMIT 10');
-    let wins = await connection.query('SELECT COUNT(killerID) as wins, UUID, name as Username FROM `ksystem_kpractice_ranked` INNER JOIN ksystem_kpractice on killerId = ksystem_kpractice.uuid WHERE style = "e7b78c71_3893_4f26_bc8d_0a50cc9b622f" GROUP BY killerid ORDER BY wins DESC LIMIT 10');
-    let losses = await connection.query('SELECT COUNT(deathID) as losses, UUID, name as Username FROM `ksystem_kpractice_ranked` INNER JOIN ksystem_kpractice on deathID = ksystem_kpractice.uuid WHERE style = "e7b78c71_3893_4f26_bc8d_0a50cc9b622f" GROUP BY deathid ORDER BY losses DESC LIMIT 10');
+    let elo = await connection.query('SELECT 49025c18_254a_41e2_9646_17f7d95a29fa as elo, UUID, name as Username FROM `ksystem_kpractice` WHERE 49025c18_254a_41e2_9646_17f7d95a29fa <> 0 ORDER BY 49025c18_254a_41e2_9646_17f7d95a29fa DESC LIMIT 10');
+    let wins = await connection.query('SELECT COUNT(killerID) as wins, UUID, name as Username FROM `ksystem_kpractice_ranked` INNER JOIN ksystem_kpractice on killerId = ksystem_kpractice.uuid WHERE style = "49025c18_254a_41e2_9646_17f7d95a29fa" GROUP BY killerid ORDER BY wins DESC LIMIT 10');
+    let losses = await connection.query('SELECT COUNT(deathID) as losses, UUID, name as Username FROM `ksystem_kpractice_ranked` INNER JOIN ksystem_kpractice on deathID = ksystem_kpractice.uuid WHERE style = "49025c18_254a_41e2_9646_17f7d95a29fa" GROUP BY deathid ORDER BY losses DESC LIMIT 10');
     for (let i = 0; i < elo.length; i++) {
         elo[i].count = i + 1
     } 

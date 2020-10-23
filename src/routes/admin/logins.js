@@ -31,7 +31,7 @@ app.get('/bans', async(req,res) => {
 });
 
 app.get('/announcements', async (req,res) => {
-    const _announcements = await connection.query('SELECT * FROM kwebsite_announcements ORDER BY date DESC LIMIT 15');
+    const _announcements = await connection.query('SELECT * FROM kwebsite_announcements ORDER BY created_at DESC LIMIT 15');
     res.render('../views/admin/announcements.hbs', {announcements:_announcements});
 });
 
@@ -43,15 +43,16 @@ app.post('/announcements', async (req,res) => {
         id: helpers.UUID(),
         sid: helpers.UUID(6),
         title: req.body.title,
-        date: helpers.getServerDateTime(),
+        created_at: helpers.getServerDateTime(),
         body: req.body.body,
         disabled: 0,
         image_header: req.body.image_header,
-        uuid: req.user.uuid
+        created_by: req.user.uuid
     }
     try {
         await connection.query('INSERT INTO kwebsite_announcements SET ?', obj);
     } catch (error) {
+        console.log(error)
         return res.redirect('/admin/announcements');
     }
     res.redirect('/admin/announcements');
